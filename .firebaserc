@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gorystytravelers": {
+      "hosting": {
+        "gorysty": [
+          "gorystytravelers"
+        ]
+      }
+    }
+  }
+}

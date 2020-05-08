@@ -1,0 +1,200 @@
+@import "../../styles/variables";
+
+.header {
+  padding: 35px 5px 20px;
+
+  // LOGO
+  .branding {
+
+    .site-title {
+      text-align: center;
+
+      img {
+        height: $big-logo;
+      }
+
+      span {
+        color: $mainBrandColor;
+        font-size: $big-logo;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+        padding-left: 15px;
+      }
+    }
+  }
+
+  //  HIDDEN BUTTON
+  .menu-button {
+    display: none;
+    //float: left;
+    width: auto;
+    margin: 3px 0 0 10px;
+    padding: 7px 9px;
+    font-size: 21px;
+    line-height: 21px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid $mainBrandColor;
+    font-family: 'icomoon';
+    background-color: $mainBrandColor;
+
+    &:hover {
+      background-color: #fff;
+      color: $mainBrandColor;
+    }
+  }
+
+  // MAIN MENU
+  .main-navigation {
+    position: relative;
+    z-index: 999;
+    margin: 0 auto;
+    text-align: center;
+
+    ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      margin: 0;
+
+      &>li {
+        position: relative;
+        display: inline-block;
+        list-style: none;
+        margin-left: 1%;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        & .current-menu-item,
+        &:hover>a {
+          color: $mainBrandColor;
+        }
+
+        &.menu-item-has-children:after {
+          content: '';
+          position: absolute;
+          left: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          display: block;
+          border: 3px solid transparent;
+          border-top: 4px solid $colorBlack;
+        }
+
+        &.menu-item-has-children:hover>ul {
+          opacity: 1;
+          visibility: visible;
+          -webkit-transform: translate(0, 0);
+          -moz-transform: translate(0, 0);
+          transform: translate(0, 0);
+        }
+
+        &>a>i:last-child:hover {
+          color: $mainBrandColor;
+        }
+      }
+
+      a {
+        display: block;
+        padding: 15px 5px;
+        color: $colorBlack;
+        font-size: 13px;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+
+      ul {
+        position: absolute;
+        top: 100%;
+        left: -20px;
+        right: auto;
+        margin: 0;
+        padding: 12px 0;
+        width: 210px;
+        background-color: #fff;
+        border: 1px solid #e7e7e7;
+        box-shadow: 0 0 4px silver;
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transform: translate(0, 30px);
+        -moz-transform: translate(0, 30px);
+        transform: translate(0, 30px);
+        -webkit-transition: all .4s ease-out;
+        -moz-transition: all .4s ease-out;
+        transition: all .4s ease-out;
+
+        li {
+          position: relative;
+          display: block;
+          float: none;
+          margin: 0;
+
+          a {
+            display: block;
+            text-align: left;
+            padding: 10px 33px 10px 35px;
+          }
+
+          &:hover>a {
+            background-color: $mainBg;
+          }
+        }
+      }
+    }
+  }
+  //  SHARE BOX 
+  .social-box {
+    position: relative;
+    float: right;
+    margin: 3px 0 0;
+// HIDDEN SHARE BUTTON
+    .social-button {
+      display: none;
+      float: right;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      border: 0;
+      color: $colorBlack;
+      font-size: 15px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+
+    & ul {
+      margin: 0;
+      display: flex;
+
+      li {
+        margin: 0 0 0 3px;
+
+        a {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          vertical-align: middle;
+          text-align: center;
+          color: $colorBlack;
+          font-size: 17px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+
+          &:hover {
+            background-color: $mainBrandColor;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

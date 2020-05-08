@@ -1,0 +1,45 @@
+@media screen and (min-width:991px) {
+  .site-main {
+    float: left;
+    width: 67%;
+    width: calc(100% - 300px);
+    margin-top: 30px;
+  }
+
+  .left-sidebar .site-main,
+  .sidebar {
+    float: right
+  }
+
+  .sidebar {
+    width: 270px;
+    margin-top: 30px
+  }
+
+  .left-sidebar .sidebar,
+  .right-sidebar .site-main {
+    float: left
+  }
+
+  .right-sidebar .sidebar {
+    float: right
+  }
+}
+
+@media screen and (min-width:1199px) {
+  .site-main {
+    width: 760px
+  }
+}
+
+@media screen and (max-width:768px) {
+  .page-wrapper {
+    padding: 0 20px
+  }
+}
+
+@media screen and (max-width:767px) {
+  .site-main {
+    margin-top: 30px
+  }
+}

@@ -1,0 +1,92 @@
+<header id="header" class="header">
+  <div class="page-wrapper">
+    <div class="container">
+      <div class="row">
+        <!-- LOGO -->
+        <div class="col-xl-3 col-lg-12">
+          <div class="branding">
+            <p class="site-title">
+              <a class="branding-ico" [routerLink]="['/home']">
+                <img src="../../../assets/image/logo1.png" alt="logo">
+                <span class="h1">gorysty</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="col-xl-7 col-lg-8 col-md-3 col-sm-3">
+          <!-- HIDDEN BUTTON -->
+          <button class="menu-button icon icon-bars"></button>
+          <!-- MAIN MENU -->
+          <nav id="main-navigation" class="main-navigation">
+            <div class="menu-menu-container">
+              <ul>
+                <li class="menu-item menu-item-has-children">
+                  <a [routerLink]="['/routes']" routerLinkActive="current-menu-item">Маршрути</a>
+                  <ul class="sub-menu">
+                    <li class="menu-item">
+                      <a>Маршут_1</a>
+                    </li>
+                    <li class="menu-item">
+                      <a>Маршут_2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item">
+                  <a [routerLink]="['/map']" routerLinkActive="current-menu-item">Карта</a>
+                </li>
+                <li class="menu-item menu-item-has-children">
+                  <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
+                  <ul class="sub-menu">
+                    <li class="menu-item">
+                      <a>Тема_1</a>
+                    </li>
+                    <li class="menu-item">
+                      <a>Тема_2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item menu-item-has-children">
+                  <a [routerLink]="['/gallery']" routerLinkActive="current-menu-item">Фотогалерея</a>
+                  <ul class="sub-menu">
+                    <li class="menu-item">
+                      <a>Тема_1</a>
+                    </li>
+                    <li class="menu-item">
+                      <a>Тема_2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item">
+                  <a [routerLink]="['/weather']" routerLinkActive="current-menu-item">Погода</a>
+                </li>
+                <li class="menu-item">
+                  <a [routerLink]="['/about']" routerLinkActive="current-menu-item">Про нас</a>
+                </li>
+                <li class="menu-item">
+                  <a [routerLink]="['/admin']" routerLinkActive="current-menu-item"><i class="icon icon-user"></i></a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-9 col-ms-9">
+          <div class="social-box">
+            <!-- HIDDEN SHARE BUTTON -->
+            <button class="social-button">
+              <i class="icon icon-share-alt"></i>
+            </button>
+            <!-- SHARE BOX -->
+            <ul class="social">
+              <li><a class="icon icon-facebook" href="https://www.facebook.com/gorysry.travelers" target="_blank"></a>
+              </li>
+              <li><a class="icon icon-instagram" href="https://www.instagram.com/gorysty_travelers/?hl=uk"
+                  target="_blank"></a></li>
+              <li><a class="icon icon-youtube" href="https://www.youtube.com/channel/UC5DrEEKJA9MO2afX3SxcgPA"
+                  target="_blank"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

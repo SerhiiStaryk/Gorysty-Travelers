@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "gorysty": {
@@ -121,8 +121,16 @@
               "devServerTarget": "gorysty:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "gorysty"
+    }
+  },
+  "defaultProject": "gorysty",
+  "cli": {
+    "analytics": "bb02d785-2566-457b-a386-452f4d1e71a5"
+  }
 }

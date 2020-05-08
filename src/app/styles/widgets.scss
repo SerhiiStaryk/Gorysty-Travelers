@@ -1,0 +1,218 @@
+.widget {
+
+  ol,
+  ul {
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: 0
+  }
+}
+
+// widget menu, use in footer
+
+.widget_nav_menu ul {
+  overflow: hidden;
+  margin: 0;
+
+  li {
+    float: left;
+    list-style: none;
+    width: 50%;
+    margin-bottom: 10px;
+
+    a {
+      font-size: 12px;
+      line-height: 15px;
+      color: $mainColor;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $mainBrandColor;
+      }
+    }
+  }
+}
+
+// widget search 
+.widget_search {
+  position: relative;
+
+  .search-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    text-align: center;
+    padding: 0;
+    height: 48px;
+    line-height: 48px;
+    vertical-align: middle;
+    font-weight: 400;
+
+    &:before {
+      content: '\e986';
+      color: #fff;
+      font-size: 17px;
+      font-family: 'icomoon';
+    }
+  }
+}
+
+.widget_categories {
+  li {
+    padding: 15px 10px 14px;
+    list-style: none;
+    font-size: 12px;
+    line-height: 16px;
+    color: $mainBrandColor;
+    border-bottom: 1px solid #e2e2e3;
+
+    &:first-child {
+      padding-top: 0
+    }
+
+    a {
+      display: inline-block;
+      margin-right: 5px;
+      color: $colorBlack;
+      font-size: 14px;
+      line-height: 18px;
+
+      &:hover {
+        color: $mainBrandColor;
+        text-decoration: none
+      }
+    }
+  }
+}
+
+.widget_recent_entries {
+  li {
+    margin-bottom: 10px;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    .post-image {
+      float: left;
+      width: 72px;
+      margin-right: 15px;
+      opacity: 1
+    }
+  }
+
+  a {
+    display: block;
+    color: $colorBlack;
+    font-weight: 600;
+
+    &:hover {
+      color: $mainBrandColor;
+    }
+  }
+
+  .post-date {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 13px;
+    color: $secondColor
+  }
+
+  h3 {
+    margin: 0;
+    display: block;
+    font-size: 13px;
+    line-height: 17px;
+    color: $colorBlack;
+    font-weight: 600;
+    text-transform: uppercase
+  }
+
+  .post-content {
+    float: left;
+    width: 183px
+  }
+}
+
+.widget_tag_cloud {
+
+  .tagcloud {
+    overflow: hidden;
+
+    a {
+      color: #000;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 14px;
+      position: relative;
+      z-index: 2;
+      float: left;
+      margin: 0 5px 6px 0;
+      padding: 9px 16px 8px;
+      font-size: 12px;
+      border: 3px solid #eee;
+
+      &:hover {
+        border-color: $mainBrandColor;
+      }
+    }
+  }
+}
+
+.widget {
+  display: block;
+  margin-bottom: 35px;
+
+  .widget-title {
+    position: relative;
+    margin-bottom: 38px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 66px;
+      height: 2px;
+      opacity: .4;
+      background-color: $mainBrandColor;
+    }
+  }
+
+  // widget quote of the day, use in footer
+  .widget-text {
+    blockquote {
+      margin: 40px auto;
+      padding: 45px 20px;
+      width: 100%;
+      text-transform: uppercase;
+      border: 3px solid $mainBrandColor;
+
+      p {
+        text-align: center;
+        color: $mainColor;
+        font-size: $small-title;
+        line-height: 28px;
+        font-weight: $bold;
+      }
+
+      cite {
+        display: block;
+        padding-top: 20px;
+
+        p {
+          color: $secondColor;
+          font-size: 14px;
+          line-height: 18px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
