@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../../variables';
 
 .entry-header h1 {
   margin: 25px 0 17px;
@@ -7,16 +7,27 @@
 }
 
 .entry-footer {
+  position: relative;
   overflow: hidden;
-  padding: 40px 5px 15px;
+  padding: 40px 0 15px;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 75px;
+    border-bottom: 3px solid $mainBg;
+  }
 
   .post-tags {
     overflow: hidden;
+    display: flex;
 
     a {
       position: relative;
       z-index: 2;
-      float: left;
       margin: 0 5px 6px 0;
       padding: 9px 16px 8px;
       font-size: 12px;
@@ -43,44 +54,12 @@
     }
   }
 
-  .post-share-box {
-    float: none;
-    display: block;
-    margin-top: 5px;
+  .share-box {
+    display: flex;
+    justify-content: center;
     padding: 25px 0;
-    text-align: center;
-    border-top: 3px solid $mainBg;
-
-    ul {
-      display: inline-block;
-      list-style: none;
-      overflow: hidden;
-      margin: 0;
-
-      li {
-        float: left;
-        list-style: none;
-        margin-left: 20px;
-        line-height: 14px;
-
-        a {
-          color: $colorBlack;
-          font-size: 18px;
-          line-height: 20px
-        }
-
-        &:first-child {
-          margin-left: 0;
-          font-size: 11px;
-          text-transform: uppercase;
-          color: #000;
-          letter-spacing: 5px
-        }
-      }
-    }
   }
 }
-
 
 .post-navigation {
   margin-bottom: 50px;
@@ -150,7 +129,7 @@
       }
 
       .comment-body {
-        border: 1px solid $colorBlack;
+       
         position: relative;
         display: block;
         list-style: none;
@@ -204,9 +183,4 @@
       }
     }
   }
-}
-
-.form-submit {
-  text-align: right;
-  margin-bottom: 60px;
 }

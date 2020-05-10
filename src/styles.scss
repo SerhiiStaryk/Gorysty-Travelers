@@ -1,12 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'app/styles/base';
-@import 'app/styles/normalize';
-@import 'app/styles/variables';
-@import 'app/styles/mixin';
-@import 'app/styles/fonts';
-@import 'app/styles/widgets.scss';
+@import 'variables';
+@import 'base';
+@import 'normalize';
+@import 'mixin';
+@import 'fonts';
+@import 'widgets';
 
 @import "~leaflet/dist/leaflet.css";
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
 
 // General style
 
@@ -20,6 +22,11 @@ html {
   font-family: $font-main;
   scroll-behavior: smooth;
   color: $mainColor;
+}
+
+p::selection {
+  background-color: $mainBrandColor;
+  color: $mainBg;
 }
 
 // Scroll style
@@ -50,7 +57,6 @@ html {
 
 .boxed,
 .container {
-  clear: both;
   width: 1140px;
   max-width: 100%;
   margin: 0 auto;
@@ -67,7 +73,23 @@ html {
 .button,
 button {
   background-color: $mainBrandColor;
+
+  &:hover,
+  &:active {
+    border: none;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: #323232;
+    cursor:not-allowed;
+  }
+
+
 }
+
+
+
 
 .input-field {
   position: relative;
@@ -84,6 +106,55 @@ button {
     margin-top: 65px;
     margin-bottom: 65px
   }
+}
+
+.flex-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  width: 270px;
+  margin-top: 30px;
+}
+
+.site-main {
+  width: 67%;
+  margin-top: 30px;
+}
+
+//Validation style & form style
+
+
+.form-control {
+  margin-bottom: .8rem;
+  border: none;
+
+  &.invalid {
+    color: $invalidColor;
+
+    input {
+      border: 1px solid $invalidColor !important;
+    }
+
+    .custom-file-label {
+      border: 1px solid $invalidColor !important;
+      color: $invalidColor
+    }
+  }
+
+  .validation {
+    small {
+      color: $invalidColor;
+    }
+
+  }
+}
+
+
+.form-submit {
+  text-align: right;
+  margin-bottom: 60px;
 }
 
 // iconmoon style
@@ -133,6 +204,7 @@ button {
       font-weight: $bold;
 
       a {
+        color: $secondColor;
         display: inline-block;
         margin: 0 5px;
 
@@ -206,12 +278,17 @@ button {
   .more-link {
     font-size: 30px;
     line-height: 30px;
-    color: $mainBrandColor;
+    color: $colorBlack;
     font-weight: 700;
     cursor: pointer;
 
     &:before {
       content: '...';
+    }
+
+    &:hover {
+      color: $mainBrandColor;
+
     }
   }
 
@@ -220,7 +297,6 @@ button {
     padding: 40px 5px 15px;
 
     .post-comments {
-      float: left;
       font-size: 12px;
       line-height: 14px;
       color: #000;
@@ -236,35 +312,6 @@ button {
 
         span {
           color: $secondColor;
-        }
-      }
-    }
-
-    .post-share-box {
-      float: right;
-
-      ul {
-        display: block;
-        list-style: none;
-        overflow: hidden;
-        margin: 0;
-
-        li {
-          float: left;
-          list-style: none;
-          margin-left: 20px;
-          line-height: 14px;
-
-          a {
-            color: #000;
-            font-size: 14px;
-          }
-
-          &:first-child {
-            margin-left: 0;
-            font-size: 12px;
-            color: #a6a5a5
-          }
         }
       }
     }
@@ -375,6 +422,35 @@ button {
   }
 }
 
+// pagination style
+
+.pagination {
+  display: block;
+  margin: 20px 0 50px;
+  overflow: hidden;
+  text-align: center;
+  color: $colorBlack;
+
+  a {
+    display: inline-block;
+    margin: 0 5px;
+    height: 30px;
+    line-height: 29px;
+    font-weight: $bold;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0 5px;
+    min-width: 30px;
+    border-radius: 50%;
+
+    &.current {
+      background-color: $mainBrandColor;
+      color: $mainBg;
+    }
+  }
+}
 
 
-@import 'app/styles/media';
+
+
+@import 'media';

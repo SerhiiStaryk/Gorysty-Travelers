@@ -1,0 +1,29 @@
+@import '../../../variables';
+
+.widget_categories {
+  li {
+    padding: 15px 10px 14px;
+    list-style: none;
+    font-size: 12px;
+    line-height: 16px;
+    color: $mainBrandColor;
+    border-bottom: 1px solid #e2e2e3;
+
+    &:first-child {
+      padding-top: 0
+    }
+
+    a {
+      display: inline-block;
+      margin-right: 5px;
+      color: $colorBlack;
+      font-size: 14px;
+      line-height: 18px;
+
+      &:hover {
+        color: $mainBrandColor;
+        text-decoration: none
+      }
+    }
+  }
+}

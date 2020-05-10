@@ -1,0 +1,36 @@
+@import '../../../variables';
+
+.social {
+  display: flex;
+  justify-content: flex-end;
+  margin: 3px 0 0;
+
+  & ul {
+    margin: 0;
+    display: flex;
+
+    li {
+      margin: 0 0 0 3px;
+
+      a {
+        color: $colorBlack;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        vertical-align: middle;
+        text-align: center;
+        color: $colorBlack;
+        font-size: 17px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+
+        &:hover {
+          background-color: $mainBrandColor;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

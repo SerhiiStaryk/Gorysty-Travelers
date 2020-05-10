@@ -1,0 +1,96 @@
+.widget {
+
+  ol,
+  ul {
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: 0
+  }
+}
+
+// widget menu, use in footer
+
+.widget_nav_menu ul {
+  overflow: hidden;
+  margin: 0;
+
+  li {
+    float: left;
+    list-style: none;
+    width: 50%;
+    margin-bottom: 10px;
+
+    a {
+      font-size: 12px;
+      line-height: 15px;
+      color: $mainColor;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $mainBrandColor;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+.widget {
+  display: block;
+  margin-bottom: 35px;
+
+  .widget-title {
+    position: relative;
+    margin-bottom: 38px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 66px;
+      height: 2px;
+      opacity: .4;
+      background-color: $mainBrandColor;
+    }
+  }
+
+  // widget quote of the day, use in footer
+  .widget-text {
+    blockquote {
+      margin: 40px auto;
+      padding: 45px 20px;
+      width: 100%;
+      text-transform: uppercase;
+      border: 3px solid $mainBrandColor;
+
+      p {
+        text-align: center;
+        color: $mainColor;
+        font-size: $small-title;
+        line-height: 28px;
+        font-weight: $bold;
+      }
+
+      cite {
+        display: block;
+        padding-top: 20px;
+
+        p {
+          color: $secondColor;
+          font-size: 14px;
+          line-height: 18px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import '../../../variables';
+
+.page-wrapper {
+  position: relative;
+
+  .admin-header {
+    height: 80px;
+    background: linear-gradient(135deg, $colorBlack 0%, $mainBrandColor 100%);
+    margin-bottom: 20px;
+
+    h3 {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
+      color: $mainBg;
+      font-family: $font-secondary;
+    }
+  }
+
+  .sidebar {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+    width: 15%;
+    margin-right: 25px;
+
+    ul {
+      li {
+        margin-top: 15px;
+        transform: scale(0.9);
+        transition: all .5s ease-in;
+
+        a {
+          color: $mainColor;
+          font-weight: 700;
+          text-transform: uppercase;
+          font-size: $regular-size;
+        }
+
+        &:hover {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  .site-main {
+    margin-top: 0;
+    height: 100%;
+    width: 85%;
+  }
+}
+
+.active {
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    bottom: -1px;
+    border: 1px solid $mainColor;
+  }
+}

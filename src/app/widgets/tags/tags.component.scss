@@ -1,0 +1,26 @@
+@import '../../../variables';
+
+.widget_tag_cloud {
+
+  .tagcloud {
+    overflow: hidden;
+
+    a {
+      color: #000;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 14px;
+      position: relative;
+      z-index: 2;
+      float: left;
+      margin: 0 5px 6px 0;
+      padding: 9px 16px 8px;
+      font-size: 12px;
+      border: 3px solid #eee;
+
+      &:hover {
+        border-color: $mainBrandColor;
+      }
+    }
+  }
+}

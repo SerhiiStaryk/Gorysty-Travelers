@@ -1,1 +1,33 @@
-<p>admin works!</p>
+<div class="page-wrapper">
+  <div class="admin-header">
+    <h3>Welcome, admin</h3>
+  </div>
+</div>
+<div class="page-wrapper flex-box">
+  <div class="sidebar">
+    <ul>
+      <li>
+        <a [routerLink]="['create-post']" routerLinkActive="active" >Створити пост</a>
+      </li>
+      <li>
+        <a [routerLink]="['post']" routerLinkActive="active" >Керування постами</a>
+      </li>
+      <li>
+        <a [routerLink]="['admin-tags']" routerLinkActive="active" >Керування тегами</a>
+      </li>
+      <li>
+        <a [routerLink]="['admin-gallery']" routerLinkActive="active" >Користувачі</a>
+      </li>
+      <li>
+        <a [routerLink]="['user']" routerLinkActive="active" >Фотогалерея</a>
+      </li>
+      <li>
+        <a>Погода</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="site-main">
+    <router-outlet></router-outlet>
+  </div>
+</div>

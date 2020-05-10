@@ -1,7 +1,6 @@
-@import "../../styles/variables";
+@import '../../../variables';
 
 .footer {
-  clear: both;
   display: block;
   margin: 50px 0 0;
 
@@ -19,40 +18,10 @@
       padding-right: 30px;
     }
 
-
-
     .social {
-      & ul {
-        margin: 0;
-        display: flex;
-        justify-content: center;
-
-        li {
-          margin: 0 0 0 3px;
-
-          a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            vertical-align: middle;
-            text-align: center;
-            color: #000;
-            font-size: 17px;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            border-radius: 50%;
-
-            &:hover {
-              background-color: $mainBrandColor;
-              color: #fff;
-            }
-          }
-        }
-      }
+      display: flex;
+      justify-content: center;
     }
-
-    
   }
 
   .footer-bottom {
@@ -82,8 +51,6 @@
       color: #949494;
       font-weight: 300
     }
-
-
   }
 
   .nav-footer {
@@ -112,7 +79,6 @@
             color: $mainBrandColor;
           }
         }
-
       }
     }
   }
