@@ -24,29 +24,63 @@
   <img [src]="postImage" alt="post-logo" *ngIf="!imgLoad" class="postImage">
 
   <!-- Name Title -->
+
   <div class="form-control" [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}">
     <label for="title">Тема посту:</label>
     <input type="text" id="title" formControlName="title">
+
     <!-- Validation -->
+
     <div class="validation" *ngIf="form.get('title').touched && form.get('title').invalid">
       <small>
         Введіть назву посту
       </small>
     </div>
   </div>
+
+  <!-- Description post -->
+
+  <div class="form-control" [ngClass]="{invalid:form.get('description').touched && form.get('description').invalid}">
+    <label for="description">Опис посту:</label>
+    <textarea type="text" id="description" formControlName="description"></textarea>
+
+    <!-- Validation -->
+
+    <div class="validation" *ngIf="form.get('description').touched && form.get('description').invalid">
+      <small *ngIf="form.get('description').errors.required">
+        Опишіть Ваш пост
+      </small>
+    </div>
+
+    <div class="validation" *ngIf="form.get('description').touched && form.get('description').invalid">
+      <small *ngIf="form.get('description').errors.maxlength">
+        Довжина опису має бути не більше ніж {{form.get('description').errors.maxlength.requiredLength}},
+        а Ви ввели {{form.get('description').errors.maxlength.actualLength}}
+      </small>
+    </div>
+  </div>
+
   <!-- Content post -->
+
   <div class="form-control" [ngClass]="{invalid:form.get('text').touched && form.get('text').invalid}">
     <label>Текст посту:</label>
+
+    <!-- editor text ngx-quill -->
+
     <quill-editor formControlName="text"></quill-editor>
+
     <!-- Validation -->
+
     <div class="validation" *ngIf="form.get('text').touched && form.get('text').invalid">
       <small>
         Напишіть пост...
       </small>
     </div>
   </div>
+
   <!-- Author Title -->
-  <div class="form-control" [ngClass]="{invalid:form.get('author').touched && form.get('author').invalid} ">
+
+  <div class="form-control" [ngClass]="{invalid:form.get('author').touched && form.get('author').invalid}">
     <label for="author">Автор:</label>
     <input type="text" id="author" formControlName="author">
     <div class="validation" *ngIf="form.get('author').touched && form.get('author').invalid">
@@ -55,12 +89,13 @@
       </small>
     </div>
   </div>
+
   <!-- tags post -->
 
-  <div class="form-control">
+  <div class="form-control" [ngClass]="{invalid:form.get('tags').touched && form.get('tags').invalid}">
     <label for="tags">Теги: {{ listTags }}</label>
     <input type="text" id="tags" formControlName="tags" (change)="addTags()" [(ngModel)]="tag">
-    <div class="validation">
+    <div class="validation" *ngIf="form.get('tags').touched && form.get('tags').invalid">
       <small *ngIf="form.get('tags').errors?.pattern">
         тег не може бути з пробілом або містити цифри
       </small>
@@ -68,25 +103,8 @@
   </div>
 
   <!-- save post -->
+  
   <div class="form-submit">
     <button type="submit" class="submit" [disabled]='form.invalid'>Зберегти</button>
   </div>
 </form>
-
-<!-- ------------------------------------------------------------------- -->
-<!-- <div class="flex_box">
-  <div class="col-2">
-    <h3>Bad words:</h3>
-  </div>
-  <div class="text_list col-10">
-    <p>{{ listWords }}</p>
-  </div>
-</div>
-<div class="flex_box">
-  <input type="text" placeholder="{{ placeholderInput }}" id="newWord" [(ngModel)]="newWord" name="newWord"
-    [class.emptyField]="isEmptyInput" (click)="clearBorder()">
-  <input type="button" value="Add" name="btnAdd" class="btn btn_add" (onChange)="addWords()">
-  <input type="button" value="Reset" name="btnReset" class="btn btn_reset" (click)="reset()">
-</div> -->
-
-<!-- ------------------------------------------------------------------- -->

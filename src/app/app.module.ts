@@ -3,10 +3,17 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+// text editor plugin (https://www.npmjs.com/package/ngx-quill)
 import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// Locale Ukraine
+import { registerLocaleData } from '@angular/common';
+import uaLocale from '@angular/common/locales/uk';
+
 
 // firebase
 import { AngularFireModule } from '@angular/fire';
@@ -40,14 +47,17 @@ import { CategoriesComponent } from './widgets/categories/categories.component';
 import { TagsComponent } from './widgets/tags/tags.component';
 
 // admin
-import { AdminComponent } from './admin/admin/admin.component';
+import { AdminComponent } from './admin/admin.component';
 import { CreatePostComponent } from './admin/create-post/create-post.component';
 import { PostComponent } from './admin/post/post.component';
 import { EditPostComponent } from './admin/edit-post/edit-post.component';
 import { UserComponent } from './admin/user/user.component';
 import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.component';
 import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
+import { AlertComponent } from './components/alert/alert.component';
 
+
+registerLocaleData(uaLocale, 'ua');
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCuKVuWy-H9ciJSrZIXXMRINPIPz05yD4c',
@@ -85,7 +95,8 @@ export const firebaseConfig = {
     EditPostComponent,
     UserComponent,
     AdminGalleryComponent,
-    AdminTagsComponent
+    AdminTagsComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

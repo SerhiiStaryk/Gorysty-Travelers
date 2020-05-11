@@ -10,12 +10,14 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
 import { WeatherComponent } from './pages/weather/weather.component';
 import { AboutComponent } from './pages/about/about.component';
 
-import { AdminComponent } from './admin/admin/admin.component';
+import { AdminComponent } from './admin/admin.component';
 import { CreatePostComponent } from './admin/create-post/create-post.component';
+import { EditPostComponent } from './admin/edit-post/edit-post.component';
 import { PostComponent } from './admin/post/post.component';
 import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
 import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.component';
 import { UserComponent } from './admin/user/user.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -32,6 +34,7 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: 'create-post' },
       { path: 'create-post', component: CreatePostComponent },
+      { path: 'post/:id/edit', component: EditPostComponent},
       { path: 'post', component: PostComponent },
       { path: 'admin-tags', component: AdminTagsComponent},
       { path: 'admin-gallery', component: AdminGalleryComponent},

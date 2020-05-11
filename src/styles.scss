@@ -75,21 +75,17 @@ button {
   background-color: $mainBrandColor;
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     border: none;
     outline: none;
   }
 
   &:disabled {
     background-color: #323232;
-    cursor:not-allowed;
+    cursor: not-allowed;
   }
-
-
 }
-
-
-
 
 .input-field {
   position: relative;
@@ -133,7 +129,8 @@ button {
   &.invalid {
     color: $invalidColor;
 
-    input {
+    input,
+    textarea {
       border: 1px solid $invalidColor !important;
     }
 

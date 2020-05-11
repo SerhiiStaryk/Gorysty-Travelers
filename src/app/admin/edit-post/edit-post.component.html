@@ -1,1 +1,110 @@
-<p>edit-post works!</p>
+<form [formGroup]="form" (ngSubmit)=updatePost()>
+
+  <!-- Title Image -->
+  <label>Головне зображення посту:</label>
+  <div *ngIf="imgLoad">
+    <div class="custom-file form-control"
+      [ngClass]="{'invalid': form.get('titleImg').touched && form.get('titleImg').invalid}">
+      <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+      <input (change)="uploadFile($event)" type="file" class="custom-file-input" id="titleImg"
+        formControlName="titleImg">
+      <!-- Validation -->
+      <div class="validation" *ngIf="form.get('titleImg').touched && form.get('titleImg').invalid">
+        <small>
+          Завантажте зображення посту
+        </small>
+      </div>
+    </div>
+    <div class="progress form-control">
+      <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
+        [style.width]="(uploadProgress | async) + '%'" aria-valuemin="0" aria-valuemax="100">
+      </div>
+    </div>
+  </div>
+  <img [src]="postImage" alt="post-logo" *ngIf="!imgLoad" class="postImage">
+
+  <!-- Name Title -->
+
+  <div class="form-control" [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}">
+    <label for="title">Тема посту:</label>
+    <input type="text" id="title" formControlName="title">
+
+    <!-- Validation -->
+
+    <div class="validation" *ngIf="form.get('title').touched && form.get('title').invalid">
+      <small>
+        Введіть назву посту
+      </small>
+    </div>
+  </div>
+
+  <!-- Description post -->
+
+  <div class="form-control" [ngClass]="{invalid:form.get('description').touched && form.get('description').invalid}">
+    <label for="description">Опис посту:</label>
+    <textarea type="text" id="description" formControlName="description"></textarea>
+
+    <!-- Validation -->
+
+    <div class="validation" *ngIf="form.get('description').touched && form.get('description').invalid">
+      <small *ngIf="form.get('description').errors.required">
+        Опишіть Ваш пост
+      </small>
+    </div>
+
+    <div class="validation" *ngIf="form.get('description').touched && form.get('description').invalid">
+      <small *ngIf="form.get('description').errors.maxlength">
+        Довжина опису має бути не більше ніж {{form.get('description').errors.maxlength.requiredLength}},
+        а Ви ввели {{form.get('description').errors.maxlength.actualLength}}
+      </small>
+    </div>
+  </div>
+
+  <!-- Content post -->
+
+  <div class="form-control" [ngClass]="{invalid:form.get('text').touched && form.get('text').invalid}">
+    <label>Текст посту:</label>
+
+    <!-- editor text ngx-quill -->
+
+    <quill-editor formControlName="text"></quill-editor>
+
+    <!-- Validation -->
+
+    <div class="validation" *ngIf="form.get('text').touched && form.get('text').invalid">
+      <small>
+        Напишіть пост...
+      </small>
+    </div>
+  </div>
+
+  <!-- Author Title -->
+
+  <div class="form-control" [ngClass]="{invalid:form.get('author').touched && form.get('author').invalid}">
+    <label for="author">Автор:</label>
+    <input type="text" id="author" formControlName="author">
+    <div class="validation" *ngIf="form.get('author').touched && form.get('author').invalid">
+      <small>
+        Введіть автора посту
+      </small>
+    </div>
+  </div>
+
+  <!-- tags post -->
+
+  <div class="form-control" [ngClass]="{invalid:form.get('tags').touched && form.get('tags').invalid}">
+    <label for="tags">Теги: {{ listTags }}</label>
+    <input type="text" id="tags" formControlName="tags" (change)="addTags()" [(ngModel)]="tag">
+    <div class="validation" *ngIf="form.get('tags').touched && form.get('tags').invalid">
+      <small *ngIf="form.get('tags').errors?.pattern">
+        тег не може бути з пробілом або містити цифри
+      </small>
+    </div>
+  </div>
+
+  <!-- save post -->
+
+  <div class="form-submit">
+    <button type="submit" class="submit" [disabled]='form.invalid'>Оновити</button>
+  </div>
+</form>
