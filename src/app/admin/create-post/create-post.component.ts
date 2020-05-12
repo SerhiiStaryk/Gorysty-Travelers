@@ -22,7 +22,7 @@ export class CreatePostComponent implements OnInit {
   tag: string;
   arrTags = [];
   listTags: string;
-  oneWord = '^[a-zA-Z]+$';
+  oneWord = '^[А-Яа-яЇїІіЄєҐґ\']+$';
   pattern = new RegExp(this.oneWord);
 
   constructor(
@@ -67,6 +67,8 @@ export class CreatePostComponent implements OnInit {
     this.form.reset();
     this.postImage = '';
     this.imgLoad = true;
+    this.listTags = '';
+    this.arrTags = [];
   }
 
   uploadFile(event: any): void {

@@ -168,6 +168,7 @@ button {
 // blog style
 
 .post {
+margin-bottom: 20px;
 
   .entry-header {
     position: relative;
@@ -269,7 +270,7 @@ button {
       color: $mainColor;
       font-size: $big-size;
       line-height: 26px;
-      margin-bottom: 20px;
+      margin-bottom: 0px;
     }
   }
 
@@ -447,6 +448,14 @@ button {
     }
   }
 }
+
+.editor{
+  .ql-container{
+    overflow-y: auto;
+    max-height: 600px;
+  }
+}
+
 
 
 
