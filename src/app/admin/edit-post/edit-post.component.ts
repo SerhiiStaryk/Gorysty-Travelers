@@ -48,7 +48,7 @@ export class EditPostComponent implements OnInit {
         this.arrTags = this.editPost.tags;
         this.listTags = (this.editPost.tags).join(', ');
         this.form = new FormGroup({
-          titleImg: new FormControl('', Validators.required),
+          titleImg: new FormControl(''),
           title: new FormControl(this.editPost.title, Validators.required),
           description: new FormControl(this.editPost.description, [Validators.required, Validators.maxLength(200)]),
           text: new FormControl(this.editPost.text, Validators.required),

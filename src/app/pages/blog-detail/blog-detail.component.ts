@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PostService } from 'src/app/shared/services/post.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogDetailComponent implements OnInit {
 
-  constructor() { }
+  post: any;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private postService: PostService
+  ) { }
 
   ngOnInit(): void {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.postService.getOnePostFirebase(id).subscribe(
+      data => {
+        this.post = data.data();
+      });
   }
-
 }

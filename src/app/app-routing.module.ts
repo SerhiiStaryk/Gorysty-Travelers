@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'routes', component: RoutesComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog-category', component: BlogCategoryComponent },
-  { path: 'blog-detail', component: BlogDetailComponent },
+  { path: 'blog-detail/:id', component: BlogDetailComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'weather', component: WeatherComponent },
   { path: 'about', component: AboutComponent },
