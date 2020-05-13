@@ -6,7 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // text editor plugin (https://www.npmjs.com/package/ngx-quill)
-import { QuillModule } from 'ngx-quill';
+import { QuillModule } from 'ngx-quill/';
+
 
 // ngx-ui-loader plugin (https://www.npmjs.com/package/ngx-ui-loader)
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
@@ -60,6 +61,7 @@ import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.compo
 import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+
 
 registerLocaleData(uaLocale, 'ua');
 

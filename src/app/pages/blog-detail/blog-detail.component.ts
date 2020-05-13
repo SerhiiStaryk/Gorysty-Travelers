@@ -17,6 +17,10 @@ export class BlogDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getOnePost();
+  }
+
+  private getOnePost(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.postService.getOnePostFirebase(id).subscribe(
       data => {
@@ -24,4 +28,5 @@ export class BlogDetailComponent implements OnInit {
         console.log(this.post.tags);
       });
   }
+ 
 }

@@ -9,6 +9,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class AdminCategoryComponent implements OnInit {
 
   modalRef: BsModalRef;
+  editStatus = false;
 
   constructor(
     private modalService: BsModalService

@@ -20,7 +20,6 @@
         <!-- entry-content -->
         <div class="entry-content">
           <!-- ------------------------------------------------------------------- -->
-          <!-- <qiull-view [content]="post.text" format="text" theme="snow"></qiull-view> -->
           <div class="ql-container ql-snow" style="border-width: 0;">
             <div class="ql-editor" [innerHTML]="post?.text">
             </div>
@@ -30,7 +29,7 @@
         <!-- entry-footer -->
         <footer class="entry-footer">
           <div class="post-tags">
-            <a href="#" *ngFor="let post of post.tags">{{ post }}</a>
+            <a href="#" *ngFor="let post of post?.tags">{{ post }}</a>
           </div>
           <div class="share-box">
             <app-share-box></app-share-box>

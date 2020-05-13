@@ -24,6 +24,16 @@ export class PostService {
     );
   }
 
+  getFirebasePostsByCategory(category: string) {
+    return this.firestore.collection<any>('posts', ref => ref.where('category.name', '==', category)).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
+
   public getOnePostFirebase(id: string) {
     return this.firestore.collection<any>('posts').doc(id).get();
   }
