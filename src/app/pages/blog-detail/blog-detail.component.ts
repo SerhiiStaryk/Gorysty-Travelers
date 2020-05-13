@@ -21,6 +21,7 @@ export class BlogDetailComponent implements OnInit {
     this.postService.getOnePostFirebase(id).subscribe(
       data => {
         this.post = data.data();
+        console.log(this.post.tags);
       });
   }
 }

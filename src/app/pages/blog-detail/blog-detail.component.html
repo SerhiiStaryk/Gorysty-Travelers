@@ -1,9 +1,6 @@
 <div class="page-wrapper">
-
   <div class="container flex-box">
-
     <!-- main part -->
-
     <div class="site-main">
       <article class="post appeared">
         <!-- entry-header -->
@@ -11,39 +8,29 @@
           <div class="cat-links">
             <a href="#">Category</a>
           </div>
-          <h1 class="entry-title">{{ post.title }}</h1>
+          <h1 class="entry-title">{{ post?.title }}</h1>
           <span class="posted-on">
-            <time class="entry-date">{{ post.date.toDate() | date: 'yyyy-MM-dd'}}</time>
+            <time class="entry-date">{{ post?.date.toDate() | date: 'yyyy-MM-dd'}}</time>
           </span>
-          <span class="author">{{ post.author }}</span>
+          <span class="author">{{ post?.author }}</span>
         </header>
         <div class="post-thumbnail">
-          <img width="760" height="556" [src]="post.titleImg" alt="post-image">
+          <img width="760" height="556" [src]="post?.titleImg" alt="post-image">
         </div>
-
         <!-- entry-content -->
         <div class="entry-content">
           <!-- ------------------------------------------------------------------- -->
           <!-- <qiull-view [content]="post.text" format="text" theme="snow"></qiull-view> -->
-
           <div class="ql-container ql-snow" style="border-width: 0;">
-            <div class="ql-editor" [innerHTML]="post.text">
+            <div class="ql-editor" [innerHTML]="post?.text">
             </div>
           </div>
-       
           <!-- ------------------------------------------------------------------  -->
         </div>
-
         <!-- entry-footer -->
-
         <footer class="entry-footer">
           <div class="post-tags">
-            <a href="#">Григорівка</a>
-            <a href="#">Карпати</a>
-            <a href="#">Кукул</a>
-            <a href="#">весна</a>
-            <a href="#">похід
-              з дітьми</a>
+            <a href="#" *ngFor="let post of post.tags">{{ post }}</a>
           </div>
           <div class="share-box">
             <app-share-box></app-share-box>
@@ -74,7 +61,6 @@
           </div>
         </div>
       </nav>
-
       <div class="comments">
         <h2 class="comments-title">1 Comments</h2>
         <!-- comments -->
@@ -102,13 +88,10 @@
           </li>
         </ol>
         <div class="comment-respond">
-
           <h2 id="reply-title" class="comment-reply-title">
             Leave a comment
           </h2>
-
           <!-- Form comments -->
-
           <form class="comment-form">
             <p class="comment-notes">Your email address will not be published.</p>
             <div class="row">
@@ -118,32 +101,26 @@
                 </div>
               </div>
             </div>
-
             <div class="row">
               <div class="col-lg-6 col-md-6">
                 <div class="input-field">
                   <input type="text" placeholder="Name *">
                 </div>
               </div>
-
               <div class="col-lg-6 col-md-6">
                 <div class="input-field">
                   <input type="email" placeholder="Email *">
                 </div>
               </div>
             </div>
-
             <div class="form-submit">
               <button type="submit" class="submit">Post Your Comment</button>
             </div>
-
           </form>
         </div>
       </div>
     </div>
-
     <!-- sidebar -->
-
     <aside id="secondary" class="sidebar widget-area">
       <app-sidebar></app-sidebar>
     </aside>

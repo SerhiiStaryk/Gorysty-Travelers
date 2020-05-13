@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">
+    <div>
+      <h3>Category</h3>
+    </div>
+    <div class="col-1">
+      <button type="button" (click)="openModal(categoryModal)">add</button>
+    </div>
+  </div>
+  <div class="card-body">
+        <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">NameUA</th>
+          <th scope="col">NameEN</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <th scope="row">#</th>
+          <td>name</td>
+          <td>name</td>
+          <td>
+            <button type="button">edit</button>
+          </td>
+          <td>
+            <button type="button">delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #categoryModal>
+  <!--
+    <div class="modal-header">
+      <h4 *ngIf="!editStatus" class="modal-title pull-left">Add new category</h4>
+      <h4 *ngIf="editStatus" class="modal-title pull-left">Edit category</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="titleUA" class="font-weight-bold">Title UA</label>
+        <input class="w-100" id="titleUA" type="text" [(ngModel)]="categoryNameUA" name="categoryNameUA">
+      </div>
+      <div class="form-group">
+        <label for="titleEN" class="font-weight-bold">Title EN</label>
+        <input class="w-100" id="titleEN" type="text" [(ngModel)]="categoryNameEN" name="categoryNameEN">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-dark" (click)="modalRef.hide()">Close</button>
+      <button *ngIf="!editStatus" type="button" class="btn btn-dark" (click)="addCategory()">Add</button>
+      <button *ngIf="editStatus" type="button" class="btn btn-dark" (click)="saveEditCategory()">Save</button>
+    </div> -->
+</ng-template>
