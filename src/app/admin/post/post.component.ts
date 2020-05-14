@@ -25,13 +25,12 @@ export class PostComponent implements OnInit {
     return this.postService.getAllFirebasePosts().subscribe(
       data => {
         this.arrPosts = data;
-        console.log(this.arrPosts);
       }
     );
   }
 
   public deletePost(post: IPost): void {
-    if (confirm('yes or Not')) {
+    if (confirm('yes or not')) {
       this.postService.deleteFirebasePost(post.id)
         .then(() => this.alert.warning('Пост видалений з бази'))
         .catch(err => this.alert.danger(err));

@@ -37,11 +37,8 @@
                 <li class="menu-item menu-item-has-children">
                   <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
                   <ul class="sub-menu">
-                    <li class="menu-item">
-                      <a>Тема_1</a>
-                    </li>
-                    <li class="menu-item">
-                      <a>Тема_2</a>
+                    <li class="menu-item" *ngFor="let category of arrCategories">
+                      <a>{{ category.name }}</a>
                     </li>
                   </ul>
                 </li>

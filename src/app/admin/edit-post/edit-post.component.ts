@@ -40,7 +40,6 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.editPostId = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.editPostId);
     this.postServices.getOnePostFirebase(this.editPostId).subscribe(
       data => {
         this.editPost = data.data();
@@ -78,17 +77,9 @@ export class EditPostComponent implements OnInit {
     );
 
     delete newPost.id;
-
-    console.log(newPost);
-
-
     this.postServices.updateFirebasePost(newPost, this.editPostId)
       .then(() => this.alert.success('оновлено у базі'))
-      .catch(err => this.alert.warning(err));
-
-    // this.form.reset();
-    // this.postImage = '';
-    // this.imgLoad = true;
+      .catch(err => this.alert.danger(err));
   }
 
   uploadFile(event: any): void {
