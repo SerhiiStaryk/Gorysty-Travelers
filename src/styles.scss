@@ -130,7 +130,8 @@ button {
     color: $invalidColor;
 
     input,
-    textarea {
+    textarea,
+    select {
       border: 1px solid $invalidColor !important;
     }
 
@@ -168,7 +169,7 @@ button {
 // blog style
 
 .post {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 
   .entry-header {
     position: relative;
@@ -450,8 +451,8 @@ margin-bottom: 20px;
   }
 }
 
-.editor{
-  .ql-container{
+.editor {
+  .ql-container {
     overflow-y: auto;
     max-height: 600px;
   }

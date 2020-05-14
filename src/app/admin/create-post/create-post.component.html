@@ -1,5 +1,12 @@
 <form [formGroup]="form" (ngSubmit)=savePost()>
-
+  <!-- post category -->
+  <div class="form-control">
+    <label for="category">Категорія посту</label>
+    <select id="category" class="form-control" formControlName="selected" (change)="selectCategory()">
+      <option [ngValue]="null" disabled hidden>Вибрати...</option>
+      <option *ngFor="let category of arrayCategories" [ngValue]="category">{{ category.name }}</option>
+    </select>
+  </div>
   <!-- Title Image -->
   <label>Головне зображення посту:</label>
   <div *ngIf="imgLoad">
@@ -103,7 +110,7 @@
   </div>
 
   <!-- save post -->
-  
+
   <div class="form-submit">
     <button type="submit" class="submit" [disabled]='form.invalid'>Зберегти</button>
   </div>

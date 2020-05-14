@@ -7,6 +7,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { ActivatedRoute } from '@angular/router';
+import { ICategory } from 'src/app/shared/interfaces/category.interface';
+import { CategoryService } from 'src/app/shared/services/category.service';
 
 @Component({
   selector: 'app-edit-post',
@@ -27,6 +29,11 @@ export class EditPostComponent implements OnInit {
   arrTags = [];
   listTags: string;
 
+  arrayCategories: Array<any>;
+  postCategory: ICategory;
+  categoryValue: string;
+
+
   // Regexp
   oneWord = '^[a-zA-Z]+$';
   pattern = new RegExp(this.oneWord);
@@ -35,10 +42,19 @@ export class EditPostComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private postServices: PostService,
     private afStorage: AngularFireStorage,
-    private alert: AlertService
+    private alert: AlertService,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit(): void {
+    this.getCategories();
+
+    this.form = new FormGroup({
+      selected: new FormControl(null),
+      titleImg: new FormControl(''),
+      
+    });
+
     this.editPostId = this.activatedRoute.snapshot.paramMap.get('id');
     this.postServices.getOnePostFirebase(this.editPostId).subscribe(
       data => {
@@ -46,16 +62,49 @@ export class EditPostComponent implements OnInit {
         this.postImage = this.editPost.titleImg;
         this.arrTags = this.editPost.tags;
         this.listTags = (this.editPost.tags).join(', ');
+
         this.form = new FormGroup({
-          titleImg: new FormControl(''),
           title: new FormControl(this.editPost.title, Validators.required),
           description: new FormControl(this.editPost.description, [Validators.required, Validators.maxLength(200)]),
           text: new FormControl(this.editPost.text, Validators.required),
           author: new FormControl(this.editPost.author, Validators.required),
           tags: new FormControl('', [Validators.pattern(this.oneWord)])
         });
+        
       });
+    
+
+
   }
+
+
+  private getCategories() {
+
+    return this.categoryService.getAllFirebaseCategories().subscribe((
+      data => {
+        this.arrayCategories = data;
+        console.log(this.arrayCategories);
+
+      }
+    ));
+  }
+
+  public selectCategory() {
+    debugger
+    // const index = this.arrayCategories.findIndex(elem => elem.name.toLocaleLowerCase() === this.form.value.selected.toLocaleLowerCase());
+    // this.postCategory = this.arrayCategories[index];
+
+    console.log(this.form.value.selected);
+
+  }
+
+  // private setCategy(categoryValue: string): void {
+  //   this.arrayCategories.filter(el => {
+  //     if (el.name === categoryValue) {
+  //       this.postCategory = el;
+  //     }
+  //   });
+  // }
 
 
   // update methods
@@ -66,6 +115,7 @@ export class EditPostComponent implements OnInit {
     }
     const newPost: IPost = new Post(
       null,
+      this.postCategory,
       this.postImage,
       this.form.value.title,
       this.form.value.description,
@@ -76,10 +126,10 @@ export class EditPostComponent implements OnInit {
       false
     );
 
-    delete newPost.id;
-    this.postServices.updateFirebasePost(newPost, this.editPostId)
-      .then(() => this.alert.success('оновлено у базі'))
-      .catch(err => this.alert.danger(err));
+    // delete newPost.id;
+    // this.postServices.updateFirebasePost(newPost, this.editPostId)
+    //   .then(() => this.alert.success('оновлено у базі'))
+    //   .catch(err => this.alert.danger(err));
   }
 
   uploadFile(event: any): void {

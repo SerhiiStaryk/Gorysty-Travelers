@@ -1,10 +1,29 @@
 @import '../../../variables';
 
-.form-control{
-    padding: 0;
+.form-control {
+  padding: 0;
+
+  &:active,
+  &:focus,
+  &:hover {
+    outline: none;
+    border-color: transparent;
+  }
 }
 
-.postImage{
-    max-height: 150px;
+.postImage {
+  max-height: 150px;
 }
 
+select.form-control {
+  color: #747374;
+  width: 100%;
+  padding: 15px 14px;
+  border: none;
+  background-color: #f4f7f6;
+  border-radius: 0;
+  height: 49px !important;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+}

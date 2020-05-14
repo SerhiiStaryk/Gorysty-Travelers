@@ -1,10 +1,18 @@
 <form [formGroup]="form" (ngSubmit)=updatePost()>
+  <!-- post category -->
+  <div class="form-control">
+    
+    <label for="category">Категорія посту</label>
+    <select id="category" class="form-control" formControlName="selected" (change)="selectCategory()">
+      <option [ngValue]="null" disabled hidden>Вибрати...</option>
+      <option *ngFor="let category of arrayCategories" [ngValue]="category">{{ category.name }}</option>
+    </select>
+  </div>
 
   <!-- Title Image -->
   <label>Головне зображення посту:</label>
   <div *ngIf="imgLoad">
-    <div class="custom-file form-control"
-      [ngClass]="{'invalid': form.get('titleImg').invalid}">
+    <div class="custom-file form-control" [ngClass]="{'invalid': form.get('titleImg').invalid}">
       <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
       <input (change)="uploadFile($event)" type="file" class="custom-file-input" id="titleImg"
         formControlName="titleImg">
@@ -16,7 +24,7 @@
       </div>
     </div>
 
-  
+
     <div class="progress form-control">
       <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
         [style.width]="(uploadProgress | async) + '%'" aria-valuemin="0" aria-valuemax="100">
@@ -24,7 +32,7 @@
     </div>
   </div>
   <img [src]="postImage" alt="post-logo" *ngIf="!imgLoad" class="postImage">
- 
+
   <!-- Name Title -->
 
   <div class="form-control" [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}">
@@ -39,7 +47,7 @@
       </small>
     </div>
   </div>
-  
+
   <!-- Description post -->
 
   <div class="form-control" [ngClass]="{invalid:form.get('description').touched && form.get('description').invalid}">
@@ -61,7 +69,7 @@
       </small>
     </div>
   </div>
- 
+
   <!-- Content post -->
 
   <div class="form-control" [ngClass]="{invalid:form.get('text').touched && form.get('text').invalid}">
@@ -79,7 +87,7 @@
       </small>
     </div>
   </div>
-  
+
   <!-- Author Title -->
 
   <div class="form-control" [ngClass]="{invalid:form.get('author').touched && form.get('author').invalid}">
@@ -91,7 +99,7 @@
       </small>
     </div>
   </div>
-  
+
   <!-- tags post -->
 
   <div class="form-control" [ngClass]="{invalid:form.get('tags').touched && form.get('tags').invalid}">
