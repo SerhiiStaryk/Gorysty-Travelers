@@ -38,7 +38,7 @@
                   <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
                   <ul class="sub-menu">
                     <li class="menu-item" *ngFor="let category of arrCategories">
-                      <a>{{ category.name }}</a>
+                      <a [routerLink]="['/blog-category/'+category.name]">{{ category.name }}</a>
                     </li>
                   </ul>
                 </li>

@@ -2,7 +2,7 @@
   <!-- post category -->
   <div class="form-control">
     <label for="category">Категорія посту</label>
-    <select id="category" class="form-control" formControlName="selected" (change)="selectCategory()">
+    <select id="category" class="form-control" formControlName="selected">
       <option [ngValue]="null" disabled hidden>Вибрати...</option>
       <option *ngFor="let category of arrayCategories" [ngValue]="category">{{ category.name }}</option>
     </select>

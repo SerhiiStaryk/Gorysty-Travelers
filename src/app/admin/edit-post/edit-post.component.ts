@@ -9,6 +9,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 import { ActivatedRoute } from '@angular/router';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { CategoryService } from 'src/app/shared/services/category.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-post',
@@ -19,10 +20,13 @@ export class EditPostComponent implements OnInit {
 
   form: FormGroup;
 
-  editPost: any;
   editPostId: string;
-
+  editPost: any;
   postImage: string;
+  editCategory: ICategory;
+
+  selected: string;
+
   imgLoad = false;
   uploadProgress: Observable<number>;
   tag: string;
@@ -31,11 +35,9 @@ export class EditPostComponent implements OnInit {
 
   arrayCategories: Array<any>;
   postCategory: ICategory;
-  categoryValue: string;
-
 
   // Regexp
-  oneWord = '^[a-zA-Z]+$';
+  oneWord = '^[А-Яа-яЇїІіЄєҐґ\']+$';
   pattern = new RegExp(this.oneWord);
 
   constructor(
@@ -47,65 +49,62 @@ export class EditPostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCategories();
-
     this.form = new FormGroup({
       selected: new FormControl(null),
       titleImg: new FormControl(''),
-      
+      title: new FormControl('', Validators.required),
+      description: new FormControl('', [Validators.required, Validators.maxLength(200)]),
+      text: new FormControl('', Validators.required),
+      author: new FormControl('', Validators.required),
+      tags: new FormControl('', [Validators.pattern(this.oneWord)]),
     });
+    this.getCategories();
+    this.getPost();
+  }
 
+  private getCategories() {
+    return this.categoryService.getAllFirebaseCategories().subscribe((
+      data => {
+        this.arrayCategories = data;
+      }));
+  }
+
+  private getPost(): void {
     this.editPostId = this.activatedRoute.snapshot.paramMap.get('id');
     this.postServices.getOnePostFirebase(this.editPostId).subscribe(
       data => {
         this.editPost = data.data();
         this.postImage = this.editPost.titleImg;
+        this.selected = this.editPost.category.name;
         this.arrTags = this.editPost.tags;
         this.listTags = (this.editPost.tags).join(', ');
 
-        this.form = new FormGroup({
-          title: new FormControl(this.editPost.title, Validators.required),
-          description: new FormControl(this.editPost.description, [Validators.required, Validators.maxLength(200)]),
-          text: new FormControl(this.editPost.text, Validators.required),
-          author: new FormControl(this.editPost.author, Validators.required),
-          tags: new FormControl('', [Validators.pattern(this.oneWord)])
-        });
-        
+        this.setValueForm(
+          this.editPost.title,
+          this.editPost.description,
+          this.editPost.text,
+          this.editPost.author
+        );
       });
-    
-
-
   }
 
+  private setValueForm(editTitle: string, editDescription: string, editText: string, editAuthor: string) {
 
-  private getCategories() {
+    this.form.patchValue({
+      title: editTitle,
+      description: editDescription,
+      text: editText,
+      author: editAuthor
+    });
+  }
 
-    return this.categoryService.getAllFirebaseCategories().subscribe((
-      data => {
-        this.arrayCategories = data;
-        console.log(this.arrayCategories);
-
+  public setCategory(categoryName: string) {
+    this.arrayCategories.filter(el => {
+      if (el.name === categoryName) {
+        this.editCategory = el;
       }
-    ));
+    });
   }
-
-  public selectCategory() {
-    debugger
-    // const index = this.arrayCategories.findIndex(elem => elem.name.toLocaleLowerCase() === this.form.value.selected.toLocaleLowerCase());
-    // this.postCategory = this.arrayCategories[index];
-
-    console.log(this.form.value.selected);
-
-  }
-
-  // private setCategy(categoryValue: string): void {
-  //   this.arrayCategories.filter(el => {
-  //     if (el.name === categoryValue) {
-  //       this.postCategory = el;
-  //     }
-  //   });
-  // }
-
 
   // update methods
 
@@ -115,7 +114,7 @@ export class EditPostComponent implements OnInit {
     }
     const newPost: IPost = new Post(
       null,
-      this.postCategory,
+      this.editCategory,
       this.postImage,
       this.form.value.title,
       this.form.value.description,
@@ -125,11 +124,12 @@ export class EditPostComponent implements OnInit {
       this.arrTags,
       false
     );
+    console.log(newPost);
+    delete newPost.id;
 
-    // delete newPost.id;
-    // this.postServices.updateFirebasePost(newPost, this.editPostId)
-    //   .then(() => this.alert.success('оновлено у базі'))
-    //   .catch(err => this.alert.danger(err));
+    this.postServices.updateFirebasePost(newPost, this.editPostId)
+      .then(() => this.alert.success('оновлено у базі'))
+      .catch(err => this.alert.danger(err));
   }
 
   uploadFile(event: any): void {

@@ -57,12 +57,6 @@ export class CreatePostComponent implements OnInit {
     ));
   }
 
-  public selectCategory() {
-
-    console.log(this.form.value.selected);
-
-  }
-
   public savePost(): void {
     if (this.form.invalid) {
       return;
@@ -80,7 +74,6 @@ export class CreatePostComponent implements OnInit {
       this.arrTags,
       false
     );
-    console.log(newPost);
 
     delete newPost.id;
 

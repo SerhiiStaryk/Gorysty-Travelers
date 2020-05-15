@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'map', component: MapComponent },
   { path: 'routes', component: RoutesComponent },
   { path: 'blog', component: BlogComponent },
-  { path: 'blog-category', component: BlogCategoryComponent },
+  { path: 'blog-category/:category', component: BlogCategoryComponent },
   { path: 'blog-detail/:id', component: BlogDetailComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'weather', component: WeatherComponent },
