@@ -9,7 +9,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 import { ActivatedRoute } from '@angular/router';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { CategoryService } from 'src/app/shared/services/category.service';
-import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-edit-post',
@@ -39,6 +39,8 @@ export class EditPostComponent implements OnInit {
   // Regexp
   oneWord = '^[А-Яа-яЇїІіЄєҐґ\']+$';
   pattern = new RegExp(this.oneWord);
+
+  extractNameImg = /%2F(.*?)\\?alt/;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -124,7 +126,6 @@ export class EditPostComponent implements OnInit {
       this.arrTags,
       false
     );
-    console.log(newPost);
     delete newPost.id;
 
     this.postServices.updateFirebasePost(newPost, this.editPostId)
@@ -160,6 +161,17 @@ export class EditPostComponent implements OnInit {
     } else {
       return;
     }
+  }
+
+  removeImg() {
+    const nameImg = (this.extractNameImg.exec(this.postImage)[0]).substr(3).slice(0, -4);
+
+    this.afStorage.storage.ref('images').child(`${nameImg}`).delete()
+      .then(() => this.alert.success('зображення видалено'))
+      .catch(err => this.alert.danger(err));
+
+    this.imgLoad = true;
+    this.postImage = '';
   }
 
 }

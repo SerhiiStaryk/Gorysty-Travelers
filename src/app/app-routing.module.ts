@@ -34,18 +34,20 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: 'create-post' },
       { path: 'create-post', component: CreatePostComponent },
-      { path: 'post/:id/edit', component: EditPostComponent},
+      { path: 'post/:id/edit', component: EditPostComponent },
       { path: 'post', component: PostComponent },
-      { path: 'admin-category', component: AdminCategoryComponent},
-      { path: 'admin-tags', component: AdminTagsComponent},
-      { path: 'admin-gallery', component: AdminGalleryComponent},
-      { path: 'user', component: UserComponent}
+      { path: 'admin-category', component: AdminCategoryComponent },
+      { path: 'admin-tags', component: AdminTagsComponent },
+      { path: 'admin-gallery', component: AdminGalleryComponent },
+      { path: 'user', component: UserComponent }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'top', onSameUrlNavigation: 'reload' })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

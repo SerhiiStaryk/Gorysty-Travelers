@@ -13,7 +13,7 @@
         </div>
       </header>
       <div class="list">
-        <article class="post appeared" *ngFor="let post of arrayPost">
+        <article class="post appeared" *ngFor="let post of arrayPost | paginate: config">
           <div class="col-6">
             <div class="post-thumbnail">
               <a [routerLink]="['/blog-detail/', post.id]">
@@ -25,7 +25,7 @@
           <div class="col-6">
             <div class="post-content">
               <header class="entry-header">
-                 <!-- забрати цей лінк -->
+                <!-- забрати цей лінк -->
                 <!-- <div class="cat-links">
                  
                   <a>{{ titlePage }}</a>
@@ -64,13 +64,23 @@
       </div>
 
       <!-- pagination -->
-      <nav class="navigation pagination">
-        <div class="nav-links">
-
-          <a class="page-numbers current" href="#">1</a>
-          <a class="page-numbers" href="#">2</a>
+      <!-- pagination -->
+      <pagination-template #p="paginationApi" (pageChange)="onPageChange($event)">
+        <div class="custom-pagination">
+          <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+            <span *ngIf="!p.isFirstPage()" (click)="p.previous()"><i class="icon icon-arrow-left"></i>Попередня</span>
+          </div>
+          <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+            <span (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">{{ page.label }}</span>
+            <div *ngIf="p.getCurrent() === page.value">
+              <span>{{ page.label }}</span>
+            </div>
+          </div>
+          <div class="pagination-next" [class.disabled]="p.isLastPage()">
+            <span *ngIf="!p.isLastPage()" (click)="p.next()">Наступна<i class="icon icon-arrow-right"></i></span>
+          </div>
         </div>
-      </nav>
+      </pagination-template>
     </div>
 
     <!-- sidebar -->

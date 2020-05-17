@@ -11,6 +11,14 @@ export class BlogComponent implements OnInit {
 
   arrPosts: Array<IPost[]> = [];
 
+  // pagination
+  pageList: Array<IPost> = [];
+  config = {
+    itemsPerPage: 9,
+    currentPage: 1,
+    totalItems: this.arrPosts.length
+  };
+
   constructor(
     private postService: PostService
   ) { }
@@ -23,11 +31,12 @@ export class BlogComponent implements OnInit {
     return this.postService.getAllFirebasePosts().subscribe(
       data => {
         this.arrPosts = data;
-        console.log(this.arrPosts);
       }
     );
   }
 
-
-
+  onPageChange(event) {
+    this.config.currentPage = event;
+    window.scrollTo(0, 650);
+  }
 }

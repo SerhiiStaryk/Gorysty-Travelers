@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
+import { TagsService } from 'src/app/shared/services/tags.service';
+import { Tag } from 'src/app/shared/models/tag.module';
 
 @Component({
   selector: 'app-create-post',
@@ -23,17 +25,21 @@ export class CreatePostComponent implements OnInit {
   uploadProgress: Observable<number>;
   tag: string;
   arrTags = [];
-  listTags: string;
-  oneWord = '^[А-Яа-яЇїІіЄєҐґ\']+$';
-  pattern = new RegExp(this.oneWord);
 
   arrayCategories: Array<any> = [];
+
+  // multiSelect
+
+  dropdownList = [];
+  selectedTags = [];
+  dropdownSettings = {};
 
   constructor(
     private postServices: PostService,
     private afStorage: AngularFireStorage,
     private alert: AlertService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private tagsService: TagsService
   ) { }
 
   ngOnInit(): void {
@@ -43,10 +49,38 @@ export class CreatePostComponent implements OnInit {
       description: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
       text: new FormControl(null, Validators.required),
       author: new FormControl(null, Validators.required),
-      tags: new FormControl(null, [Validators.pattern(this.oneWord)]),
+      tags: new FormControl(null),
       selected: new FormControl(null)
     });
+
     this.getCategories();
+    this.getTags();
+
+    // multiSelect tags
+    this.dropdownList = [];
+    this.selectedTags = [];
+    this.dropdownSettings = {
+      enableCheckAll: true,
+      enableSearchFilter: true,
+      searchPlaceholderText: 'Знайти...',
+      text: 'Виберіть теги',
+      selectAllText: 'Вибрати всі',
+      unSelectAllText: 'Скасувати всі',
+      classes: 'myclass custom-class',
+      addNewItemOnFilter: true,
+      addNewButtonText: 'Додати',
+      noDataLabel: 'Такого тегу не існує',
+      position: top,
+      showCheckbox: false,
+      labelKey: 'name'
+    };
+  }
+
+  private getTags() {
+    return this.tagsService.getAllFirebaseTags().subscribe((
+      data => {
+        this.dropdownList = data;
+      }));
   }
 
   private getCategories() {
@@ -74,7 +108,6 @@ export class CreatePostComponent implements OnInit {
       this.arrTags,
       false
     );
-
     delete newPost.id;
 
     this.postServices.addFirebasePost(newPost)
@@ -83,7 +116,6 @@ export class CreatePostComponent implements OnInit {
     this.form.reset();
     this.postImage = '';
     this.imgLoad = true;
-    this.listTags = '';
     this.arrTags = [];
   }
 
@@ -107,15 +139,33 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
-  public addTags() {
-    if (this.pattern.test(this.form.value.tags)) {
-      this.arrTags.push(this.tag);
-      this.listTags = (this.arrTags).join(', ');
-      this.tag = '';
-    } else {
-      return;
-    }
+  // multiSelect tags
+  public onItemSelect(item: any) {
+    this.arrTags = this.selectedTags;
   }
 
+  public OnItemDeSelect(item: any) {
+    this.arrTags = this.selectedTags;
+  }
 
+  public onSelectAll(items: any) {
+    this.arrTags = this.selectedTags;
+  }
+
+  public onDeSelectAll(items: any) {
+    this.arrTags = this.selectedTags;
+  }
+
+  public onAddItem(item: any) {
+    const newTag = new Tag(
+      null,
+      (item).toLowerCase()
+    );
+
+    delete newTag.id;
+
+    this.tagsService.addFirebaseTag(newTag)
+      .then(() => this.alert.success('тег збережено у базі'))
+      .catch(err => this.alert.danger(err));
+  }
 }

@@ -4,17 +4,21 @@ import { NgModule } from '@angular/core';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 // text editor plugin (https://www.npmjs.com/package/ngx-quill)
 import { QuillModule } from 'ngx-quill/';
-
 
 // ngx-ui-loader plugin (https://www.npmjs.com/package/ngx-ui-loader)
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { ngxUiLoaderConfig } from './ngxUiLoaderConfig';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+// ngx-pagination plugin (https://www.npmjs.com/package/ngx-pagination)
+import { NgxPaginationModule } from 'ngx-pagination';
+
+// Angular 2 MultiSelect Dropdown (https://cuppalabs.github.io/components/multiselectDropdown/#Overview)
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 // Locale Ukraine
 import { registerLocaleData } from '@angular/common';
@@ -61,6 +65,7 @@ import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.compo
 import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+
 
 
 registerLocaleData(uaLocale, 'ua');
@@ -119,7 +124,9 @@ export const firebaseConfig = {
     HttpClientModule,
     QuillModule.forRoot(),
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    NgxUiLoaderRouterModule
+    NgxUiLoaderRouterModule,
+    NgxPaginationModule,
+    AngularMultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

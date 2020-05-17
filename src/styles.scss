@@ -67,7 +67,7 @@ p::selection {
 
 .full-width .container,
 .no-sidebar .site-main {
-  width: 100%
+  width: 100%;
 }
 
 .button,
@@ -425,41 +425,76 @@ button {
 
 // pagination style
 
-.pagination {
-  display: block;
-  margin: 20px 0 50px;
-  overflow: hidden;
+.custom-pagination {
   text-align: center;
-  color: $colorBlack;
+  margin: 20px 0 50px;
+  font-family: $font-secondary;
+  font-weight: $bold;
 
-  a {
-    display: inline-block;
-    margin: 0 5px;
-    height: 30px;
-    line-height: 29px;
-    font-weight: $bold;
-    text-align: center;
-    vertical-align: middle;
-    padding: 0 5px;
-    min-width: 30px;
-    border-radius: 50%;
+}
 
-    &.current {
-      background-color: $mainBrandColor;
-      color: $mainBg;
+.custom-pagination .page-number {
+  display: inline-block;
+  margin: 0 2px;
+  border-radius: 25px;
+
+}
+
+.page-number.current {
+  background: $mainBrandColor !important;
+  color: $mainBg;
+}
+
+.page-number span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: $medium-size;
+  line-height: 30px;
+  font-weight: $bold;
+}
+
+.pagination-previous {
+  margin-right: 25px;
+
+  i {
+    margin-right: 25px;
+  }
+}
+
+.pagination-next {
+  margin-left: 25px;
+
+  i {
+    margin-left: 25px;
+  }
+}
+
+.pagination-previous,
+.pagination-next {
+  cursor: pointer;
+  display: inline-block;
+
+  span {
+    color: $mainColor;
+    font-size: $small-size;
+    font-weight: normal;
+    text-transform: uppercase;
+
+    i {
+      font-size: 10px;
+      display: inline-block;
     }
   }
 }
 
+// quill editor
 .editor {
   .ql-container {
     overflow-y: auto;
     max-height: 600px;
   }
 }
-
-
-
-
 
 @import 'media';

@@ -14,36 +14,27 @@
     <div class="container">
       <div class="post-preview">
         <div class="row">
-          <article class="col-4 post">
+          <article class="col-4 post" *ngFor="let post of arrPost">
             <header class="entry-header">
               <div class="cat-links">
-                <a href="#">route_1</a>
-                <a href="#">2-3 days</a>
-                <a href="#">easy</a>
+                <a [routerLink]="['/blog-category/'+ post.category.name]">{{ post.category.name }}</a>
               </div>
-
               <h2 class="entry-title">
-                <a href="#">
-                  Mountain routes
-                </a>
+                <a [routerLink]="['/blog-detail/', post.id]">{{ post.title | slice:0:40 }}...</a>
               </h2>
-
               <span class="posted-on">
-                <time datetime="June 1, 2016">June 1, 2016</time>
+                <time>{{ post.date.toDate() | date: 'yyyy-MM-dd'}}</time>
               </span>
-              <span class="author">
-                by Lorem Lorem
-              </span>
+              <span class="author">{{ post.author }}</span>
             </header>
             <div class="post-thumbnail">
-              <a>
-                <img width="360" height="230" src="../../..//assets/image/360x230.png" alt="general-image">
+              <a [routerLink]="['/blog-detail/', post.id]">
+                <img width="360" height="230" [src]="post.titleImg" alt="general-image">
               </a>
             </div>
             <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic asperiores, molestiae voluptates illo
-                praesentium repellat eligendi libero tempore adipisci eum pariatur ea.</p>
-              <a class="more-link" [routerLink]="['/blog-detail']"></a>
+              <p>{{ post.description }}</p>
+              <a class="more-link" [routerLink]="['/blog-detail/', post.id]"></a>
             </div>
             <footer class="entry-footer flex-box">
               <div class="post-comments">
@@ -55,91 +46,6 @@
               <app-share-box></app-share-box>
             </footer>
           </article>
-
-          <article class="col-4 post">
-            <header class="entry-header">
-              <div class="cat-links">
-                <a href="#">route_1</a>
-                <a href="#">2-3 days</a>
-                <a href="#">easy</a>
-              </div>
-
-              <h2 class="entry-title">
-                <a href="#">
-                  Mountain routes
-                </a>
-              </h2>
-
-              <span class="posted-on">
-                <time datetime="June 1, 2016">June 1, 2016</time>
-              </span>
-              <span class="author">
-                by Lorem Lorem
-              </span>
-            </header>
-            <div class="post-thumbnail">
-              <a>
-                <img width="360" height="230" src="../../..//assets/image/360x230.png" alt="general-image">
-              </a>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic asperiores, molestiae voluptates illo
-                praesentium repellat eligendi libero tempore adipisci eum pariatur ea.</p>
-              <a class="more-link" [routerLink]="['/blog-detail']"></a>
-            </div>
-            <footer class="entry-footer flex-box">
-              <div class="post-comments">
-                <a>
-                  <i class="icon icon-comment-o"></i>
-                  <span>0</span>
-                </a>
-              </div>
-              <app-share-box></app-share-box>
-            </footer>
-          </article>
-
-          <article class="col-4 post">
-            <header class="entry-header">
-              <div class="cat-links">
-                <a href="#">route_1</a>
-                <a href="#">2-3 days</a>
-                <a href="#">easy</a>
-              </div>
-
-              <h2 class="entry-title">
-                <a href="#">
-                  Mountain routes
-                </a>
-              </h2>
-
-              <span class="posted-on">
-                <time datetime="June 1, 2016">June 1, 2016</time>
-              </span>
-              <span class="author">
-                by Lorem Lorem
-              </span>
-            </header>
-            <div class="post-thumbnail">
-              <a>
-                <img width="360" height="230" src="../../..//assets/image/360x230.png" alt="general-image">
-              </a>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic asperiores, molestiae voluptates illo
-                praesentium repellat eligendi libero tempore adipisci eum pariatur ea.</p>
-              <a class="more-link" [routerLink]="['/blog-detail']"></a>
-            </div>
-            <footer class="entry-footer flex-box">
-              <div class="post-comments">
-                <a>
-                  <i class="icon icon-comment-o"></i>
-                  <span>0</span>
-                </a>
-              </div>
-              <app-share-box></app-share-box>
-            </footer>
-          </article>
-
         </div>
       </div>
     </div>

@@ -4,8 +4,6 @@ import { PostService } from 'src/app/shared/services/post.service';
 import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-
-
 @Component({
   selector: 'app-blog-category',
   templateUrl: './blog-category.component.html',
@@ -13,9 +11,17 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class BlogCategoryComponent implements OnInit {
 
-  arrayPost: any;
+  arrayPost: Array<IPost[]> = [];
   titlePage: string;
   descriptionPage: string;
+
+  // pagination
+  pageList: Array<IPost> = [];
+  config = {
+    itemsPerPage: 4,
+    currentPage: 1,
+    totalItems: this.arrayPost.length
+  };
 
   constructor(
     private postService: PostService,
@@ -29,16 +35,20 @@ export class BlogCategoryComponent implements OnInit {
         this.titlePage = nameOfCategory;
         this.getPostByCategory(nameOfCategory);
       }
-    })
+    });
   }
 
   ngOnInit(): void { }
-
 
   private getPostByCategory(category: string) {
     this.postService.getFirebasePostsByCategory(category).subscribe(
       data => {
         this.arrayPost = data;
       });
+  }
+
+  onPageChange(event) {
+    this.config.currentPage = event;
+    window.scrollTo(0, 0);
   }
 }

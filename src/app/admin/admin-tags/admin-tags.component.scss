@@ -1,0 +1,25 @@
+@import '../../../variables';
+
+button {
+    border: none;
+    color: #fff;
+    padding: 10px;
+  
+    &:hover,
+    &:active,
+    &:focus {
+      cursor: pointer;
+      color: $mainBrandColor;
+      background-color: $mainBg;
+      outline: 2px solid $mainBrandColor;
+    }
+  
+    &:disabled{
+      background-color: $mainColor;
+    }
+  }
+
+  h3{
+      margin-bottom: 0;
+     line-height: 44px;
+  }

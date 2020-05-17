@@ -33,7 +33,11 @@
       </div>
     </div>
   </div>
-  <img [src]="postImage" alt="post-logo" *ngIf="!imgLoad" class="postImage">
+  <div class="wrap-postImage" *ngIf="!imgLoad">
+    <img [src]="postImage" alt="post-logo" class="postImage">
+    <i class="icon icon-bin" (click)="removeImg()"></i>
+  </div>
+
 
   <!-- Name Title -->
 

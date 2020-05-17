@@ -4,8 +4,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Category } from 'src/app/shared/models/category.module';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
-import { ICategory } from 'src/app/shared/interfaces/category.interface';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-category',
@@ -52,7 +50,8 @@ export class AdminCategoryComponent implements OnInit {
     const category = new Category(
       null,
       this.form.value.name,
-      this.form.value.description
+      this.form.value.description,
+      0
     );
     delete category.id;
     this.categoryService.addFirebaseCategory(category)
@@ -76,7 +75,8 @@ export class AdminCategoryComponent implements OnInit {
     const category = new Category(
       null,
       this.form.value.name,
-      this.form.value.description
+      this.form.value.description,
+      0
     );
     delete category.id;
 

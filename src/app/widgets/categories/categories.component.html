@@ -1,17 +1,8 @@
 <section class="widget widget_categories">
   <h2 class="widget-title">Categories</h2>
   <ul>
-    <li class="cat-item">
-      <a href="#">mountain</a> (3)
-    </li>
-    <li class="cat-item">
-      <a href="#">mountain</a> (3)
-    </li>
-    <li class="cat-item">
-      <a href="#">mountain</a> (3)
-    </li>
-    <li class="cat-item">
-      <a href="#">mountain</a> (3)
+    <li class="cat-item" *ngFor="let category of localCategories">
+      <a [routerLink]="['/blog-category/'+ category.name]">{{ category.name }} ({{ category.count }})</a>
     </li>
   </ul>
 </section>

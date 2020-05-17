@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import 'firebase/firestore';
+import { ICategory } from 'src/app/shared/interfaces/category.interface';
+import { CategoryService } from 'src/app/shared/services/category.service';
+
 
 @Component({
   selector: 'app-categories',
@@ -7,9 +12,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor() { }
+  arrCategory: any;
+  localCategories: any;
+
+  constructor(
+    private categoryService: CategoryService,
+    private firestore: AngularFirestore
+  ) { }
 
   ngOnInit(): void {
+    this.getAllCategory();
+    this.setCountCategory();
   }
 
+  private getAllCategory(): void {
+    this.categoryService.getAllFirebaseCategories().subscribe(
+      data => {
+        this.arrCategory = data;
+        localStorage.setItem('category', JSON.stringify(this.arrCategory));
+      }
+    );
+  }
+
+  private setCountCategory() {
+    this.localCategories = JSON.parse(localStorage.getItem('category'));
+    this.localCategories.map(el => {
+      this.firestore.collection<any>('posts', ref => ref.where('category.name', '==', el.name)).get().subscribe(
+        snap => {
+          el.count = snap.size;
+        }
+      );
+    });
+  }
 }
+
+
+
+

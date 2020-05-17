@@ -24,7 +24,7 @@ export class PostService {
     );
   }
 
-  getFirebasePostsByCategory(category: string) {
+ public getFirebasePostsByCategory(category: string) {
     return this.firestore.collection<any>('posts', ref => ref.where('category.name', '==', category)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
@@ -36,6 +36,16 @@ export class PostService {
 
   public getOnePostFirebase(id: string) {
     return this.firestore.collection<any>('posts').doc(id).get();
+  }
+
+  public getLimitPostFirebade(count: number) {
+    return this.firestore.collection<any>('posts', ref => ref.orderBy('date', 'desc').limit(count)).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
   public addFirebasePost(post: IPost): Promise<DocumentReference> {

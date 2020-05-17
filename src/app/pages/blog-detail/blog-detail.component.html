@@ -6,7 +6,7 @@
         <!-- entry-header -->
         <header class="entry-header">
           <div class="cat-links">
-            <a href="#">Category</a>
+            <a [routerLink]="['/blog-category/'+ post.category.name]">{{ post?.category?.name }}</a>
           </div>
           <h1 class="entry-title">{{ post?.title }}</h1>
           <span class="posted-on">
