@@ -14,7 +14,15 @@ button {
     outline: 2px solid $mainBrandColor;
   }
 
-  &:disabled{
-    background-color: $mainColor;
+
+}
+
+button:disabled {
+  background-color: $mainColor;
+  cursor: not-allowed;
+
+  &:hover {
+    color: #fff;
+    outline: none;
   }
 }

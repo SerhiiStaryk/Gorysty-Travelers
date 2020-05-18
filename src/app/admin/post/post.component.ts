@@ -12,6 +12,8 @@ export class PostComponent implements OnInit {
 
   arrPosts: Array<IPost[]> = [];
 
+  publishStatus: boolean;
+
   constructor(
     public postService: PostService,
     public alert: AlertService
@@ -35,7 +37,15 @@ export class PostComponent implements OnInit {
         this.postService.deleteFirebasePost(post.id)
           .then(() => this.alert.success('Пост видалений з бази'))
           .catch(err => this.alert.danger(err));
-      } else {this.alert.warning('Видалити всі пости не можливо')}
+      } else { this.alert.warning('Видалити всі пости не можливо') }
     }
+  }
+
+  public setPublish(post: IPost): void {
+    post.publish = !post.publish;
+    this.postService.updateFirebasePost(post, post.id)
+      .then(() => this.alert.success('оновлено'))
+      .catch(err => this.alert.danger(err));
+
   }
 }

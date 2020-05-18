@@ -7,11 +7,11 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
-import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { TagsService } from 'src/app/shared/services/tags.service';
 import { Tag } from 'src/app/shared/models/tag.module';
 import { ITag } from 'src/app/shared/interfaces/tag.interface';
 import { IComment } from 'src/app/shared/interfaces/comments.interface';
+import { ICategory } from 'src/app/shared/interfaces/category.interface';
 
 @Component({
   selector: 'app-create-post',
@@ -84,7 +84,7 @@ export class CreatePostComponent implements OnInit {
     };
   }
 
-  // private methods 
+  // private methods
 
   private getTags() {
     return this.tagsService.getAllFirebaseTags().subscribe((
@@ -101,7 +101,7 @@ export class CreatePostComponent implements OnInit {
     ));
   }
 
-  // public methods 
+  // public methods
 
   public savePost(): void {
     if (this.form.invalid) {
@@ -121,7 +121,9 @@ export class CreatePostComponent implements OnInit {
       this.arrComments,
       this.statusPublish
     );
-  
+
+    console.log(newPost);
+    
     delete newPost.id;
 
     this.postServices.addFirebasePost(newPost)
@@ -188,7 +190,7 @@ export class CreatePostComponent implements OnInit {
   public onAddItem(item: any) {
     const newTag = new Tag(
       null,
-      (item).toLowerCase()
+      (item).toUpperCase()
     );
 
     delete newTag.id;

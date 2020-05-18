@@ -21,13 +21,14 @@
       <td>{{ post.description }}</td>
       <td>{{ post.date.toDate() | date: 'yyyy-MM-dd' }}</td>
       <td>
-        <button>Опублікувати</button>
+        <button (click)="setPublish(post)" *ngIf="!post.publish">Опублікувати</button>
+        <button (click)="setPublish(post)" *ngIf="post.publish">Скасувати</button>
       </td>
       <td>
-        <button [routerLink]="['/admin', 'post', post.id, 'edit']">Відкрити</button>
+        <button [routerLink]="['/admin', 'post', post.id, 'edit']" [disabled]='post.publish'>Відкрити</button>
       </td>
       <td>
-        <button (click)="deletePost(post)">Видалити</button>
+        <button (click)="deletePost(post)" [disabled]='post.publish'>Видалити</button>
       </td>
     </tr>
   </tbody>

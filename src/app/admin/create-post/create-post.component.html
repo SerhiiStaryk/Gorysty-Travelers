@@ -16,12 +16,12 @@
   <label>Головне зображення посту:</label>
   <div *ngIf="imgLoad">
     <div class="custom-file form-control"
-      [ngClass]="{'invalid': form.get('titleImg').touched && form.get('titleImg').invalid}">
+      [ngClass]="{'invalid': form.get('titleImg').touched}">
       <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
       <input (change)="uploadFile($event)" type="file" class="custom-file-input" id="titleImg"
         formControlName="titleImg">
       <!-- Validation -->
-      <div class="validation" *ngIf="form.get('titleImg').touched && form.get('titleImg').invalid">
+      <div class="validation" *ngIf="form.get('titleImg').touched">
         <small>
           Завантажте зображення посту
         </small>
@@ -106,13 +106,15 @@
   </div>
 
   <!-- tags post -->
-
-  <label for="tags">Теги:</label>
-  <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedTags" name="selectedTags" formControlName="tags"
-    [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
-    (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)"
-    (onAddFilterNewItem)="onAddItem($event)">
-  </angular2-multiselect>
+  
+  <div class="form-control">
+    <label for="tags">Теги:</label>
+    <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedTags" name="selectedTags" formControlName="tags"
+      [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+      (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)"
+      (onAddFilterNewItem)="onAddItem($event)">
+    </angular2-multiselect>
+  </div>
 
   <!-- save post -->
 

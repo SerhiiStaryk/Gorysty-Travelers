@@ -12,14 +12,17 @@
     {{ form.value | json }}
   </pre> -->
   <!-- Title Image -->
+  <!-- custom-file-input ng-untouched ng-pristine ng-valid -->
   <label>Головне зображення посту:</label>
   <div *ngIf="imgLoad">
-    <div class="custom-file form-control" [ngClass]="{'invalid': form.get('titleImg').invalid}">
+    <div class="custom-file form-control"
+      [ngClass]="{'invalid': form.get('titleImg').untouched && form.get('titleImg').invalid || form.get('titleImg').touched && form.get('titleImg').invalid }">
       <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
       <input (change)="uploadFile($event)" type="file" class="custom-file-input" id="titleImg"
         formControlName="titleImg">
       <!-- Validation -->
-      <div class="validation" *ngIf="form.get('titleImg').touched && form.get('titleImg').invalid">
+      <div class="validation"
+        *ngIf="form.get('titleImg').untouched && form.get('titleImg').invalid || form.get('titleImg').touched && form.get('titleImg').invalid">
         <small>
           Завантажте зображення посту
         </small>
