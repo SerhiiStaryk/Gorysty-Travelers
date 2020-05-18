@@ -7,7 +7,6 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
-import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { TagsService } from 'src/app/shared/services/tags.service';
 import { Tag } from 'src/app/shared/models/tag.module';
 

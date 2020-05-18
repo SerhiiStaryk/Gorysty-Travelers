@@ -98,13 +98,15 @@
   </div>
 
   <!-- tags post -->
-
-  <label for="tags">Теги:</label>
-  <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedTags" name="selectedTags" formControlName="tags"
-    [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
-    (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)"
-    (onAddFilterNewItem)="onAddItem($event)">
-  </angular2-multiselect>
+  
+  <div class="form-control">
+    <label for="tags">Теги:</label>
+    <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedTags" name="selectedTags" formControlName="tags"
+      [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+      (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)"
+      (onAddFilterNewItem)="onAddItem($event)">
+    </angular2-multiselect>
+  </div>
 
   <!-- save post -->
 

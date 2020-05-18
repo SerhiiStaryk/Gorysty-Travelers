@@ -9,9 +9,9 @@
       <option *ngFor="let category of arrayCategories" [ngValue]="category.name">{{ category.name }}</option>
     </select>
   </div>
-  <!-- <pre>
+  <pre>
     {{ form.value | json }}
-  </pre> -->
+  </pre>
   <!-- Title Image -->
   <label>Головне зображення посту:</label>
   <div *ngIf="imgLoad">
@@ -108,14 +108,13 @@
 
   <!-- tags post -->
 
-  <div class="form-control" [ngClass]="{invalid:form.get('tags').touched && form.get('tags').invalid}">
-    <label for="tags">Теги: {{ listTags }}</label>
-    <input type="text" id="tags" formControlName="tags" (change)="addTags()" [(ngModel)]="tag">
-    <div class="validation" *ngIf="form.get('tags').touched && form.get('tags').invalid">
-      <small *ngIf="form.get('tags').errors?.pattern">
-        тег не може бути з пробілом або містити цифри
-      </small>
-    </div>
+  <div class="form-control">
+    <label for="tags">Теги:</label>
+    <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedTags" name="selectedTags" formControlName="tags"
+      [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+      (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)"
+      (onAddFilterNewItem)="onAddItem($event)">
+    </angular2-multiselect>
   </div>
 
   <!-- save post -->
