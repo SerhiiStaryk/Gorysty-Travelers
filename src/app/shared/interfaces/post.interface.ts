@@ -1,4 +1,6 @@
 import { ICategory } from './category.interface';
+import { ITag } from './tag.interface';
+import { IComment } from './comments.interface';
 
 export interface IPost {
     id: string;
@@ -9,6 +11,7 @@ export interface IPost {
     text: string;
     date: Date;
     author: string;
-    tags: Array<string>;
+    tags: Array<ITag>;
+    comments: Array<IComment>;
     publish: boolean;
 }

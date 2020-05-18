@@ -10,6 +10,8 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { TagsService } from 'src/app/shared/services/tags.service';
 import { Tag } from 'src/app/shared/models/tag.module';
+import { ITag } from 'src/app/shared/interfaces/tag.interface';
+import { IComment } from 'src/app/shared/interfaces/comments.interface';
 
 @Component({
   selector: 'app-create-post',
@@ -20,19 +22,24 @@ import { Tag } from 'src/app/shared/models/tag.module';
 export class CreatePostComponent implements OnInit {
 
   form: FormGroup;
+  uploadProgress: Observable<number>;
+
   postImage: string;
   imgLoad = true;
-  uploadProgress: Observable<number>;
-  tag: string;
-  arrTags = [];
+  statusPublish = false;
 
-  arrayCategories: Array<any> = [];
+  // data from firebase
+  arrTags: Array<ITag> = [];
+  arrayCategories: Array<ICategory[]> = [];
+  arrComments: Array<IComment> = [];
 
   // multiSelect
-
   dropdownList = [];
   selectedTags = [];
   dropdownSettings = {};
+
+  // RegEXP
+  extractNameImg = /%2F(.*?)\\?alt/;
 
   constructor(
     private postServices: PostService,
@@ -43,18 +50,19 @@ export class CreatePostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategories();
+    this.getTags();
+
+    // Form
     this.form = new FormGroup({
+      category: new FormControl(null, Validators.required),
       titleImg: new FormControl(null, Validators.required),
       title: new FormControl(null, Validators.required),
       description: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
       text: new FormControl(null, Validators.required),
       author: new FormControl(null, Validators.required),
-      tags: new FormControl(null),
-      selected: new FormControl(null)
+      tags: new FormControl(null)
     });
-
-    this.getCategories();
-    this.getTags();
 
     // multiSelect tags
     this.dropdownList = [];
@@ -76,6 +84,8 @@ export class CreatePostComponent implements OnInit {
     };
   }
 
+  // private methods 
+
   private getTags() {
     return this.tagsService.getAllFirebaseTags().subscribe((
       data => {
@@ -91,6 +101,8 @@ export class CreatePostComponent implements OnInit {
     ));
   }
 
+  // public methods 
+
   public savePost(): void {
     if (this.form.invalid) {
       return;
@@ -98,7 +110,7 @@ export class CreatePostComponent implements OnInit {
     const date = new Date();
     const newPost: IPost = new Post(
       null,
-      this.form.value.selected,
+      this.form.value.category,
       this.postImage,
       this.form.value.title,
       this.form.value.description,
@@ -106,8 +118,10 @@ export class CreatePostComponent implements OnInit {
       date,
       this.form.value.author,
       this.arrTags,
-      false
+      this.arrComments,
+      this.statusPublish
     );
+  
     delete newPost.id;
 
     this.postServices.addFirebasePost(newPost)
@@ -117,6 +131,7 @@ export class CreatePostComponent implements OnInit {
     this.postImage = '';
     this.imgLoad = true;
     this.arrTags = [];
+    window.scrollTo(0, 0);
   }
 
   public uploadFile(event: any): void {
@@ -139,7 +154,21 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
-  // multiSelect tags
+  public removeImg() {
+    const nameImg = (this.extractNameImg.exec(this.postImage)[0]).substr(3).slice(0, -4);
+
+    this.afStorage.storage.ref('images').child(`${nameImg}`).delete()
+      .then(() => this.alert.success('зображення видалено'))
+      .catch(err => this.alert.danger(err));
+
+    this.imgLoad = true;
+    this.postImage = '';
+    this.form.patchValue({
+      titleImg: null
+    });
+  }
+
+  // multiSelect tags methods
   public onItemSelect(item: any) {
     this.arrTags = this.selectedTags;
   }

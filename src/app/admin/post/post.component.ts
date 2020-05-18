@@ -31,9 +31,11 @@ export class PostComponent implements OnInit {
 
   public deletePost(post: IPost): void {
     if (confirm('yes or not')) {
-      this.postService.deleteFirebasePost(post.id)
-        .then(() => this.alert.warning('Пост видалений з бази'))
-        .catch(err => this.alert.danger(err));
+      if (this.arrPosts.length > 1) {
+        this.postService.deleteFirebasePost(post.id)
+          .then(() => this.alert.success('Пост видалений з бази'))
+          .catch(err => this.alert.danger(err));
+      } else {this.alert.warning('Видалити всі пости не можливо')}
     }
   }
 }

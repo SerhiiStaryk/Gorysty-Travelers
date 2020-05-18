@@ -114,26 +114,26 @@ export class EditPostComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    const newPost: IPost = new Post(
-      null,
-      this.editCategory,
-      this.postImage,
-      this.form.value.title,
-      this.form.value.description,
-      this.form.value.text,
-      this.editPost.date,
-      this.form.value.author,
-      this.arrTags,
-      false
-    );
-    delete newPost.id;
+    // const newPost: IPost = new Post(
+    //   null,
+    //   this.editCategory,
+    //   this.postImage,
+    //   this.form.value.title,
+    //   this.form.value.description,
+    //   this.form.value.text,
+    //   this.editPost.date,
+    //   this.form.value.author,
+    //   this.arrTags,
+    //   false
+    // );
+    // delete newPost.id;
 
-    this.postServices.updateFirebasePost(newPost, this.editPostId)
-      .then(() => this.alert.success('оновлено у базі'))
-      .catch(err => this.alert.danger(err));
+    // this.postServices.updateFirebasePost(newPost, this.editPostId)
+    //   .then(() => this.alert.success('оновлено у базі'))
+    //   .catch(err => this.alert.danger(err));
   }
 
-  uploadFile(event: any): void {
+  public uploadFile(event: any): void {
     const file = event.target.files[0];
     const filePath = `images/${this.uuid()}.${file.type.split('/')[1]}`;
     const task = this.afStorage.upload(filePath, file);
@@ -146,24 +146,14 @@ export class EditPostComponent implements OnInit {
     });
   }
 
-  uuid(): string {
+  private uuid(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
       const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
   }
 
-  addTags() {
-    if (this.pattern.test(this.form.value.tags)) {
-      this.arrTags.push(this.tag);
-      this.listTags = (this.arrTags).join(', ');
-      this.tag = '';
-    } else {
-      return;
-    }
-  }
-
-  removeImg() {
+  public removeImg() {
     const nameImg = (this.extractNameImg.exec(this.postImage)[0]).substr(3).slice(0, -4);
 
     this.afStorage.storage.ref('images').child(`${nameImg}`).delete()

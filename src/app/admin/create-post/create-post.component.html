@@ -1,11 +1,16 @@
 <form [formGroup]="form" (ngSubmit)=savePost()>
   <!-- post category -->
-  <div class="form-control">
+  <div class="form-control" [ngClass]="{'invalid': form.get('category').touched && form.get('category').invalid}">
     <label for="category">Категорія посту</label>
-    <select id="category" class="form-control" formControlName="selected">
-      <option [ngValue]="null" disabled hidden>Вибрати...</option>
+    <select id="category" class="form-control" formControlName="category">
+      <option [ngValue]='null' disabled hidden>Вибрати...</option>
       <option *ngFor="let category of arrayCategories" [ngValue]="category">{{ category.name }}</option>
     </select>
+    <div class="validation" *ngIf="form.get('category').touched && form.get('category').invalid">
+      <small>
+        Виберіть категорію
+      </small>
+    </div>
   </div>
   <!-- Title Image -->
   <label>Головне зображення посту:</label>
@@ -28,7 +33,10 @@
       </div>
     </div>
   </div>
-  <img [src]="postImage" alt="post-logo" *ngIf="!imgLoad" class="postImage">
+  <div class="wrap-postImage" *ngIf="!imgLoad">
+    <img [src]="postImage" alt="post-logo" class="postImage">
+    <i class="icon icon-bin" (click)="removeImg()"></i>
+  </div>
 
   <!-- Name Title -->
 
@@ -111,4 +119,5 @@
   <div class="form-submit">
     <button type="submit" class="submit" [disabled]='form.invalid'>Зберегти</button>
   </div>
+  
 </form>
