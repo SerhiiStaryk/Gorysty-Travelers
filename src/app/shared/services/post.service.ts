@@ -35,13 +35,14 @@ export class PostService {
   }
 
   public getFirebasePostsByCategory(category: string) {
-    return this.firestore.collection<any>('posts', ref => ref.where('category.name', '==', category)).snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data();
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    );
+    return this.firestore.collection<any>('posts', ref => ref.where('category.name', '==', category)
+                                                             .where('publish', '==', true)).snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
   }
 
   public getOnePostFirebase(id: string) {
@@ -49,13 +50,15 @@ export class PostService {
   }
 
   public getLimitPostFirebade(count: number) {
-    return this.firestore.collection<any>('posts', ref => ref.orderBy('date', 'desc').limit(count)).snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data();
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    );
+    return this.firestore.collection<any>('posts', ref => ref.orderBy('date', 'desc')
+                                                             .limit(count)
+                                                             .where('publish', '==', true)).snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
   }
 
   public addFirebasePost(post: IPost): Promise<DocumentReference> {

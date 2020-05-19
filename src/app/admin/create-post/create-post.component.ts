@@ -70,6 +70,7 @@ export class CreatePostComponent implements OnInit {
     this.dropdownSettings = {
       enableCheckAll: true,
       enableSearchFilter: true,
+      filterSelectAllText: 'Вибрати всі відфільтровані теги...',
       searchPlaceholderText: 'Знайти...',
       text: 'Виберіть теги',
       selectAllText: 'Вибрати всі',

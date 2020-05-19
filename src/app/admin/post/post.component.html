@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let post of arrPosts; let i=index">
+    <tr *ngFor="let post of arrPosts; let i=index" [ngClass]="{'publish': post.publish}">
       <th scope="row">{{ i + 1}}</th>
       <td>{{ post.category.name }}</td>
       <td><img [src]="post.titleImg" alt="logo-post" width="75px"></td>

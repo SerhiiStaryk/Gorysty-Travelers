@@ -28,7 +28,7 @@ export class BlogComponent implements OnInit {
   }
 
   private getAllPosts() {
-    return this.postService.getAllFirebasePosts().subscribe(
+    return this.postService.getFirebasePublishPost().subscribe(
       data => {
         this.arrPosts = data;
       }

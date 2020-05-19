@@ -13,8 +13,6 @@ button {
     background-color: $mainBg;
     outline: 2px solid $mainBrandColor;
   }
-
-
 }
 
 button:disabled {
@@ -25,4 +23,8 @@ button:disabled {
     color: #fff;
     outline: none;
   }
+}
+
+.publish{
+  background-color: #d2fff7;
 }

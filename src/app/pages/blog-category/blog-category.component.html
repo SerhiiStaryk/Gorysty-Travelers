@@ -9,7 +9,7 @@
         <span>BLOG</span>
         <h1 class="page-title">{{ titlePage }}</h1>
         <div class="description">
-          <p>Тільки про дві речі ми будемо шкодувати на смертному одрі - що мало любили і мало подорожували</p>
+          <p *ngFor="let item of category">{{ item.description }}</p>
         </div>
       </header>
       <div class="list">

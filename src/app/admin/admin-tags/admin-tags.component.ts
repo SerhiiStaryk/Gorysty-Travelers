@@ -85,9 +85,12 @@ export class AdminTagsComponent implements OnInit {
 
   public deleteTag(tag: any): void {
     if (confirm('yes or not')) {
-      this.tagsService.deleteFirebaseTag(tag.id)
-        .then(() => this.alert.success('тег змінено'))
-        .catch(err => this.alert.danger(err));
+      if (this.arrTags.length > 0) {
+        this.tagsService.deleteFirebaseTag(tag.id)
+          .then(() => this.alert.success('тег змінено'))
+          .catch(err => this.alert.danger(err));
+      } else {this.alert.warning('Видалити усі теги не можливо...')}
+
     }
   }
 
