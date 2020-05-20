@@ -1,1 +1,103 @@
-<p>admin-gallery works!</p>
+<div class="card">
+  <div class="card-header flex-box">
+    <div>
+      <h3>Фотогалерея</h3>
+    </div>
+    <div class="col-1">
+      <button type="button" (click)="openModal(photoModal)">Додати</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 5%">#</th>
+          <th scope="col" style="width: 10%">Категорія</th>
+          <th scope="col" style="width: 15%">Зображення</th>
+          <th scope="col" style="width: 10%">Дата</th>
+          <th scope="col" style="width: 30%">Теги</th>
+          <th scope="col" style="width: 15%">Редагувати</th>
+          <th scope="col" style="width: 15%">Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let photo of arrPhotos; let i=index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ photo.category.name }}</td>
+          <td><img [src]="photo.source" alt="photo-preview" width="75px"></td>
+          <td>{{ photo.date.toDate() | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ getListTags(photo.tags) }}</td>
+          <td>
+            <button (click)="editPhoto(photoModal, photo)">Редагувати</button>
+          </td>
+          <td>
+            <button (click)="deletePhoto(photo)">Видалити</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #photoModal>
+  <div class="modal-header">
+    <h4 *ngIf="!editStatus" class="modal-title pull-right">Додати нове зображення</h4>
+    <h4 *ngIf="editStatus" class="modal-title pull-right">Змінити зображення</h4>
+  </div>
+  <form [formGroup]="form" (ngSubmit)=addPhoto()>
+    <div class="modal-body">
+      <!-- post category -->
+      <div class="form-control">
+        <label for="category">Категорія</label>
+        <select id="category" class="form-control" formControlName="category" (change)="setCategory(selected)"
+          [(ngModel)]="selected" name="selected">
+          <option [ngValue]='selected' disabled hidden>{{ selected }}</option>
+          <option *ngFor="let category of arrayCategories" [ngValue]="category.name">{{ category.name }}</option>
+        </select>
+      </div>
+      <!-- Image -->
+      <div class="form-control">
+        <label>Головне зображення посту:</label>
+        <div *ngIf="imgLoad">
+          <div class="custom-file form-control"
+            [ngClass]="{'invalid': form.get('galleryImg').touched}">
+            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+            <input (change)="uploadFile($event)" type="file" class="custom-file-input" id="galleryImg"
+              formControlName="galleryImg">
+            <!-- Validation -->
+            <div class="validation" *ngIf="form.get('galleryImg').touched">
+              <small>
+                Завантажте фото для галереї
+              </small>
+            </div>
+          </div>
+          <div class="progress form-control">
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
+              [style.width]="(uploadProgress | async) + '%'" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control" *ngIf="!imgLoad">
+        <img [src]="sourceImg" alt="gallery-photo">
+      </div>
+      <!-- tags photo -->
+      <div class="form-control">
+        <label for="tags">Теги:</label>
+        <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedTags" name="selectedTags"
+          formControlName="tags" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+          (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)"
+          (onDeSelectAll)="onDeSelectAll($event)" (onAddFilterNewItem)="onAddItem($event)">
+        </angular2-multiselect>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" (click)="cancelAddPhoto()">Відмінити</button>
+      <button *ngIf="!editStatus" class="submit" [disabled]='form.invalid'>Зберегти</button>
+      <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button>
+    </div>
+  </form>
+
+</ng-template>

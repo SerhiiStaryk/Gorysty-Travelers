@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/shared/services/post.service';
 import { IPost } from 'src/app/shared/interfaces/post.interface';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-post',
@@ -14,9 +15,13 @@ export class PostComponent implements OnInit {
 
   publishStatus: boolean;
 
+  // RegEXP
+  extractNameImg = /%2F(.*?)\\?alt/;
+
   constructor(
     public postService: PostService,
-    public alert: AlertService
+    public alert: AlertService,
+    private afStorage: AngularFireStorage,
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +42,11 @@ export class PostComponent implements OnInit {
         this.postService.deleteFirebasePost(post.id)
           .then(() => this.alert.success('Пост видалений з бази'))
           .catch(err => this.alert.danger(err));
-      } else { this.alert.warning('Видалити всі пости не можливо') }
+
+        const nameImg = (this.extractNameImg.exec(post.titleImg)[0]).substr(3).slice(0, -4);
+        this.afStorage.storage.ref('images').child(`${nameImg}`).delete();
+
+      } else { this.alert.warning('Видалити всі пости не можливо'); }
     }
   }
 

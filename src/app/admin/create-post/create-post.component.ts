@@ -122,9 +122,6 @@ export class CreatePostComponent implements OnInit {
       this.arrComments,
       this.statusPublish
     );
-
-    console.log(newPost);
-    
     delete newPost.id;
 
     this.postServices.addFirebasePost(newPost)

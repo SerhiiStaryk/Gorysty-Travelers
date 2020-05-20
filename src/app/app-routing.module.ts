@@ -7,6 +7,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { BlogCategoryComponent } from './pages/blog-category/blog-category.component';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import { GalleryCategoryComponent } from './pages/gallery-category/gallery-category.component';
 import { WeatherComponent } from './pages/weather/weather.component';
 import { AboutComponent } from './pages/about/about.component';
 
@@ -19,6 +20,7 @@ import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
 import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.component';
 import { UserComponent } from './admin/user/user.component';
 
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
@@ -28,6 +30,7 @@ const routes: Routes = [
   { path: 'blog-category/:category', component: BlogCategoryComponent },
   { path: 'blog-detail/:id', component: BlogDetailComponent },
   { path: 'gallery', component: GalleryComponent },
+  { path: 'gallery-detail/:id', component: GalleryCategoryComponent },
   { path: 'weather', component: WeatherComponent },
   { path: 'about', component: AboutComponent },
   {

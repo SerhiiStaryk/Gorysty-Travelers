@@ -45,11 +45,8 @@
                 <li class="menu-item menu-item-has-children">
                   <a [routerLink]="['/gallery']" routerLinkActive="current-menu-item">Фотогалерея</a>
                   <ul class="sub-menu">
-                    <li class="menu-item">
-                      <a>Тема_1</a>
-                    </li>
-                    <li class="menu-item">
-                      <a>Тема_2</a>
+                    <li class="menu-item" *ngFor="let category of arrCategories">
+                      <a [routerLink]="['/gallery-category/'+category.name]">{{ category.name }}</a>
                     </li>
                   </ul>
                 </li>

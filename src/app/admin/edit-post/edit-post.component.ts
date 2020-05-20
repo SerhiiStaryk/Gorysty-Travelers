@@ -150,8 +150,6 @@ export class EditPostComponent implements OnInit {
   // update methods
 
   public updatePost() {
-    console.log(this.editCategory);
-
     if (this.form.invalid) {
       return;
     }

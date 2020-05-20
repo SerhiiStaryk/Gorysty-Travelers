@@ -34,6 +34,10 @@ export class AdminTagsComponent implements OnInit {
 
   openModal(createCategory: TemplateRef<any>) {
     this.modalRef = this.modalService.show(createCategory);
+    this.editStatus = false;
+    this.form.patchValue({
+      name: null
+    });
   }
 
   private getTags() {

@@ -43,6 +43,7 @@ import { ShareBoxComponent } from './components/share-box/share-box.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MapComponent } from './pages/map/map.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import { GalleryCategoryComponent } from './pages/gallery-category/gallery-category.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogCategoryComponent } from './pages/blog-category/blog-category.component';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
@@ -65,6 +66,7 @@ import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.compo
 import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+
 
 
 
@@ -108,7 +110,8 @@ export const firebaseConfig = {
     AdminGalleryComponent,
     AdminTagsComponent,
     AlertComponent,
-    AdminCategoryComponent
+    AdminCategoryComponent,
+    GalleryCategoryComponent
   ],
   imports: [
     BrowserModule,
