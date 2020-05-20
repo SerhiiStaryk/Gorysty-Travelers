@@ -21,24 +21,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLatestPosts();
-    //this.getLatestPhoto();
+    this.getLatestPhoto();
   }
 
   private getLatestPosts() {
     this.postService.getLimitPostFirebade(3).subscribe((
       date => {
         this.arrPost = date;
-        console.log( this.arrPost);
-        
-      }
-    ));
+      }));
   }
 
-  // private getLatestPhoto() {
-  //   this.galleryService.getLimitPhotoFirebade(4).subscribe((
-  //     date => {
-  //       this.arrPost = date;
-  //     }
-  //   ));
-  // }
+  private getLatestPhoto() {
+    this.galleryService.getLimitPhotoFirebade(4).subscribe((
+      date => {
+        this.arrPhoto = date;
+      }));
+  }
 }
