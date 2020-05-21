@@ -79,7 +79,7 @@ export class CreatePostComponent implements OnInit {
       addNewItemOnFilter: true,
       addNewButtonText: 'Додати',
       noDataLabel: 'Такого тегу не існує',
-      position: top,
+      // position: top,
       showCheckbox: false,
       labelKey: 'name'
     };
