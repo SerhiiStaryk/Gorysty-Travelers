@@ -163,3 +163,37 @@
     border-radius: 50%;
   }
 }
+
+button {
+  border: none;
+  color: #fff;
+  padding: 10px;
+  font-family: $font-secondary;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: $bold;
+  margin-left: 20px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    cursor: pointer;
+    color: $mainBrandColor;
+    background-color: $mainBg;
+    outline: 2px solid $mainBrandColor;
+  }
+}
+
+button:disabled {
+  background-color: $mainColor;
+  cursor: not-allowed;
+
+  &:hover {
+    color: #fff;
+    outline: none;
+  }
+}
+
+.btn-wrapper{
+  text-align: right;
+}

@@ -19,6 +19,7 @@ import { PostComponent } from './admin/post/post.component';
 import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
 import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.component';
 import { UserComponent } from './admin/user/user.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -35,16 +36,17 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: '', pathMatch: 'full', redirectTo: 'create-post' },
-      { path: 'create-post', component: CreatePostComponent },
-      { path: 'post/:id/edit', component: EditPostComponent },
-      { path: 'post', component: PostComponent },
-      { path: 'admin-category', component: AdminCategoryComponent },
-      { path: 'admin-tags', component: AdminTagsComponent },
-      { path: 'admin-gallery', component: AdminGalleryComponent },
-      { path: 'user', component: UserComponent }
+      { path: '', pathMatch: 'full', redirectTo: 'post' },
+      { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
+      { path: 'post/:id/edit', component: EditPostComponent, canActivate: [AuthGuard] },
+      { path: 'post', component: PostComponent, canActivate: [AuthGuard] },
+      { path: 'admin-category', component: AdminCategoryComponent, canActivate: [AuthGuard] },
+      { path: 'admin-tags', component: AdminTagsComponent, canActivate: [AuthGuard] },
+      { path: 'admin-gallery', component: AdminGalleryComponent, canActivate: [AuthGuard] },
+      { path: 'user', component: UserComponent, canActivate: [AuthGuard] }
     ]
-  }
+  },
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
