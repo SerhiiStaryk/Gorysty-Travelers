@@ -34,11 +34,6 @@
   }
 }
 
-
-
-
-
-
 .widget {
   display: block;
   margin-bottom: 35px;
@@ -93,4 +88,23 @@
       }
     }
   }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .widget {
+    .widget-text {
+      p {
+        font-size: .9rem
+      }
+
+      blockquote {
+        padding: 10px 20px;
+
+        p {
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+
 }

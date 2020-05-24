@@ -1,0 +1,39 @@
+.social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 3px 0 0;
+}
+
+.social ul {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.social ul li {
+  margin: 0 0 0 3px;
+}
+
+.social ul li a {
+  color: #0f0d0e;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+  text-align: center;
+  color: #0f0d0e;
+  font-size: 17px;
+  border-radius: 50%;
+}
+
+.social ul li a:hover {
+  background-color: #208473;
+  color: #fff;
+}
+/*# sourceMappingURL=follow-btn.component.css.map */

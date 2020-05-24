@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Galada&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet');
+@font-face {
+  font-family: 'icomoon';
+  src: url(assets/fonts/icomoon.ttf) format("ttf");
+  src: url(assets/fonts/icomoon.eot) format("eot");
+  src: url(assets/fonts/icomoon.woff) format("woff");
+}
+
+.icon-facebook:before {
+  content: '\ea90';
+}
+
+.icon-instagram:before {
+  content: '\ea92';
+}
+
+.icon-youtube:before {
+  content: '\ea9d';
+}
+
+.icon-telegram:before {
+  content: "\ea95";
+}
+
+.icon-pinterest:before {
+  content: "\ead1";
+}
+
+.icon-share-alt:before {
+  content: "\ea82";
+}
+
+.icon-bars:before {
+  content: "\e9bd";
+}
+
+.icon-user:before {
+  content: "\e971";
+}
+
+.icon-comment-o:before {
+  content: "\e96e";
+}
+
+.icon-arrow-down:before {
+  content: "\ea3e";
+}
+
+.icon-arrow-right:before {
+  content: "\ea3c";
+}
+
+.icon-arrow-left:before {
+  content: "\ea40";
+}
+
+.icon-bin:before {
+  content: "\e9ac";
+}
+
+.icon-user-check:before {
+  content: "\e975";
+}
+/*# sourceMappingURL=fonts.css.map */

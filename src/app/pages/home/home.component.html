@@ -13,7 +13,7 @@
   <section class="recent-posts">
     <div class="container">
       <div class="post-preview">
-        <div class="row">
+        <div class="row row-tablet">
           <article class="col-4 post" *ngFor="let post of arrPost">
             <header class="entry-header">
               <div class="cat-links">
@@ -22,10 +22,12 @@
               <h2 class="entry-title">
                 <a [routerLink]="['/blog-detail/', post.id]">{{ post.title | slice:0:40 }}...</a>
               </h2>
-              <span class="posted-on">
-                <time>{{ post.date.toDate() | date: 'yyyy-MM-dd'}}</time>
-              </span>
-              <span class="author">{{ post.author }}</span>
+              <div class="entry-title-posted">
+                <span class="posted-on">
+                  <time>{{ post.date.toDate() | date: 'yyyy-MM-dd'}}</time>
+                </span>
+                <span class="author">{{ post.author }}</span>
+              </div>
             </header>
             <div class="post-thumbnail">
               <a [routerLink]="['/blog-detail/', post.id]">
@@ -58,7 +60,7 @@
   <section class="recent-photos">
 
     <div class="container">
-      <div class="row">
+      <div class="flex-box">
         <div class="photo-preview" *ngFor="let photo of arrPhoto">
           <a href="#">
             <div class="img-wrapper">

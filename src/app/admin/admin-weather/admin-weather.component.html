@@ -1,0 +1,116 @@
+<div class="card">
+  <div class="card-header flex-box">
+    <div>
+      <h3>Міста</h3>
+    </div>
+    <div class="col-1">
+      <button type="button" (click)="openModal(modal)">Додати</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 5%">#</th>
+          <th scope="col">Назва</th>
+          <th scope="col">Зображення</th>
+          <th scope="col">Довгота</th>
+          <th scope="col">Широта</th>
+                    <th scope="col">Редагувати</th>
+          <th scope="col">Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let city of arrCity; let i=index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ city.name}}</td>
+          <td><img [src]="city.titleImg" alt="city-preview" width="75px"></td>
+          <td>{{ city.longitude }}</td>
+          <td>{{ city.latitude}}</td>
+          <td>
+            <button (click)="editCity(modal, city)">Редагувати</button>
+          </td>
+          <td>
+            <button (click)="deleteCity(city)">Видалити</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #modal>
+  <div class="modal-header">
+    <h4 *ngIf="!editStatus" class="modal-title pull-right">Додати нове місто</h4>
+    <h4 *ngIf="editStatus" class="modal-title pull-right">Змінити місто</h4>
+  </div>
+  <form [formGroup]="form" (ngSubmit)=addCity()>
+    <div class="modal-body">
+      <!-- Name Міста -->
+      <div class="form-control" [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}">
+        <label for="name">Назва міста:</label>
+        <input type="text" id="name" formControlName="name">
+        <!-- Validation -->
+        <div class="validation" *ngIf="form.get('name').touched && form.get('name').invalid">
+          <small>
+            Введіть назву міста
+          </small>
+        </div>
+      </div>
+      <!-- Image -->
+      <div class="form-control">
+        <label>Головне зображення посту:</label>
+        <div *ngIf="imgLoad">
+          <div class="custom-file form-control" [ngClass]="{'invalid': form.get('titleImg').touched}">
+            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+            <input (change)="uploadFile($event)" type="file" class="custom-file-input" id="galleryImg"
+              formControlName="titleImg">
+            <!-- Validation -->
+            <div class="validation" *ngIf="form.get('titleImg').touched">
+              <small>
+                Завантажте фото
+              </small>
+            </div>
+          </div>
+          <div class="progress form-control">
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
+              [style.width]="(uploadProgress | async) + '%'" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control" *ngIf="!imgLoad">
+        <img [src]="sourceImg" alt="city-photo">
+      </div>
+      <!-- longitude -->
+      <div class="form-control" [ngClass]="{invalid: form.get('longitude').touched && form.get('longitude').invalid}">
+        <label for="name">Довгота:</label>
+        <input type="number" id="longitude" formControlName="longitude">
+        <!-- Validation -->
+        <div class="validation" *ngIf="form.get('longitude').touched && form.get('longitude').invalid">
+          <small>
+            Введіть довготу
+          </small>
+        </div>
+      </div>
+      <!-- latitude -->
+      <div class="form-control" [ngClass]="{invalid: form.get('latitude').touched && form.get('latitude').invalid}">
+        <label for="latitude">Широта:</label>
+        <input type="number" id="latitude" formControlName="latitude">
+        <!-- Validation -->
+        <div class="validation" *ngIf="form.get('latitude').touched && form.get('latitude').invalid">
+          <small>
+            Введіть широту
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" (click)="cancelAddCity()">Відмінити</button>
+      <button *ngIf="!editStatus" class="submit" [disabled]='form.invalid'>Зберегти</button>
+      <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button>
+    </div>
+  </form>
+
+</ng-template>

@@ -164,7 +164,7 @@ export class AdminGalleryComponent implements OnInit {
 
   public editPhoto(template: TemplateRef<any>, photo: any): void {
     this.modalRef = this.modalService.show(template);
-    this.editStatus = !this.editStatus;
+    this.editStatus = true;
     this.imgLoad = false;
     this.photoCategory = photo.category;
     this.photoId = photo.id;
@@ -195,7 +195,7 @@ export class AdminGalleryComponent implements OnInit {
   public cancelAddPhoto(): void {
     this.modalRef.hide();
     this.form.reset();
-    this.sourceImg = 'string';
+    this.sourceImg = '';
     this.imgLoad = true;
 
   }
@@ -221,12 +221,15 @@ export class AdminGalleryComponent implements OnInit {
   }
 
   public deletePhoto(photo: IPhoto) {
-    this.galleryService.deleteFirebasePhoto(photo.id)
-      .then(() => this.alert.success('зображення видалено'))
-      .catch(err => this.alert.danger(err));
-
-    const nameImg = (this.extractNameImg.exec(this.sourceImg)[0]).substr(3).slice(0, -4);
-    this.afStorage.storage.ref('images').child(`${nameImg}`).delete();
+    if (confirm('yes or not')) {
+      if (this.arrPhotos.length > 0) {
+        this.galleryService.deleteFirebasePhoto(photo.id)
+          .then(() => this.alert.success('зображення видалено'))
+          .catch(err => this.alert.danger(err));
+        const nameImg = (this.extractNameImg.exec(photo.source)[0]).substr(3).slice(0, -4);
+        this.afStorage.storage.ref('images').child(`${nameImg}`).delete();
+      } else { this.alert.warning('Видалити усі фото не можливо...') }
+    }
   }
 
   // multiSelect tags methods

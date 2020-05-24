@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ICity } from 'src/app/shared/interfaces/city.interface';
+import { WeatherService } from 'src/app/shared/services/weather.service';
+
 
 @Component({
   selector: 'app-weather',
@@ -7,37 +10,69 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeatherComponent implements OnInit {
 
-  WeatherData: any;
+  weatherImg: string;
 
-  constructor() { }
+  arrCity: Array<ICity> = [];
+  arrWeather: Array<any> = [];
+  test: any;
+
+  constructor(
+    private weatherService: WeatherService
+  ) { }
 
   ngOnInit() {
-    this.WeatherData = {
-      main: {},
-      isDay: true
-    };
-    this.getWeatherData();
-    console.log(this.WeatherData);
-
+    this.getAllCity();
   }
 
-  getWeatherData() {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Stryi&appid=fe02c1a1194e63e28c12b68140f9f808')
-      .then(response => response.json())
-      .then(data => { this.setWeatherData(data); });
-
+  private getAllCity(): void {
+    this.weatherService.getAllFirebaseCity().subscribe(
+      data => {
+        this.arrCity = data;
+        this.setWeatherCity(this.arrCity);
+      });
   }
 
-  setWeatherData(data) {
-    this.WeatherData = data;
-    let sunsetTime = new Date(this.WeatherData.sys.sunset * 1000);
-    this.WeatherData.sunset_time = sunsetTime.toLocaleTimeString();
-    let currentDate = new Date();
-    this.WeatherData.isDay = (currentDate.getTime() < sunsetTime.getTime());
-    this.WeatherData.temp_celcius = (this.WeatherData.main.temp - 273.15).toFixed(0);
-    this.WeatherData.temp_min = (this.WeatherData.main.temp_min - 273.15).toFixed(0);
-    this.WeatherData.temp_max = (this.WeatherData.main.temp_max - 273.15).toFixed(0);
-    this.WeatherData.temp_feels_like = (this.WeatherData.main.feels_like - 273.15).toFixed(0);
+  private setWeatherCity(city: Array<ICity>): void {
+    let cityWeather: any;
+    city.map(el => {
+      this.weatherService.getWeatherData(el).subscribe(
+        data => {
+          cityWeather = data;
+          console.log(cityWeather);
+          
+          const unixTimestamp = cityWeather.current.dt;
+          const arrDaily: Array<any> = [];
+          const arr = cityWeather.daily;
+          arr.map(day => {
+            const unixTimestampDaily = day.dt;
+            const dailyWeather = {
+              date: new Date(unixTimestampDaily * 1000),
+              temp: day.temp.eve,
+              humidity: day.humidity,
+              icon: day.weather[0].icon
+            };
+            arrDaily.push(dailyWeather);
+          });
+          const newWeather = {
+            name: el.name,
+            titleImg: el.titleImg,
+            date: new Date(unixTimestamp * 1000),
+            temp: cityWeather.current.temp,
+            humidity: cityWeather.current.humidity,
+            icon: cityWeather.current.weather[0].icon,
+            daily: arrDaily.slice(1)
+          };
+          this.arrWeather.push(newWeather);
+        });
+
+    });
+    console.log(this.arrWeather);
   }
 
+  public setIcoWeather(ico: string): string {
+    return `https://openweathermap.org/img/wn/${ico}@2x.png`;
+  }
 }
+
+
+

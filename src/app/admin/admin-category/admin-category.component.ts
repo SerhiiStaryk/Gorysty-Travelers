@@ -91,7 +91,7 @@ export class AdminCategoryComponent implements OnInit {
 
   public deleteCategory(category: any): void {
     if (confirm('yes or not')) {
-      if (this.arrCategories.length > 0) {
+      if (this.arrCategories.length > 1) {
         this.categoryService.deleteFirebaseCategory(category.id)
           .then(() => this.alert.success('Пост видалений з бази'))
           .catch(err => this.alert.danger(err));

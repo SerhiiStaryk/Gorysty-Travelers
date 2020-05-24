@@ -1,0 +1,26 @@
+.widget_categories li {
+  padding: 15px 10px 14px;
+  list-style: none;
+  font-size: 12px;
+  line-height: 16px;
+  color: #208473;
+  border-bottom: 1px solid #e2e2e3;
+}
+
+.widget_categories li:first-child {
+  padding-top: 0;
+}
+
+.widget_categories li a {
+  display: inline-block;
+  margin-right: 5px;
+  color: #0f0d0e;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.widget_categories li a:hover {
+  color: #208473;
+  text-decoration: none;
+}
+/*# sourceMappingURL=categories.component.css.map */

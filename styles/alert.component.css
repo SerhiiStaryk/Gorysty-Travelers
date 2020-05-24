@@ -1,0 +1,38 @@
+.alert-wrap {
+  position: fixed;
+  top: 50px;
+  right: 40px;
+  max-width: 250px;
+  z-index: 9999;
+}
+
+.alert-wrap .alert {
+  border: 3px solid #000;
+  margin: 1rem 0;
+  opacity: 0.9;
+}
+
+.alert-wrap .alert p {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
+
+.alert-wrap .alert.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d;
+}
+
+.alert-wrap .alert.alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}
+
+.alert-wrap .alert.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+/*# sourceMappingURL=alert.component.css.map */

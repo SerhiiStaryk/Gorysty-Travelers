@@ -99,8 +99,7 @@ button {
   text-align: center;
 
   h1 {
-    margin-top: 65px;
-    margin-bottom: 65px
+    margin: 65px 0;
   }
 }
 
@@ -221,6 +220,7 @@ button {
       line-height: 24px;
       color: $colorBlack;
       overflow: hidden;
+      text-align: center;
 
       a {
         position: relative;
@@ -234,25 +234,32 @@ button {
       }
     }
 
-    .posted-on {
-      display: inline-block;
-      margin-right: 11px;
-      font-size: $small-size;
-      line-height: 16px;
-      font-weight: 300;
-      color: $mainColor;
+    .entry-title-posted {
+      margin: 0 auto 5px;
+      max-width: 180px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
 
-      time {
-        color: $secondColor;
+      .posted-on {
+        display: inline-block;
+        font-size: $small-size;
+        line-height: 16px;
+        font-weight: 300;
+        color: $mainColor;
+
+        time {
+          color: $secondColor;
+        }
       }
-    }
 
-    .author {
-      color: inherit;
-      font-family: $font-secondary;
-      font-size: $small-size;
-      line-height: 16px;
-      font-weight: $bold;
+      .author {
+        color: inherit;
+        font-family: $font-secondary;
+        font-size: $small-size;
+        line-height: 16px;
+        font-weight: $bold;
+      }
     }
   }
 
@@ -322,10 +329,9 @@ button {
 // Photo galery style
 
 .photo-preview {
-  width: 45%;
+  width: 560px;
   box-sizing: border-box;
   position: relative;
-  margin-right: 30px;
   margin-bottom: 30px;
   padding: 0;
   transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
@@ -497,4 +503,90 @@ button {
   }
 }
 
-@import 'media';
+@media screen and (min-width: 770px) and (max-width: 1999px) {
+  .photo-preview {
+    width: 49%;
+  }
+}
+
+@media screen and (min-width: 770px) and (max-width: 1024px) {
+  .page-header {
+    h1 {
+      margin: 30px 0;
+    }
+  }
+
+  .post {
+    .entry-header {
+      .entry-title {
+        font-size: 1rem;
+      }
+    }
+
+    .entry-content {
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .post {
+    .entry-header {
+      padding: 22px 20px 30px;
+
+      .cat-links {
+        a {
+          font-size: 0.7rem;
+        }
+      }
+
+      .entry-title {
+        font-size: .8rem;
+
+        h2 {
+          margin: 0;
+        }
+      }
+
+
+    }
+
+    .entry-content {
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 769px) {
+  .banner {
+    display: none;
+  }
+
+  .photo-preview {
+    width: 100%;
+  }
+
+  .page-header {
+    h1 {
+      margin: 30px 0;
+    }
+  }
+
+  .post {
+    .entry-header {
+      .entry-title {
+        font-size: 1rem;
+      }
+    }
+
+    .entry-content {
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

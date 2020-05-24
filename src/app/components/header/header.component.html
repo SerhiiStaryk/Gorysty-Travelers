@@ -20,20 +20,20 @@
           <nav id="main-navigation" class="main-navigation">
             <div class="menu-menu-container">
               <ul>
-                <li class="menu-item menu-item-has-children">
+                <li class="menu-item">
                   <a [routerLink]="['/routes']" routerLinkActive="current-menu-item">Маршрути</a>
-                  <ul class="sub-menu">
+                  <!-- <ul class="sub-menu">
                     <li class="menu-item">
                       <a>Маршут_1</a>
                     </li>
                     <li class="menu-item">
                       <a>Маршут_2</a>
                     </li>
-                  </ul>
+                  </ul> -->
                 </li>
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                   <a [routerLink]="['/map']" routerLinkActive="current-menu-item">Карта</a>
-                </li>
+                </li> -->
                 <li class="menu-item menu-item-has-children">
                   <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
                   <ul class="sub-menu">
@@ -42,13 +42,13 @@
                     </li>
                   </ul>
                 </li>
-                <li class="menu-item menu-item-has-children">
+                <li class="menu-item">
                   <a [routerLink]="['/gallery']" routerLinkActive="current-menu-item">Фотогалерея</a>
-                  <ul class="sub-menu">
+                  <!-- <ul class="sub-menu">
                     <li class="menu-item" *ngFor="let category of arrCategories">
                       <a [routerLink]="['/gallery-category/'+category.name]">{{ category.name }}</a>
                     </li>
-                  </ul>
+                  </ul> -->
                 </li>
                 <li class="menu-item">
                   <a [routerLink]="['/weather']" routerLinkActive="current-menu-item">Погода</a>
@@ -60,20 +60,21 @@
                   <a (click)="openModal(loginForm)"><i class="icon icon-user"></i></a>
                 </li>
                 <li class="menu-item" *ngIf="auth.isAuthenticated()">
-                  <a (click)="logout($event)"><i class="icon icon-user-check"></i></a>
+                  <a [routerLink]="['/admin']"><i class="icon icon-user-check"></i></a>
+                </li>
+                <li class="menu-item" *ngIf="auth.isAuthenticated()">
+                  <a (click)="logout($event)">Вихід</a>
                 </li>
               </ul>
             </div>
           </nav>
         </div>
-        <div class="col-xl-2 col-lg-4 col-md-9 col-ms-9">
+        <div class="col-xl-2 col-lg-4 col-md-9 col-sm-9">
           <div class="social-box">
-            <!-- HIDDEN SHARE BUTTON -->
-            <button class="social-button">
-              <i class="icon icon-share-alt"></i>
-            </button>
             <!-- SHARE BOX -->
-            <app-follow-btn></app-follow-btn>
+            <div class="social">
+              <app-follow-btn></app-follow-btn>
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +89,7 @@
   <div class="modal-body">
     <form class="form-sigIn" [formGroup]="form" (ngSubmit)=signIn()>
       <div class="alert alert-danger" *ngIf="auth.error$ | async as error">{{ error }}</div>
-          <div class="form-control" [ngClass]="{'invalid': form.get('email').touched && form.get('email').invalid}">
+      <div class="form-control" [ngClass]="{'invalid': form.get('email').touched && form.get('email').invalid}">
         <label for="inputEmail">Email</label>
         <input type="email" id="inputEmail" formControlName="email">
         <div class="validation" *ngIf="form.get('email').touched && form.get('email').invalid">

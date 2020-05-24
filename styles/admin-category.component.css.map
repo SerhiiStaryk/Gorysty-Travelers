@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,MAAM,CAAC;EACH,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI;CAcd;;AAjBH,AAKI,MALE,AAKD,MAAM,EALX,MAAM,AAMD,OAAO,EANZ,MAAM,AAOD,MAAM,CAAC;EACN,MAAM,EAAE,OAAO;EACf,KAAK,ECWM,OAAO;EDVlB,gBAAgB,ECcb,OAAO;EDbV,OAAO,EAAE,GAAG,CAAC,KAAK,CCSP,OAAO;CDRnB;;AAZL,AAcI,MAdE,AAcD,SAAS,CAAA;EACR,gBAAgB,ECMV,OAAO;CDLd;;AAGH,AAAA,EAAE,CAAA;EACE,aAAa,EAAE,CAAC;EACjB,WAAW,EAAE,IAAI;CACnB",
+    "sources": [
+        "../src/app/admin/admin-category/admin-category.component.scss",
+        "../src/_variables.scss"
+    ],
+    "names": [],
+    "file": "admin-category.component.css"
+}

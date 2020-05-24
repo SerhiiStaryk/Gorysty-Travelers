@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MarkerService } from 'src/app/shared/services/marker.service';
+import { PopUpService } from 'src/app/shared/services/pop-up.service';
 
 // text editor plugin (https://www.npmjs.com/package/ngx-quill)
 import { QuillModule } from 'ngx-quill/';
@@ -66,8 +68,7 @@ import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.compo
 import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
-
-
+import { AdminWeatherComponent } from './admin/admin-weather/admin-weather.component';
 
 
 registerLocaleData(uaLocale, 'ua');
@@ -111,7 +112,8 @@ export const firebaseConfig = {
     AdminTagsComponent,
     AlertComponent,
     AdminCategoryComponent,
-    GalleryCategoryComponent
+    GalleryCategoryComponent,
+    AdminWeatherComponent
   ],
   imports: [
     BrowserModule,
@@ -131,7 +133,7 @@ export const firebaseConfig = {
     NgxPaginationModule,
     AngularMultiSelectModule
   ],
-  providers: [],
+  providers: [MarkerService, PopUpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

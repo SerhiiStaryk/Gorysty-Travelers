@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,eAAe,CAAC;EACd,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,YAAY;CAC9B;;AAED,AAAA,cAAc,CAAC;EACb,YAAY,EAAE,GAAG;EACjB,aAAa,EAAE,IAAI;EACnB,KAAK,EAAE,GAAG;CACX;;AAED,AAAA,qBAAqB,CAAC;EACpB,SAAS,EAAE,MAAM;CAClB;;AAED,AAAA,UAAU,CAAC;EACT,MAAM,EAAE,cAAc;EACtB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,GAAG,CAAC,KAAK,CCIL,OAAO;EDHnB,aAAa,EAAE,IAAI;EACnB,gBAAgB,EAAE,2CAA2C;EAC7D,mBAAmB,EAAE,UAAU;EAC/B,iBAAiB,EAAE,SAAS;CAC7B",
+    "sources": [
+        "../src/app/pages/gallery/gallery.component.scss",
+        "../src/_variables.scss"
+    ],
+    "names": [],
+    "file": "gallery.component.css"
+}

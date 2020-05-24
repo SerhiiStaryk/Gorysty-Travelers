@@ -1,6 +1,6 @@
 @import '../../../variables';
-// Banner style
 
+// Banner style
 .banner {
   background-image: url("src/assets/image/banner.jpg");
   background-position: center center;
@@ -9,7 +9,7 @@
 
   .banner-container {
     margin: 0 auto;
-    max-width: 859px;
+    max-width: 860px;
     min-height: 518px;
 
     .banner-heading-title {
@@ -37,3 +37,28 @@
     height: 160px;
   }
 }
+
+.flex-box {
+  flex-wrap: wrap;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 769px) {
+  .row-tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .post {
+      max-width: 100%;
+    }
+  }
+
+  .entry-content {
+    p {
+      height: 80px;
+    }
+  }
+}
+
+

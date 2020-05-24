@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AACE,kBADgB,CAChB,EAAE,CAAC;EACD,OAAO,EAAE,cAAc;EACvB,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,KAAK,ECcQ,OAAO;EDbpB,aAAa,EAAE,iBAAiB;CAkBjC;;AAzBH,AASI,kBATc,CAChB,EAAE,AAQC,YAAY,CAAC;EACZ,WAAW,EAAE,CACf;CAAC;;AAXL,AAaI,kBAbc,CAChB,EAAE,CAYA,CAAC,CAAC;EACA,OAAO,EAAE,YAAY;EACrB,YAAY,EAAE,GAAG;EACjB,KAAK,ECOE,OAAO;EDNd,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;CAMlB;;AAxBL,AAoBM,kBApBY,CAChB,EAAE,CAYA,CAAC,AAOE,MAAM,CAAC;EACN,KAAK,ECDI,OAAO;EDEhB,eAAe,EAAE,IACnB;CAAC",
+    "sources": [
+        "../src/app/widgets/categories/categories.component.scss",
+        "../src/_variables.scss"
+    ],
+    "names": [],
+    "file": "categories.component.css"
+}

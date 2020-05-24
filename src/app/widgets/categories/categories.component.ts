@@ -22,26 +22,30 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCategory();
-    this.setCountCategory();
+    setTimeout(() => {
+      this.setCountCategory();
+    }, 1000);
   }
 
   private getAllCategory(): void {
     this.categoryService.getAllFirebaseCategories().subscribe(
       data => {
         this.arrCategory = data;
-        localStorage.setItem('category', JSON.stringify(this.arrCategory));
+        console.log(this.arrCategory);
+        sessionStorage.setItem('category', JSON.stringify(this.arrCategory));
       }
     );
   }
 
   private setCountCategory() {
-    this.localCategories = JSON.parse(localStorage.getItem('category'));
+    this.localCategories = JSON.parse(sessionStorage.getItem('category'));
+    // console.log(this.localCategories);
+
     this.localCategories.map(el => {
       this.firestore.collection<any>('posts', ref => ref.where('category.name', '==', el.name)).get().subscribe(
         snap => {
           el.count = snap.size;
-        }
-      );
+        });
     });
   }
 }

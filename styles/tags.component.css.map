@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAEE,iBAFe,CAEf,SAAS,CAAC;EACR,QAAQ,EAAE,MAAM;CAmBjB;;AAtBH,AAKI,iBALa,CAEf,SAAS,CAGP,CAAC,CAAC;EACA,KAAK,EAAE,IAAI;EACX,WAAW,EAAE,GAAG;EAChB,cAAc,EAAE,SAAS;EACzB,WAAW,EAAE,IAAI;EACjB,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,CAAC;EACV,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,WAAW;EACnB,OAAO,EAAE,YAAY;EACrB,SAAS,EAAE,IAAI;EACf,MAAM,EAAE,cAAc;CAKvB;;AArBL,AAkBM,iBAlBW,CAEf,SAAS,CAGP,CAAC,AAaE,MAAM,CAAC;EACN,YAAY,ECCH,OAAO;CDAjB",
+    "sources": [
+        "../src/app/widgets/tags/tags.component.scss",
+        "../src/_variables.scss"
+    ],
+    "names": [],
+    "file": "tags.component.css"
+}

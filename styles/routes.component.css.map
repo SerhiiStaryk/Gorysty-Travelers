@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../src/app/pages/routes/routes.component.scss"
+    ],
+    "names": [],
+    "file": "routes.component.css"
+}

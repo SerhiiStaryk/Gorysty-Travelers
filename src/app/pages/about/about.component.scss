@@ -1,0 +1,44 @@
+@import '../../../variables';
+
+.wrap-head-page {
+  margin: 30px 0;
+
+  .avatar {
+    background-image: url('../../../assets/image/logo1.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 230px;
+  }
+}
+
+.share-box {
+  width: 120px;
+}
+
+.title {
+  color: $mainBrandColor;
+  line-height: 3rem;
+  margin-bottom: 15px;
+}
+
+.sub-title {
+  font-family: 'Caveat', cursive;
+  color: $mainBrandColor;
+  margin-bottom: 0px;
+}
+
+.about-text {
+  font-family: 'Caveat', cursive;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+}
+
+.video{
+  float: right;
+}

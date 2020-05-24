@@ -89,7 +89,7 @@ export class AdminTagsComponent implements OnInit {
 
   public deleteTag(tag: any): void {
     if (confirm('yes or not')) {
-      if (this.arrTags.length > 0) {
+      if (this.arrTags.length > 1) {
         this.tagsService.deleteFirebaseTag(tag.id)
           .then(() => this.alert.success('тег змінено'))
           .catch(err => this.alert.danger(err));

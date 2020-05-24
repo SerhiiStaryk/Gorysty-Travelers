@@ -1,0 +1,66 @@
+.page-wrapper {
+  position: relative;
+}
+
+.page-wrapper .admin-header {
+  height: 80px;
+  background: linear-gradient(135deg, #0f0d0e 0%, #208473 100%);
+  margin-bottom: 20px;
+}
+
+.page-wrapper .admin-header h3 {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #f4f7f6;
+  font-family: "Open Sans", sans-serif;
+}
+
+.page-wrapper .sidebar {
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+  width: 15%;
+  margin-right: 25px;
+}
+
+.page-wrapper .sidebar ul li {
+  margin-top: 15px;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+}
+
+.page-wrapper .sidebar ul li a {
+  color: #3a3a3a;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.page-wrapper .sidebar ul li:hover {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.page-wrapper .site-main {
+  margin-top: 0;
+  height: 100%;
+  width: 85%;
+}
+
+.active {
+  position: relative;
+}
+
+.active:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  bottom: -1px;
+  border: 1px solid #3a3a3a;
+}
+/*# sourceMappingURL=admin.component.css.map */

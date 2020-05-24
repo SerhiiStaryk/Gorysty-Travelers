@@ -1,0 +1,30 @@
+.post-share-box ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  overflow: hidden;
+  margin: 0;
+}
+
+.post-share-box ul li {
+  list-style: none;
+  margin-left: 20px;
+  line-height: 14px;
+}
+
+.post-share-box ul li a {
+  color: #000;
+  font-size: 14px;
+}
+
+.post-share-box ul li a:hover {
+  color: #208473;
+}
+
+.post-share-box ul li:first-child {
+  margin-left: 0;
+  font-size: 12px;
+  color: #a6a5a5;
+}
+/*# sourceMappingURL=share-box.component.css.map */
