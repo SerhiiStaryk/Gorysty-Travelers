@@ -23,6 +23,16 @@ export class TagsService {
     );
   }
 
+  public getLimitFirebaseTags() {
+    return this.firestore.collection<ITag[]>('tags', ref => ref.limit(10)).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
+
   public addFirebaseTag(tag: ITag): Promise<DocumentReference> {
     return this.firestore.collection<ITag>('tags').add({ ...tag });
   }

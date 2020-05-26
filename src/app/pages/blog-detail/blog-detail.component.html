@@ -31,7 +31,7 @@
         <!-- entry-footer -->
         <footer class="entry-footer">
           <div class="post-tags">
-            <a href="#" *ngFor="let post of post?.tags">{{ post.name }}</a>
+            <a *ngFor="let post of post?.tags">{{ post.name }}</a>
           </div>
           <div class="share-box">
             <app-share-box></app-share-box>
@@ -41,7 +41,7 @@
       <nav class="navigation post-navigation">
         <div class="row">
           <div class="col-lg-6 col-md-6">
-            <a href="#" rel="prev">
+            <a rel="prev">
               <span class="meta-nav">Попередній пост</span>
               <div class="post-content">
                 <span class="post-title">
@@ -51,7 +51,7 @@
             </a>
           </div>
           <div class="col-lg-6 col-md-6">
-            <a href="#">
+            <a>
               <span class="meta-nav">Наступний пост</span>
               <div class="post-content">
                 <span class="post-title">

@@ -531,6 +531,16 @@ button {
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .site-main {
+    width: 100%;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 875px) {
   .post {
     .entry-header {

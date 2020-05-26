@@ -178,6 +178,17 @@ button:disabled {
   }
 }
 
+.form-sigIn {
+  button:disabled {
+    background-color: $mainColor;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $mainColor;
+    }
+  }
+}
+
 .btn-wrapper {
   text-align: right;
 }

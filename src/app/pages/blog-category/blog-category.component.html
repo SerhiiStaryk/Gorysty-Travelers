@@ -1,9 +1,6 @@
 <div class="page-wrapper">
-
   <div class="container flex-box">
-
     <!-- main part -->
-
     <div class="site-main">
       <header class="page-header">
         <span>BLOG</span>
@@ -14,40 +11,34 @@
       </header>
       <div class="list">
         <article class="post appeared" *ngFor="let post of arrayPost | paginate: config">
-          <div class="col-6">
-            <div class="post-thumbnail">
-              <a [routerLink]="['/blog-detail/', post.id]">
-                <img width="380" height="250" [src]="post.titleImg"
-                  class="attachment-noemi-list-fusion size-noemi-list-fusion" alt="post-img">
-              </a>
-            </div>
+
+          <div class="post-thumbnail">
+            <a [routerLink]="['/blog-detail/', post.id]">
+              <img width="380" height="250" [src]="post.titleImg"
+                class="attachment-noemi-list-fusion size-noemi-list-fusion" alt="post-img">
+            </a>
           </div>
-          <div class="col-6">
-            <div class="post-content">
-              <header class="entry-header">
-                <!-- забрати цей лінк -->
-                <!-- <div class="cat-links">
-                 
+          <div class="post-content">
+            <header class="entry-header">
+              <!-- забрати цей лінк -->
+              <!-- <div class="cat-links">    
                   <a>{{ titlePage }}</a>
                 </div> -->
-
-                <h2 class="entry-title">
-                  <a [routerLink]="['/blog-detail/', post.id]">{{ post.title }}</a>
-                </h2>
-                <div class="entry-title-posted">
-                  <span class="posted-on">
-                    <time class="entry-date">{{ post.date.toDate() | date: 'yyyy-MM-dd'}}</time>
-                  </span>
-                  <span class="byline">
-                    <span class="author">{{ post.author }}</span>
-                  </span>
-                </div>
-
-              </header>
-              <div class="entry-content">
-                <p>{{ post.description }}</p>
-                <a class="more-link" [routerLink]="['/blog-detail/', post.id]"></a>
+              <h2 class="entry-title">
+                <a [routerLink]="['/blog-detail/', post.id]">{{ post.title }}</a>
+              </h2>
+              <div class="entry-title-posted">
+                <span class="posted-on">
+                  <time class="entry-date">{{ post.date.toDate() | date: 'yyyy-MM-dd'}}</time>
+                </span>
+                <span class="byline">
+                  <span class="author">{{ post.author }}</span>
+                </span>
               </div>
+            </header>
+            <div class="entry-content">
+              <p>{{ post.description }}</p>
+              <a class="more-link" [routerLink]="['/blog-detail/', post.id]"></a>
             </div>
             <footer class="entry-footer flex-box">
               <div class="post-comments">
@@ -62,9 +53,7 @@
             </footer>
           </div>
         </article>
-
       </div>
-
       <!-- pagination -->
       <pagination-template #p="paginationApi" (pageChange)="onPageChange($event)" *ngIf="arrayPost.length > 4">
         <div class="custom-pagination">
@@ -83,9 +72,7 @@
         </div>
       </pagination-template>
     </div>
-
     <!-- sidebar -->
-
     <aside id="secondary" class="sidebar widget-area">
       <app-sidebar></app-sidebar>
     </aside>

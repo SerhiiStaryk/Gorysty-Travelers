@@ -15,8 +15,7 @@
   <!-- Title Image -->
   <label>Головне зображення посту:</label>
   <div *ngIf="imgLoad">
-    <div class="custom-file form-control"
-      [ngClass]="{'invalid': form.get('titleImg').touched}">
+    <div class="custom-file form-control" [ngClass]="{'invalid': form.get('titleImg').touched}">
       <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
       <input (change)="uploadFile($event)" type="file" class="custom-file-input" id="titleImg"
         formControlName="titleImg">
@@ -37,36 +36,27 @@
     <img [src]="postImage" alt="post-logo" class="postImage">
     <i class="icon icon-bin" (click)="removeImg()"></i>
   </div>
-
   <!-- Name Title -->
-
   <div class="form-control" [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}">
     <label for="title">Тема посту:</label>
     <input type="text" id="title" formControlName="title">
-
     <!-- Validation -->
-
     <div class="validation" *ngIf="form.get('title').touched && form.get('title').invalid">
       <small>
         Введіть назву посту
       </small>
     </div>
   </div>
-
   <!-- Description post -->
-
   <div class="form-control" [ngClass]="{invalid:form.get('description').touched && form.get('description').invalid}">
     <label for="description">Опис посту:</label>
     <textarea type="text" id="description" formControlName="description"></textarea>
-
     <!-- Validation -->
-
     <div class="validation" *ngIf="form.get('description').touched && form.get('description').invalid">
       <small *ngIf="form.get('description').errors.required">
         Опишіть Ваш пост
       </small>
     </div>
-
     <div class="validation" *ngIf="form.get('description').touched && form.get('description').invalid">
       <small *ngIf="form.get('description').errors.maxlength">
         Довжина опису має бути не більше ніж {{form.get('description').errors.maxlength.requiredLength}},
@@ -74,27 +64,19 @@
       </small>
     </div>
   </div>
-
   <!-- Content post -->
-
   <div class="form-control" [ngClass]="{invalid:form.get('text').touched && form.get('text').invalid}">
     <label>Текст посту:</label>
-
     <!-- editor text ngx-quill -->
-
     <quill-editor formControlName="text" class="editor"></quill-editor>
-
     <!-- Validation -->
-
     <div class="validation" *ngIf="form.get('text').touched && form.get('text').invalid">
       <small>
         Напишіть пост...
       </small>
     </div>
   </div>
-
   <!-- Author Title -->
-
   <div class="form-control" [ngClass]="{invalid:form.get('author').touched && form.get('author').invalid}">
     <label for="author">Автор:</label>
     <input type="text" id="author" formControlName="author">
@@ -104,9 +86,7 @@
       </small>
     </div>
   </div>
-
   <!-- tags post -->
-  
   <div class="form-control">
     <label for="tags">Теги:</label>
     <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedTags" name="selectedTags" formControlName="tags"
@@ -115,11 +95,8 @@
       (onAddFilterNewItem)="onAddItem($event)">
     </angular2-multiselect>
   </div>
-
   <!-- save post -->
-
   <div class="form-submit">
     <button type="submit" class="submit" [disabled]='form.invalid'>Зберегти</button>
   </div>
-  
 </form>

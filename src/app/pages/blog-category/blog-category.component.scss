@@ -41,12 +41,12 @@
   justify-content: space-between;
 
   .post-thumbnail {
+    width: 48%;
     margin: 40px 0 0;
   }
 
   .post-content {
-
-    width: 100%;
+    width: 48%;
 
     p {
       font-family: $font-secondary;
@@ -57,5 +57,47 @@
 
   &:nth-child(2n) {
     flex-direction: row-reverse;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .page-title {
+    font-size: 27px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .page-header {
+    margin-bottom: 0;
+  }
+
+  .post {
+    flex-wrap: wrap;
+
+    .entry-header {
+      width: 75%;
+      margin-bottom: 0;
+
+      &:before {
+        top: -26px;
+        height: 105%;
+      }
+    }
+
+    .entry-title-posted {
+      max-width: 100px;
+    }
+
+    .post-thumbnail {
+      width: 100%;
+    }
+
+    .post-content {
+      width: 100%;
+
+      &:nth-child(2n) {
+        flex-direction: column;
+      }
+    }
   }
 }

@@ -24,6 +24,7 @@
   .post-tags {
     overflow: hidden;
     display: flex;
+    flex-wrap: wrap;
 
     a {
       position: relative;

@@ -14,11 +14,11 @@ export class TagsComponent implements OnInit {
   constructor(private tagService: TagsService) { }
 
   ngOnInit(): void {
-    this.getAllTags();
+    this.getLimitTags();
   }
 
-  private getAllTags(): void {
-    this.tagService.getAllFirebaseTags().subscribe(
+  private getLimitTags(): void {
+    this.tagService.getLimitFirebaseTags().subscribe(
       data => {
         this.arrTags = data;
       });
