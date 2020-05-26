@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   form: FormGroup;
   modalRef: BsModalRef;
   submitted: boolean;
+  showMobileMenu = false;
+  dropMenu = false;
 
   constructor(
     private categoryService: CategoryService,
@@ -79,6 +81,18 @@ export class HeaderComponent implements OnInit {
     this.auth.logout();
     this.router.navigate(['/home']);
     this.submitted = false;
+  }
+
+  public openNav() {
+    this.showMobileMenu = true;
+  }
+
+  public closeNav() {
+    this.showMobileMenu = false;
+  }
+
+  public dropDownMenu() {
+    this.dropMenu = !this.dropMenu;   
   }
 
 }

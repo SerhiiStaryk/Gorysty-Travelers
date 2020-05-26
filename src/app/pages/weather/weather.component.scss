@@ -1,4 +1,30 @@
-.daily{
-    border: 1px solid #000;
+td,
+th {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
 }
 
+@media screen and (min-width: 876px) and (max-width: 1024px) {
+
+  td,
+  th {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 875px) {
+
+  td,
+  th {
+    font-size: 10px;
+  }
+
+  .row {
+      flex-direction: column;
+    .post {
+      max-width: 100%;
+    }
+  }
+
+}

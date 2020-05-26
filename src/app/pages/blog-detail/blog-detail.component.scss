@@ -130,7 +130,7 @@
       }
 
       .comment-body {
-       
+
         position: relative;
         display: block;
         list-style: none;
@@ -186,3 +186,13 @@
   }
 }
 
+@media screen and (min-width:320px) and (max-width:769px) {
+  .entry-header {
+    h1 {
+      margin: 14px 0 17px;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+  }
+}

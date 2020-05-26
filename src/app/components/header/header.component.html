@@ -15,7 +15,7 @@
         </div>
         <div class="col-xl-7 col-lg-8 col-md-3 col-sm-3">
           <!-- HIDDEN BUTTON -->
-          <button class="menu-button icon icon-bars"></button>
+          <button class="menu-button icon icon-bars" (click)="openNav()"></button>
           <!-- MAIN MENU -->
           <nav id="main-navigation" class="main-navigation">
             <div class="menu-menu-container">
@@ -64,6 +64,35 @@
                 </li>
                 <li class="menu-item" *ngIf="auth.isAuthenticated()">
                   <a (click)="logout($event)">Вихід</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <!-- mobile-navigation-wrapper  -->
+          <nav id="mobile-navigation-wrapper">
+            <div class="overlay" [style.width]="showMobileMenu ? '100%' : '0'">
+              <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+              <ul class="overlay-content">
+                <li (click)="closeNav()">
+                  <a [routerLink]="['/routes']" routerLinkActive="current-menu-item">Маршрути</a>
+                </li>
+                <li class="arrow" (click)=" dropDownMenu()" (click)="closeNav()">
+                  <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
+                  <ul class="dropdown-hide" [ngClass]="{'dropdown-show': dropMenu}">
+                    <li *ngFor="let category of arrCategories" (click)="closeNav()">
+                      <a [routerLink]="['/blog-category/'+category.name]">{{ category.name }}</a>
+                    </li>
+                  </ul>
+                </li>
+                <li (click)="closeNav()">
+                  <a [routerLink]="['/gallery']" routerLinkActive="current-menu-item">Фотогалерея</a>
+                </li>
+                <li (click)="closeNav()">
+                  <a [routerLink]="['/weather']" routerLinkActive="current-menu-item">Погода</a>
+                </li>
+                <li (click)="closeNav()">
+                  <a [routerLink]="['/about']" routerLinkActive="current-menu-item">Про нас</a>
                 </li>
               </ul>
             </div>

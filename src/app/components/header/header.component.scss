@@ -1,5 +1,9 @@
 @import '../../../variables';
 
+.overlay {
+  display: none;
+}
+
 .header {
   padding: 35px 5px 20px;
 
@@ -193,6 +197,7 @@ button:disabled {
   text-align: right;
 }
 
+
 @media screen and (max-width: 1024px) {
   .header {
     .menu-button {
@@ -201,6 +206,97 @@ button:disabled {
 
     .main-navigation {
       display: none;
+    }
+  }
+}
+
+.overlay {
+  max-width: 40%;
+  height: 100%;
+  display: block;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  background-color: $colorBlack;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 3%;
+  width: 100%;
+  text-align: left;
+  margin-top: 60px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #818181;
+  display: block;
+  transition: .1s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 0px;
+  right: 30px;
+  font-size: 60px;
+}
+
+.arrow {
+  position: relative;
+
+  &:after {
+    cursor: pointer;
+    content: "";
+    position: absolute;
+    left: 70px;
+    top: 16px;
+    display: block;
+    border: 5px solid transparent;
+    border-top: 7px solid #818181;
+  }
+}
+
+.dropdown-hide {
+  display: none;
+}
+
+.dropdown-show {
+  display: block;
+}
+
+
+@media screen and (min-width:320px) and (max-width: 769px) {
+  .overlay {
+    max-width: 100%;
+  }
+
+  .overlay a {
+    font-size: 20px
+  }
+
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+
+  .arrow {
+
+    &:after {
+      content: "";
+      left: 75px;
+      top: 20px;
     }
   }
 }

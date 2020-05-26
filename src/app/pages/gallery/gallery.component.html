@@ -9,17 +9,17 @@
 
     <section class="gallery-photos">
       <div class="photo-preview" *ngFor="let photo of arrPhoto;">
-        <a>
+        <a href="!#">
           <div class="img-wrapper">
             <img [src]="photo.source">
           </div>
         </a>
         <div class="photo-preview-footer">
           <p class="tags">
-            <a href="#" class="label" *ngFor="let tag of photo?.tags">{{ tag.name }}</a>
+            <a href="!#" class="label" *ngFor="let tag of photo?.tags">{{ tag.name }}</a>
           </p>
           <div class="right-option">
-            <a class="download-photo btn-outline" [href]="photo.source" target="_blank">
+            <a href="!#" class="download-photo btn-outline" [href]="photo.source" target="_blank">
               <i class="icon icon-arrow-down"></i>
             </a>
           </div>

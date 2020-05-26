@@ -39,6 +39,26 @@ p {
   font-size: 1.5rem;
 }
 
-.video{
+.video {
   float: right;
+}
+
+@media screen and (min-width: 320px) and (max-width: 875px) {
+  .video {
+    display: none;
+  }
+
+  .title {
+    line-height: 2rem;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .avatar{
+    margin-bottom: 20px;
+  }
+
+
 }
