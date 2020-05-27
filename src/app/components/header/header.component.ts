@@ -84,6 +84,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public openNav() {
+    this.dropMenu = false;
     this.showMobileMenu = true;
   }
 
@@ -92,7 +93,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public dropDownMenu() {
-    this.dropMenu = !this.dropMenu;   
+    this.dropMenu = !this.dropMenu;
   }
 
 }

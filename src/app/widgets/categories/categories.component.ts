@@ -31,7 +31,6 @@ export class CategoriesComponent implements OnInit {
     this.categoryService.getAllFirebaseCategories().subscribe(
       data => {
         this.arrCategory = data;
-        console.log(this.arrCategory);
         sessionStorage.setItem('category', JSON.stringify(this.arrCategory));
       }
     );
@@ -39,7 +38,6 @@ export class CategoriesComponent implements OnInit {
 
   private setCountCategory() {
     this.localCategories = JSON.parse(sessionStorage.getItem('category'));
-    // console.log(this.localCategories);
 
     this.localCategories.map(el => {
       this.firestore.collection<any>('posts', ref => ref.where('category.name', '==', el.name)).get().subscribe(

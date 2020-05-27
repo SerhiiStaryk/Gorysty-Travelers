@@ -64,7 +64,6 @@ p::selection {
   padding-right: 0
 }
 
-
 .full-width .container,
 .no-sidebar .site-main {
   width: 100%;
@@ -120,7 +119,6 @@ button {
 
 //Validation style & form style
 
-
 .form-control {
   margin-bottom: .8rem;
   border: none;
@@ -147,7 +145,6 @@ button {
 
   }
 }
-
 
 .form-submit {
   text-align: right;
@@ -525,13 +522,17 @@ button {
 
     .entry-content {
       p {
-        font-size: 0.9rem;
+        font-size: .9rem;
       }
     }
   }
 }
 
 @media screen and (max-width: 1024px) {
+  .page-wrapper {
+    padding: 0 5px;
+  }
+
   .site-main {
     width: 100%;
   }
