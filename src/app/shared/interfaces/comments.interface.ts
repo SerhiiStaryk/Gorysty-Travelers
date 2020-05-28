@@ -3,6 +3,6 @@ export interface IComment {
     userName: string;
     userEmail: string;
     date: Date;
-    text: string;
+    comment: string;
     status: boolean;
 }

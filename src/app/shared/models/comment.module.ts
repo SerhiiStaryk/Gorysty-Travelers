@@ -6,7 +6,7 @@ export class Comment implements IComment {
         public userName: string,
         public userEmail: string,
         public date: Date,
-        public text: string,
+        public comment: string,
         public status: boolean = false
     ) { }
 }
