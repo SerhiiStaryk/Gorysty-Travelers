@@ -42,6 +42,14 @@
   flex-wrap: wrap;
 }
 
+.entry-title-posted {
+  .posted-on {
+    time {
+      line-height: 16px !important;
+    }
+  }
+}
+
 
 @media screen and (min-width: 320px) and (max-width: 769px) {
   .row-tablet {
