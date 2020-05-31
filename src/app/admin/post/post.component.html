@@ -1,25 +1,33 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col" style="width: 5%">#</th>
+      <th scope="col" style="width: 3%">#</th>
       <th scope="col" style="width: 10%">Категорія</th>
-      <th scope="col" style="width: 10%">Зображення</th>
-      <th scope="col" style="width: 10%">Тема</th>
+      <th scope="col" style="width: 8%">Зображення</th>
+      <th scope="col" style="width: 10%" (click)="ShowEvent($event)"
+        [class]="noSortPostTitle ? '': sortDirection? 'arrow-down' : 'arrow-up'">Тема</th>
       <th scope="col" style="width: 25%">Опис</th>
-      <th scope="col" style="width: 10%">Дата</th>
-      <th scope="col" style="width: 10%">Опублікувати</th>
-      <th scope="col" style="width: 10%">Відкрити</th>
-      <th scope="col" style="width: 10%">Видалити</th>
+      <th scope="col" style="width: 8%" (click)="ShowEvent($event)"
+        [class]="noSortPostDate ? '': sortDirection? 'arrow-down' : 'arrow-up'">Дата</th>
+      <th scope="col" style="width: 9%">Опублікувати</th>
+      <th scope="col" style="width: 9%">Опублікувати</th>
+      <th scope="col" style="width: 9%">Відкрити</th>
+      <th scope="col" style="width: 9%">Видалити</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let post of arrPosts; let i=index" [ngClass]="{'publish': post.publish}">
+    <tr *ngFor="let post of arrPosts | sort: sortDisabled: sortBy: sortDirection; let i=index"
+      [ngClass]="{'publish': post.publish}">
       <th scope="row">{{ i + 1}}</th>
       <td>{{ post.category.name }}</td>
       <td><img [src]="post.titleImg" alt="logo-post" width="75px"></td>
       <td>{{ post.title }}</td>
       <td>{{ post.description }}</td>
       <td>{{ post.date.toDate() | date: 'yyyy-MM-dd' }}</td>
+      <td>
+        <button (click)="openModal(showComments, post)" [disabled]='!post.comments.length'>Коментарі<span
+            *ngIf="post.comments.length">{{ post.comments.length }}</span></button>
+      </td>
       <td>
         <button (click)="setPublish(post)" *ngIf="!post.publish">Опублікувати</button>
         <button (click)="setPublish(post)" *ngIf="post.publish">Скасувати</button>
@@ -33,3 +41,33 @@
     </tr>
   </tbody>
 </table>
+
+<ng-template #showComments>
+  <div class="modal-header">
+    <h4 class="modal-title pull-right">Коментарі</h4>
+  </div>
+  <div class="page-wrapper">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col"  style="width:15%">Користувач</th>
+          <th scope="col" style="width:20%">Email</th>
+          <th scope="col" style="width:40%">Текст</th>
+          <th scope="col" style="width:15%">Дата</th>
+          <th scope="col" style="width:10%">Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let comment of arrComments">
+          <td>{{ comment.userName }}</td>
+          <td>{{ comment.userEmail }} </td>
+          <td>{{ comment.comment }}</td>
+          <td>{{ comment.date.toDate() | date: 'yyyy-MM-dd' }}</td>
+          <td>
+            <button (click)=" deleteComment(comment)">Видалити</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>

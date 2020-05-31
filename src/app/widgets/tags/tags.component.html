@@ -1,6 +1,6 @@
 <section class="widget widget_tag_cloud">
   <h2 class="widget-title">Теги</h2>
   <div class="tagcloud">
-    <a class="tag-cloud-link" *ngFor="let tag of arrTags">{{ tag.name }}</a>
+    <a class="tag-cloud-link" *ngFor="let tag of arrTags" [routerLink]="['/blog-tags/', tag.name]">{{ tag.name }}</a>
   </div>
 </section>

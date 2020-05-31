@@ -28,19 +28,19 @@
     ul {
       li {
         margin-top: 15px;
-        transform: scale(0.9);
-        transition: all .5s ease-in;
+        // transform: scale(0.9);
+        // transition: all .5s ease-in;
 
         a {
           color: $mainColor;
           font-weight: 700;
           text-transform: uppercase;
-          font-size: $regular-size;
+          font-size: $medium-size;
         }
 
-        &:hover {
-          transform: scale(1);
-        }
+        // &:hover {
+        //   transform: scale(1);
+        // }
       }
     }
   }

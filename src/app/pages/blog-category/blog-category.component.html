@@ -42,13 +42,11 @@
             </div>
             <footer class="entry-footer flex-box">
               <div class="post-comments">
-                <a href="#">
-                  <i class="icon icon-comment-o"></i>
-                  <span>0</span>
-                </a>
+                <i class="icon icon-comment-o"></i>
+                <span>{{ post.comments.length }}</span>
               </div>
               <div class="post-share-box">
-                <app-share-box></app-share-box>
+                <app-share-box [postId]='post.id'></app-share-box>
               </div>
             </footer>
           </div>

@@ -1,15 +1,16 @@
 @import '../../../variables';
-
 // Banner style
+
 .banner {
   background-image: url("src/assets/image/banner.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 60px;
 
   .banner-container {
     margin: 0 auto;
-    max-width: 860px;
+    max-width: 859px;
     min-height: 518px;
 
     .banner-heading-title {
@@ -32,16 +33,15 @@
   border-bottom: 3px solid #f4f7f6;
 }
 
+.pagination {
+  margin-top: 50px;
+}
+
 .entry-content {
   p {
     height: 160px;
   }
 }
-
-.flex-box {
-  flex-wrap: wrap;
-}
-
 
 @media screen and (min-width: 320px) and (max-width: 769px) {
   .row-tablet {
@@ -60,5 +60,4 @@
     }
   }
 }
-
 

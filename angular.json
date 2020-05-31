@@ -34,7 +34,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/angular2-multiselect-dropdown/themes/default.theme.css"
+              "node_modules/angular2-multiselect-dropdown/themes/default.theme.css",
+              "./node_modules/ngx-lightbox/lightbox.css"
             ],
             "scripts": []
           },

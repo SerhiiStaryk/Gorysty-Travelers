@@ -40,12 +40,10 @@
             </div>
             <footer class="entry-footer flex-box">
               <div class="post-comments">
-                <a>
-                  <i class="icon icon-comment-o"></i>
-                  <span>0</span>
-                </a>
+                <i class="icon icon-comment-o"></i>
+                <span>{{ post.comments.length }}</span>
               </div>
-              <app-share-box></app-share-box>
+              <app-share-box [postId]='post.id'></app-share-box>
             </footer>
           </article>
         </div>
@@ -61,12 +59,10 @@
 
     <div class="container">
       <div class="flex-box">
-        <div class="photo-preview" *ngFor="let photo of arrPhoto">
-          <a href="#">
-            <div class="img-wrapper">
-              <img [src]="photo.source">
-            </div>
-          </a>
+        <div class="photo-preview" *ngFor="let photo of arrPhoto; let i=index">
+          <div class="img-wrapper">
+            <img [src]="photo.source" (click)="open(i)">
+          </div>
           <div class="photo-preview-footer">
             <p class="tags">
               <a href="#" class="label" *ngFor="let tag of photo.tags">{{ tag.name }}</a>

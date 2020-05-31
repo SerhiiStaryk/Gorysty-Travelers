@@ -36,7 +36,6 @@
 </div>
 
 <ng-template #categoryModal>
-
   <div class="modal-header">
     <h4 *ngIf="!editStatus" class="modal-title pull-right">Додати нову категорію</h4>
     <h4 *ngIf="editStatus" class="modal-title pull-right">Змінити категорію</h4>
@@ -58,5 +57,4 @@
       <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button>
     </div>
   </form>
-
 </ng-template>

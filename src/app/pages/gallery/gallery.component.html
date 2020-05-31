@@ -2,18 +2,16 @@
 
     <div class="explore">
       <form class="search">
-        <input class="searchbox" autocomplete="off" placeholder="Search over 10,000+ Free Travel Photos" type="text"
+        <input class="searchbox" autocomplete="off" placeholder="пошук за тегом" type="text"
           name="search" id="photo-search" value="">
       </form>
     </div>
 
     <section class="gallery-photos">
-      <div class="photo-preview" *ngFor="let photo of arrPhoto;">
-        <a href="!#">
-          <div class="img-wrapper">
-            <img [src]="photo.source">
-          </div>
-        </a>
+      <div class="photo-preview" *ngFor="let photo of arrPhoto; let i=index">
+        <div class="img-wrapper">
+          <img [src]="photo.source" (click)="open(i)">
+        </div>
         <div class="photo-preview-footer">
           <p class="tags">
             <a href="!#" class="label" *ngFor="let tag of photo?.tags">{{ tag.name }}</a>

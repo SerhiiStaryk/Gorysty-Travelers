@@ -34,12 +34,10 @@
             </div>
             <footer class="entry-footer flex-box">
               <div class="post-comments">
-                <a>
-                  <i class="icon icon-comment-o"></i>
-                  <span>0</span>
-                </a>
+                <i class="icon icon-comment-o"></i>
+                <span>{{ post.comments.length }}</span>
               </div>
-              <app-share-box></app-share-box>
+              <app-share-box [postId]='post.id'></app-share-box>
             </footer>
           </article>
         </div>

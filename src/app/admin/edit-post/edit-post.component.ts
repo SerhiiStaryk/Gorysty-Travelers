@@ -119,6 +119,7 @@ export class EditPostComponent implements OnInit {
         this.arrTags = this.editPost.tags;
         this.selectedTags = this.arrTags;
         this.editCategory = this.editPost.category;
+        this.arrComments = this.editPost.comments;
 
         this.setValueForm(
           this.editPost.title,

@@ -31,31 +31,31 @@
         <!-- entry-footer -->
         <footer class="entry-footer">
           <div class="post-tags">
-            <a *ngFor="let post of post?.tags">{{ post.name }}</a>
+            <a [routerLink]="['/blog-tags/', tag.name]" *ngFor="let tag of post?.tags">{{ tag.name }}</a>
           </div>
           <div class="share-box">
-            <app-share-box></app-share-box>
+            <app-share-box [postId]='post.id'></app-share-box>
           </div>
         </footer>
       </article>
       <nav class="navigation post-navigation">
         <div class="row">
           <div class="col-lg-6 col-md-6">
-            <a rel="prev">
+            <a [routerLink]="['/blog-detail/', previousIdPost]">
               <span class="meta-nav">Попередній пост</span>
               <div class="post-content">
                 <span class="post-title">
-                  Lorem ipsum dolor sit amet.
+                  {{ previousNamePost }}
                 </span>
               </div>
             </a>
           </div>
           <div class="col-lg-6 col-md-6">
-            <a>
+            <a [routerLink]="['/blog-detail/', nextIdPost]">
               <span class="meta-nav">Наступний пост</span>
               <div class="post-content">
                 <span class="post-title">
-                  Lorem ipsum dolor sit amet.
+                  {{ nextNamePost }}
                 </span>
               </div>
             </a>
@@ -66,21 +66,21 @@
         <h2 class="comments-title">Коментарі</h2>
         <!-- comments -->
         <ol class="comment-list">
-          <li class="comment">
+          <li class="comment" *ngFor="let comment of arrComments">
             <article class="comment-body">
               <footer class="comment-meta">
                 <div class="comment-user">
                   <img alt="user-logo" class="avatar" src="../../../assets/image/user.png" height="58" width="58">
-                  <span>Lorem Lorem</span>
+                  <span>{{ comment.userName}}</span>
                 </div>
                 <div class="comment-metadata">
-                  <time datetime="2016-04-11T12:01:08+00:00">
-                    July 18, 2016 23:39 pm
+                  <time>
+                    {{ comment.date.toDate() | date:'yyyy-MM-dd' }}
                   </time>
                 </div>
               </footer>
               <div class="comment-content">
-                <p>Just amazing!</p>
+                <p>{{ comment.comment}}</p>
               </div>
               <!-- <div class="reply">
                 <a class="comment-reply-link" href="#">Reply</a> 
@@ -97,11 +97,11 @@
             <p class="comment-notes">Ваша електронна скринька не буде публікуватись</p>
             <div class="row">
               <div class="col-lg-12">
-                <div class="input-field"
+                <div class="input-field form-control"
                   [ngClass]="{'invalid': form.get('comment').touched && form.get('comment').invalid}">
                   <textarea placeholder="Ваш відгук *" formControlName="comment"></textarea>
                   <!-- Validation -->
-                  <div class="validation" *ngIf="form.get('comment').touched">
+                  <div class="validation" *ngIf="form.get('comment').touched && form.get('comment').invalid">
                     <small>
                       Напишіть коментар
                     </small>
@@ -111,11 +111,11 @@
             </div>
             <div class="row">
               <div class="col-lg-6 col-md-6">
-                <div class="input-field"
+                <div class="input-field form-control"
                   [ngClass]="{'invalid': form.get('userName').touched && form.get('userName').invalid}">
                   <input type="text" placeholder="Ваше  ім'я*" formControlName="userName">
                   <!-- Validation -->
-                  <div class="validation" *ngIf="form.get('userName').touched">
+                  <div class="validation" *ngIf="form.get('userName').touched && form.get('userName').invalid">
                     <small>
                       Напишіть своє ім'я
                     </small>
@@ -123,11 +123,11 @@
                 </div>
               </div>
               <div class="col-lg-6 col-md-6">
-                <div class="input-field"
+                <div class="input-field form-control"
                   [ngClass]="{'invalid': form.get('userEmail').touched && form.get('userEmail').invalid}">
                   <input type="email" placeholder="Email *" formControlName="userEmail">
                    <!-- Validation -->
-                   <div class="validation" *ngIf="form.get('userEmail').touched">
+                   <div class="validation" *ngIf="form.get('userEmail').touched && form.get('userEmail').invalid">
                     <small>
                       Напишіть свою електронну скриньку
                     </small>
@@ -135,7 +135,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-submit">
+            <div class="form-control">
               <button type="submit" class="submit" [disabled]='form.invalid'>Опублікувати коментар</button>
             </div>
           </form>

@@ -24,6 +24,15 @@ export class PostService {
     );
   }
 
+  public getAllFirebasePostsID() {
+    return this.firestore.collection<any>('posts').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const id = a.payload.doc.id;
+        return { id };
+      }))
+    );
+  }
+
   public getFirebasePublishPost() {
     return this.firestore.collection<any>('posts', ref => ref.where('publish', '==', true)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -51,8 +60,8 @@ export class PostService {
 
   public getLimitPostFirebade(count: number) {
     return this.firestore.collection<any>('posts', ref => ref.orderBy('date', 'desc')
-                                                             .where('publish', '==', true)
-                                                             .limit(count)).snapshotChanges().pipe(
+      .where('publish', '==', true)
+      .limit(count)).snapshotChanges().pipe(
         map(actions => actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;

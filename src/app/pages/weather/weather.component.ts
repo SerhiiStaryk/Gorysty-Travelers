@@ -38,7 +38,7 @@ export class WeatherComponent implements OnInit {
       this.weatherService.getWeatherData(el).subscribe(
         data => {
           cityWeather = data;
-          console.log(cityWeather);
+          // console.log(cityWeather);
           
           const unixTimestamp = cityWeather.current.dt;
           const arrDaily: Array<any> = [];
@@ -66,7 +66,7 @@ export class WeatherComponent implements OnInit {
         });
 
     });
-    console.log(this.arrWeather);
+    // console.log(this.arrWeather);
   }
 
   public setIcoWeather(ico: string): string {

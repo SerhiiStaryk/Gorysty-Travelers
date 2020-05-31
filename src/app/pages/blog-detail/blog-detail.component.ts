@@ -4,11 +4,6 @@ import { PostService } from 'src/app/shared/services/post.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IComment } from 'src/app/shared/interfaces/comments.interface';
 import { Comment } from 'src/app/shared/models/comment.module';
-import { IPost } from 'src/app/shared/interfaces/post.interface';
-import { Post } from 'src/app/shared/models/post.module';
-import { ICategory } from 'src/app/shared/interfaces/category.interface';
-import { ITag } from 'src/app/shared/interfaces/tag.interface';
-import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -20,23 +15,17 @@ export class BlogDetailComponent implements OnInit {
   post: any;
   form: FormGroup;
   arrComments: Array<any> = [];
+  arrIdx: Array<string> = [];
 
   postId: string;
-  editCategory: ICategory;
-  postImage: string;
-  title: string;
-  description: string;
-  text: string;
-  date: Date;
-  author: string;
-  Tags: Array<ITag>;
-  // this.arrComments,
-  statusPublish: boolean;
+  nextIdPost: string;
+  nextNamePost: string;
+  previousIdPost: string;
+  previousNamePost: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private postService: PostService,
-    private alert: AlertService
+    private postService: PostService
   ) { }
 
   ngOnInit(): void {
@@ -55,29 +44,52 @@ export class BlogDetailComponent implements OnInit {
       data => {
         this.post = data.data();
         this.postId = this.post.id;
-        this.editCategory = this.post.category;
-        this.postImage = this.post.titleImg;
-        this.title = this.post.title;
-        this.description = this.post.description;
-        this.text = this.post.text;
-        this.date = this.post.date;
-        this.author = this.post.author;
-        this.Tags = this.post.tags;
         this.arrComments = this.post.comments;
-        this.statusPublish = this.post.publish;
-        // console.log('this.post', this.post);
-        // console.log('this.postId', this.postId);
-        // console.log('this.editCategory', this.editCategory);
-        // console.log('this.postImage', this.postImage);
-        // console.log('this.title', this.title);
-        // console.log('this.description', this.description);
-        // console.log('this.text', this.text);
-        // console.log('this.date', this.date);
-        // console.log('this.author', this.author);
-        // console.log('this.Tags', this.Tags);
-        // console.log('this.arrComments', this.arrComments);
-        // console.log('this.statusPublish', this.statusPublish);
       });
+
+    this.postService.getAllFirebasePostsID().subscribe(
+      data => {
+        data.map(el => {
+          this.arrIdx.push(el.id);
+        });
+        const findIdx = (el: string) => el === id;
+        const Idx = this.arrIdx.findIndex(findIdx);
+        const nextIdx = Idx + 1;
+        const previousIdx = Idx - 1;
+
+        if (nextIdx > this.arrIdx.length) {
+          this.nextIdPost = this.arrIdx.shift();
+          this.postService.getOnePostFirebase(this.nextIdPost).subscribe(
+            a => {
+              const post = a.data();
+              this.nextNamePost = post.title;
+            });
+        } else {
+          this.nextIdPost = this.arrIdx.splice(nextIdx, 1)[0];
+          this.postService.getOnePostFirebase(this.nextIdPost).subscribe(
+            a => {
+              const post = a.data();
+              this.nextNamePost = post.title;
+            });
+        }
+
+        if (previousIdx < 0) {
+          this.previousIdPost = this.arrIdx.pop();
+          this.postService.getOnePostFirebase(this.previousIdPost).subscribe(
+            a => {
+              const post = a.data();
+              this.previousNamePost = post.title;
+            });
+        } else {
+          this.previousIdPost = this.arrIdx.splice(previousIdx, 1)[0];
+          this.postService.getOnePostFirebase(this.previousIdPost).subscribe(
+            a => {
+              const post = a.data();
+              this.previousNamePost = post.title;
+            });
+        }
+      }
+    );
   }
 
   public createComment() {
@@ -86,7 +98,7 @@ export class BlogDetailComponent implements OnInit {
     }
 
     const newComment: IComment = new Comment(
-      '1',
+      `f${(+(new Date())).toString(16)}`,
       this.form.value.userName,
       this.form.value.userEmail,
       new Date(),
@@ -96,30 +108,11 @@ export class BlogDetailComponent implements OnInit {
 
     this.arrComments.push(Object.assign({}, newComment));
 
-    console.log(this.arrComments);
-
-
-    const newPost: IPost = new Post(
-      null,
-      this.editCategory,
-      this.postImage,
-      this.title,
-      this.description,
-      this.text,
-      this.date,
-      this.author,
-      this.Tags,
-      this.arrComments,
-      this.statusPublish
-    );
-
-    console.log(newPost);
-    console.log(this.postId);
-    console.log(this.arrComments);
-
-    delete newPost.id;
-
-    this.postService.updateFirebasePost(newPost, this.postId);
+    this.postService.updateFirebasePost(this.post, this.postId)
+      .then(() => console.log(this.post.date))
+      .catch(err => console.log(err)
+      );
+    this.form.reset();
+    window.location.reload();
   }
-
 }

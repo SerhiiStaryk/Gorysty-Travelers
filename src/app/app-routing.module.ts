@@ -5,6 +5,7 @@ import { MapComponent } from './pages/map/map.component';
 import { RoutesComponent } from './pages/routes/routes.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogCategoryComponent } from './pages/blog-category/blog-category.component';
+import { BlogTagsComponent } from './pages/blog-tags/blog-tags.component';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { GalleryCategoryComponent } from './pages/gallery-category/gallery-category.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'routes', component: RoutesComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog-category/:category', component: BlogCategoryComponent },
+  { path: 'blog-tags/:tag', component: BlogTagsComponent },
   { path: 'blog-detail/:id', component: BlogDetailComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'gallery-detail/:id', component: GalleryCategoryComponent },
