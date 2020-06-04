@@ -21,8 +21,11 @@ import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
 import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.component';
 import { UserComponent } from './admin/user/user.component';
 import { AdminWeatherComponent } from './admin/admin-weather/admin-weather.component';
+import { AdminAdvicesComponent } from './admin/admin-advices/admin-advices.component';
+import { AdminQuoteComponent } from './admin/admin-quote/admin-quote.component';
 
 import { AuthGuard } from './shared/guards/auth.guard';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -47,7 +50,9 @@ const routes: Routes = [
       { path: 'admin-tags', component: AdminTagsComponent, canActivate: [AuthGuard] },
       { path: 'admin-gallery', component: AdminGalleryComponent, canActivate: [AuthGuard] },
       { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
-      { path: 'admin-weather', component: AdminWeatherComponent, canActivate: [AuthGuard] }
+      { path: 'admin-weather', component: AdminWeatherComponent, canActivate: [AuthGuard] },
+      { path: 'admin-advices', component: AdminAdvicesComponent, canActivate: [AuthGuard] },
+      { path: 'admin-quotes', component: AdminQuoteComponent, canActivate: [AuthGuard] }
     ]
   },
   { path: '**', redirectTo: 'home' }

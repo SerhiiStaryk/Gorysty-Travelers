@@ -74,9 +74,9 @@
             <div class="overlay" [style.width]="showMobileMenu ? '100%' : '0'">
               <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
               <ul class="overlay-content">
-                <li (click)="closeNav()">
+                <!-- <li (click)="closeNav()">
                   <a [routerLink]="['/routes']" routerLinkActive="current-menu-item">Маршрути</a>
-                </li>
+                </li> -->
                 <li class="arrow" (click)=" dropDownMenu()">
                   <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
                   <ul class="dropdown-hide" [ngClass]="{'dropdown-show': dropMenu}">

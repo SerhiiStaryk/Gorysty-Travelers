@@ -44,6 +44,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FollowBtnComponent } from './components/follow-btn/follow-btn.component';
 import { ShareBoxComponent } from './components/share-box/share-box.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 // pages
 import { HomeComponent } from './pages/home/home.component';
@@ -63,6 +64,13 @@ import { LatestPostsComponent } from './widgets/latest-posts/latest-posts.compon
 import { CategoriesComponent } from './widgets/categories/categories.component';
 import { TagsComponent } from './widgets/tags/tags.component';
 
+// pipes
+import { SortPipe } from './shared/pipes/sort.pipe';
+
+// directives
+import { MenuHoverDirective } from './shared/directives/menu-hover.directive';
+
+
 // admin
 import { AdminComponent } from './admin/admin.component';
 import { CreatePostComponent } from './admin/create-post/create-post.component';
@@ -71,13 +79,10 @@ import { EditPostComponent } from './admin/edit-post/edit-post.component';
 import { UserComponent } from './admin/user/user.component';
 import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.component';
 import { AdminTagsComponent } from './admin/admin-tags/admin-tags.component';
-import { AlertComponent } from './components/alert/alert.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminWeatherComponent } from './admin/admin-weather/admin-weather.component';
-import { SortPipe } from './shared/pipes/sort.pipe';
-import { MenuHoverDirective } from './shared/directives/menu-hover.directive';
-
-
+import { AdminQuoteComponent } from './admin/admin-quote/admin-quote.component';
+import { AdminAdvicesComponent } from './admin/admin-advices/admin-advices.component';
 
 registerLocaleData(uaLocale, 'ua');
 
@@ -124,7 +129,9 @@ export const firebaseConfig = {
     GalleryCategoryComponent,
     AdminWeatherComponent,
     SortPipe,
-    MenuHoverDirective
+    MenuHoverDirective,
+    AdminQuoteComponent,
+    AdminAdvicesComponent
   ],
   imports: [
     BrowserModule,

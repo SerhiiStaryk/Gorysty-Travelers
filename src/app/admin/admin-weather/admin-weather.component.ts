@@ -58,7 +58,7 @@ export class AdminWeatherComponent implements OnInit {
   }
 
 
-  //get elementfrom firebase
+  // get elementfrom firebase
   private getCities() {
     return this.weatherService.getAllFirebaseCity().subscribe((
       data => {

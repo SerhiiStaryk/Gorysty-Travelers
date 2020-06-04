@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-header flex-box">
+      <div>
+        <h3>Поради</h3>
+      </div>
+      <div class="col-1">
+        <button type="button" (click)="openModal(modal)">Додати</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 5%;">#</th>
+            <th scope="col" style="width: 20%;">Опис</th>
+            <th scope="col" style="width: 55%;">Дата</th>
+            <th scope="col" style="width: 55%;">Автор</th>
+            <th scope="col" style="width: 10%;">Змінити</th>
+            <th scope="col" style="width: 10%;">Видалити</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">i</th>
+            <td>description</td>
+            <td>dare</td>
+            <td>dare</td>
+            <td>
+              <!-- <button type="button" (click)="editCategory(modal, category)">Змінити</button> -->
+              <button type="button">Змінити</button>
+            </td>
+            <td>
+              <!-- <button type="button" (click)="deleteCategory(category)">Видалити</button> -->
+              <button type="button">Видалити</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <ng-template #modal>
+    <div class="modal-header">
+      <h4 *ngIf="!editStatus" class="modal-title pull-right">Додати нову пораду</h4>
+      <h4 *ngIf="editStatus" class="modal-title pull-right">Змінити пораду</h4>
+    </div>
+    <form [formGroup]="form">
+      <div class="modal-body">
+        <div class="form-control">
+          <label for="description">Опис</label>
+          <textarea id="description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+         <button type="button" (click)="cancelCreateQuote()">Відмінити</button>
+        <!-- <button type="button" (click)="cancelCreateCategory()">Відмінити</button>
+        <button *ngIf="!editStatus" type="button" (click)="addCategory()">Зберегти</button>
+        <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button> -->
+      </div>
+    </form>
+  </ng-template>
+  
