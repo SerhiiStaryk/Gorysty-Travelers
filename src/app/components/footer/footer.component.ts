@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { IAdvice } from 'src/app/shared/interfaces/advice.interface';
+import { IQuote } from 'src/app/shared/interfaces/quote.interface';
+import { QuoteService } from 'src/app/shared/services/quote.service';
+import { AdviceService } from 'src/app/shared/services/advice.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  arrAdvice: Array<IAdvice> = [];
+  arrQuote: Array<IQuote> = [];
+
+  constructor(
+    private quoteService: QuoteService,
+    private adviceService: AdviceService
+  ) { }
 
   ngOnInit(): void {
+    this.getOneQuote();
+    this.getOneAdvice()
+  }
+
+  private getOneQuote() {
+    this.quoteService.getLimiQuotesFirebade(1).subscribe(
+      data => {
+        this.arrQuote = data;
+        console.log(this.arrQuote);
+      });
+  }
+
+  private getOneAdvice(){
+    this.adviceService.getLimitAdvicesFirebade(1).subscribe(
+      data => {
+        this.arrAdvice = data;
+        console.log(this.arrAdvice);
+      });
   }
 
   public goTop() {

@@ -6,12 +6,8 @@
           <div class="col-lg-4 col-md-4">
             <div class="widget">
               <h2 class="widget-title">Цікаво знати</h2>
-              <div class="widget-text">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis aliquam, nihil
-                  voluptate tempore repudiandae quidem fugiat eligendi minima eum, inventore ipsam dignissimos optio
-                  voluptatem tenetur, voluptas saepe doloribus temporibus suscipit.
-                </p>
+              <div class="widget-text" *ngFor="let advice of arrAdvice">
+                <p>{{ advice.text }}</p>
               </div>
             </div>
             <div class="widget_nav_menu">
@@ -47,10 +43,10 @@
             <div class="widget">
               <h2 class="widget-title">цитата дня</h2>
               <div class="widget-text">
-                <blockquote>
-                  <p>Все закінчується добре. Якщо все закунчується погано, значить, це ще не кінець...</p>
+                <blockquote *ngFor="let quote of arrQuote">
+                  <p>{{ quote?.quote }}</p>
                   <cite>
-                    <p>Пауло Коельо</p>
+                    <p>{{ quote?.author }}</p>
                   </cite>
                 </blockquote>
               </div>

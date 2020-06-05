@@ -12,24 +12,22 @@
       <thead>
         <tr>
           <th scope="col" style="width: 5%;">#</th>
-          <th scope="col" style="width: 20%;">Опис</th>
-          <th scope="col" style="width: 55%;">Дата</th>
+          <th scope="col" style="width: 65%;">Текст</th>
+          <th scope="col" style="width: 10%;">Дата</th>
           <th scope="col" style="width: 10%;">Змінити</th>
           <th scope="col" style="width: 10%;">Видалити</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">i</th>
-          <td>description</td>
-          <td>dare</td>
+        <tr *ngFor="let advice of arrAdvices; let i=index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ advice.text }}</td>
+          <td>{{ advice.date.toDate() | date: 'yyyy-MM-dd'}}</td>
           <td>
-            <!-- <button type="button" (click)="editCategory(modal, category)">Змінити</button> -->
-            <button type="button">Змінити</button>
+            <button type="button" (click)="editAdvice(modal, advice)">Змінити</button>
           </td>
           <td>
-            <!-- <button type="button" (click)="deleteCategory(category)">Видалити</button> -->
-            <button type="button">Видалити</button>
+            <button type="button" (click)="deleteAdvice(advice)">Видалити</button>
           </td>
         </tr>
       </tbody>
@@ -38,22 +36,21 @@
 </div>
 
 <ng-template #modal>
-  <div class="modal-header">
-    <h4 *ngIf="!editStatus" class="modal-title pull-right">Додати нову пораду</h4>
-    <h4 *ngIf="editStatus" class="modal-title pull-right">Змінити пораду</h4>
+  <div class=" modal-header">
+              <h4 *ngIf="!editStatus" class="modal-title pull-right">Додати нову пораду</h4>
+              <h4 *ngIf="editStatus" class="modal-title pull-right">Змінити пораду</h4>
   </div>
   <form [formGroup]="form">
     <div class="modal-body">
       <div class="form-control">
-        <label for="description">Опис</label>
-        <textarea id="description"></textarea>
+        <label for="text">Опис</label>
+        <textarea id="text" formControlName="text"></textarea>
       </div>
     </div>
     <div class="modal-footer">
-       <button type="button" (click)="cancelCreateAdvice()">Відмінити</button>
-      <!-- <button type="button" (click)="cancelCreateCategory()">Відмінити</button>
-      <button *ngIf="!editStatus" type="button" (click)="addCategory()">Зберегти</button>
-      <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button> -->
+      <button type="button" (click)="cancelCreateAdvice()">Відмінити</button>
+      <button *ngIf="!editStatus" type="button" (click)="addAdvice()">Зберегти</button>
+      <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button>
     </div>
   </form>
-</ng-template>
+  </ng-template>
