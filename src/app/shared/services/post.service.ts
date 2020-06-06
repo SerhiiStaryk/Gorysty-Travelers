@@ -15,7 +15,7 @@ export class PostService {
   ) { }
 
   public getAllFirebasePosts() {
-    return this.firestore.collection<any>('posts').snapshotChanges().pipe(
+    return this.firestore.collection<any>('posts', ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;

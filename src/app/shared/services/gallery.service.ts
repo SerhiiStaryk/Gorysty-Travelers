@@ -15,7 +15,7 @@ export class GalleryService {
   ) { }
 
   public getAllFirebasePhoto() {
-    return this.firestore.collection<any>('photos').snapshotChanges().pipe(
+    return this.firestore.collection<any>('photos', ref => ref.orderBy('date', 'asc')).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;

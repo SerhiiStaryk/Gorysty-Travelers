@@ -466,21 +466,16 @@ table td {
 
 button[type=submit],
 input[type=submit] {
-  padding: 14px 35px;
+  // padding: 14px 35px;
   width: auto;
   color: #fff;
   text-align: center;
-  font-size: 14px;
-  font-weight: 700;
-  font-family: "Open Sans", sans-serif;
-  text-transform: uppercase;
+  // font-size: 14px;
+  // font-weight: 700;
+  // font-family: "Open Sans", sans-serif;
+  // text-transform: uppercase;
   cursor: pointer;
   border: 0
-}
-
-button[type=submit]:hover,
-input[type=submit]:hover {
-  background-color: #323232
 }
 
 input,

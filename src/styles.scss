@@ -521,6 +521,12 @@ form {
 
     &:disabled {
       background-color: $mainColor;
+      cursor: not-allowed;
+
+      &:hover {
+        color: #fff;
+        outline: none;
+      }
     }
   }
 

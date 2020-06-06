@@ -15,7 +15,7 @@ export class QuoteService {
   ) { }
 
   public getAllFirebaseQuotes() {
-    return this.firestore.collection<any>('quotes').snapshotChanges().pipe(
+    return this.firestore.collection<any>('quotes', ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
@@ -28,7 +28,7 @@ export class QuoteService {
     return this.firestore.collection<any>('quotes').doc(id).get();
   }
 
-  public getLimiQuotesFirebade(count: number) {
+  public getLimitQuotesFirebade(count: number) {
     return this.firestore.collection<any>('quotes', ref => ref.orderBy('date', 'desc')
       .limit(count)).snapshotChanges().pipe(
         map(actions => actions.map(a => {

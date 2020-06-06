@@ -14,7 +14,7 @@ export class MenuHoverDirective {
   }
 
   @HostListener('mouseenter', ['$event.target']) onEnter(event: Event) {
-        this.render.setStyle(this.el.nativeElement, 'margin-left', '15px');
+        this.render.setStyle(this.el.nativeElement, 'margin-left', '8px');
   }
 
   @HostListener('mouseout', ['$event.target']) outEnter(event: Event) {

@@ -15,7 +15,7 @@ export class AdviceService {
   ) { }
 
   public getAllFirebaseAdvices() {
-    return this.firestore.collection<any>('advices').snapshotChanges().pipe(
+    return this.firestore.collection<any>('advices', ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;

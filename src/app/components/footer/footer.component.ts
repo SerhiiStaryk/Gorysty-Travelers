@@ -21,11 +21,11 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOneQuote();
-    this.getOneAdvice()
+    this.getOneAdvice();
   }
 
   private getOneQuote() {
-    this.quoteService.getLimiQuotesFirebade(1).subscribe(
+    this.quoteService.getLimitQuotesFirebade(1).subscribe(
       data => {
         this.arrQuote = data;
         console.log(this.arrQuote);

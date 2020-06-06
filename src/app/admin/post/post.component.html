@@ -2,17 +2,17 @@
   <thead>
     <tr>
       <th scope="col" style="width: 3%">#</th>
-      <th scope="col" style="width: 10%">Категорія</th>
-      <th scope="col" style="width: 8%">Зображення</th>
-      <th scope="col" style="width: 10%" (click)="ShowEvent($event)"
+      <th scope="col">Категорія</th>
+      <th scope="col">Зображення</th>
+      <th scope="col" (click)="ShowEvent($event)"
         [class]="noSortPostTitle ? '': sortDirection? 'arrow-down' : 'arrow-up'">Тема</th>
-      <th scope="col" style="width: 25%">Опис</th>
-      <th scope="col" style="width: 8%" (click)="ShowEvent($event)"
+      <th scope="col" style="width: 20%">Опис</th>
+      <th scope="col" (click)="ShowEvent($event)"
         [class]="noSortPostDate ? '': sortDirection? 'arrow-down' : 'arrow-up'">Дата</th>
-      <th scope="col" style="width: 9%">Коментарі</th>
-      <th scope="col" style="width: 9%">Опублікувати</th>
-      <th scope="col" style="width: 9%">Відкрити</th>
-      <th scope="col" style="width: 9%">Видалити</th>
+      <th scope="col">Коментарі</th>
+      <th scope="col">Опублікувати</th>
+      <th scope="col">Відкрити</th>
+      <th scope="col">Видалити</th>
     </tr>
   </thead>
   <tbody>

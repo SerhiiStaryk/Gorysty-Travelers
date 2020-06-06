@@ -73,13 +73,25 @@ button {
   }
 }
 
-.page-wrapper {
+@media screen and (max-width: 1550px) {
+  table {
 
-  th,
-  tr,
-  td {
-    font-size: 11px;
-    padding-left: 0;
-    padding-right: 0;
+    th {
+      font-size: $small-size;
+      td {
+        font-size: $small-size;
+        padding-left: 3px;
+        padding-right: 3px;
+      }
+    }
+
+    tr {
+      td {
+        font-size: $small-size;
+        padding-left: 3px;
+        padding-right: 3px;
+      }
+    }
+
   }
 }

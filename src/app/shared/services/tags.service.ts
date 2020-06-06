@@ -14,7 +14,7 @@ export class TagsService {
   ) { }
 
   public getAllFirebaseTags() {
-    return this.firestore.collection<ITag[]>('tags').snapshotChanges().pipe(
+    return this.firestore.collection<ITag[]>('tags', ref => ref.orderBy('name', 'asc')).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;

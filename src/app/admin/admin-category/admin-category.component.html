@@ -42,9 +42,15 @@
   </div>
   <form [formGroup]="form">
     <div class="modal-body">
-      <div class="form-control">
+      <div class="form-control" [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}">
         <label for="name">Назва</label>
         <input id="name" type="text" formControlName="name">
+        <!-- Validation -->
+        <div class="validation" *ngIf="form.get('name').touched && form.get('name').invalid">
+          <small>
+            Введіть назву категорії
+          </small>
+        </div>
       </div>
       <div class="form-control">
         <label for="description">Опис</label>
@@ -52,8 +58,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" (click)="cancelCreateCategory()">Відмінити</button>
-      <button *ngIf="!editStatus" type="button" (click)="addCategory()">Зберегти</button>
+      <button (click)="cancelCreateCategory()">Відмінити</button>
+      <button *ngIf="!editStatus" type="submit" (click)="addCategory()" [disabled]='form.invalid'>Зберегти</button>
       <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button>
     </div>
   </form>

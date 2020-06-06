@@ -18,18 +18,17 @@
     }
   }
 
-  .sidebar {
+  .sidebar-admin {
     margin-top: 0;
     margin-bottom: 0;
     height: 100%;
     width: 15%;
-    margin-right: 25px;
 
     ul {
+      margin: 0;
+
       li {
         margin-top: 15px;
-        // transform: scale(0.9);
-        // transition: all .5s ease-in;
 
         a {
           color: $mainColor;
@@ -37,10 +36,6 @@
           text-transform: uppercase;
           font-size: $medium-size;
         }
-
-        // &:hover {
-        //   transform: scale(1);
-        // }
       }
     }
   }
@@ -50,6 +45,7 @@
     height: 100%;
     width: 85%;
   }
+
 }
 
 .active {
@@ -61,5 +57,27 @@
     width: 100%;
     bottom: -1px;
     border: 1px solid $mainColor;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .page-wrapper {
+    .sidebar-admin {
+      ul {
+        li {
+          margin-top: 7px;
+
+          a {
+            font-size: $small-size;
+          }
+        }
+      }
+    }
+  }
+
+  .active {
+    &:before {
+      bottom: -4px;
+    }
   }
 }

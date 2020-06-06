@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { TagsService } from 'src/app/shared/services/tags.service';
 import { Tag } from 'src/app/shared/models/tag.module';
@@ -27,7 +27,7 @@ export class AdminTagsComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl(''),
+      name: new FormControl('', Validators.required),
     });
     this.getTags();
   }

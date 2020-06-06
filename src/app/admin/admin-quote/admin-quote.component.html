@@ -44,18 +44,30 @@
   </div>
   <form [formGroup]="form">
     <div class="modal-body">
-      <div class="form-control">
+      <div class="form-control" [ngClass]="{invalid: form.get('quote').touched && form.get('quote').invalid}">
         <label for="quote">Цитата</label>
         <textarea id="quote" formControlName="quote"></textarea>
+          <!-- Validation -->
+          <div class="validation" *ngIf="form.get('quote').touched && form.get('quote').invalid">
+            <small>
+              Введіть цитату
+            </small>
+          </div>
       </div>
-      <div class="form-control">
+      <div class="form-control" [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}">
         <label for="author">Автор</label>
         <input id="author" formControlName="author">
+        <!-- Validation -->
+        <div class="validation" *ngIf="form.get('author').touched && form.get('author').invalid">
+          <small>
+            Введіть автора цитати...
+          </small>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
       <button type="button" (click)="cancelCreateQuote()">Відмінити</button>
-      <button *ngIf="!editStatus" type="button" (click)="addQuote()">Зберегти</button>
+      <button *ngIf="!editStatus" type="button" (click)="addQuote()" [disabled]='form.invalid'>Зберегти</button>
       <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button>
     </div>
   </form>

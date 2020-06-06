@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Category } from 'src/app/shared/models/category.module';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
@@ -27,7 +27,7 @@ export class AdminCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl(''),
+      name: new FormControl('', Validators.required),
       description: new FormControl('')
     });
 
@@ -36,6 +36,9 @@ export class AdminCategoryComponent implements OnInit {
 
   openModal(createCategory: TemplateRef<any>) {
     this.modalRef = this.modalService.show(createCategory);
+    this.editCategoryId = null;
+    this.form.reset();
+    this.editStatus = null;
   }
 
   private getCategories() {
@@ -93,9 +96,9 @@ export class AdminCategoryComponent implements OnInit {
     if (confirm('yes or not')) {
       if (this.arrCategories.length > 1) {
         this.categoryService.deleteFirebaseCategory(category.id)
-          .then(() => this.alert.success('Пост видалений з бази'))
+          .then(() => this.alert.warning('Пост видалений з бази'))
           .catch(err => this.alert.danger(err));
-      } else { this.alert.warning('Видалити усі категорії не можливо...') }
+      } else { this.alert.warning('Видалити усі категорії не можливо...')}
 
     }
   }

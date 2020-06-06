@@ -37,20 +37,26 @@
 
 <ng-template #modal>
   <div class=" modal-header">
-              <h4 *ngIf="!editStatus" class="modal-title pull-right">Додати нову пораду</h4>
-              <h4 *ngIf="editStatus" class="modal-title pull-right">Змінити пораду</h4>
+    <h4 *ngIf="!editStatus" class="modal-title pull-right">Додати нову пораду</h4>
+    <h4 *ngIf="editStatus" class="modal-title pull-right">Змінити пораду</h4>
   </div>
   <form [formGroup]="form">
     <div class="modal-body">
-      <div class="form-control">
+      <div class="form-control" [ngClass]="{invalid: form.get('text').touched && form.get('text').invalid}">
         <label for="text">Опис</label>
         <textarea id="text" formControlName="text"></textarea>
+        <!-- Validation -->
+        <div class="validation" *ngIf="form.get('text').touched && form.get('text').invalid">
+          <small>
+            Введеть пораду...
+          </small>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
       <button type="button" (click)="cancelCreateAdvice()">Відмінити</button>
-      <button *ngIf="!editStatus" type="button" (click)="addAdvice()">Зберегти</button>
+      <button *ngIf="!editStatus" type="button" (click)="addAdvice()" [disabled]='form.invalid'>Зберегти</button>
       <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button>
     </div>
   </form>
-  </ng-template>
+</ng-template>

@@ -41,14 +41,20 @@
   </div>
   <form [formGroup]="form">
     <div class="modal-body">
-      <div class="form-control">
+      <div class="form-control" [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}">
         <label for="name">Назва</label>
         <input id="name" type="text" formControlName="name">
+         <!-- Validation -->
+         <div class="validation" *ngIf="form.get('name').touched && form.get('name').invalid">
+          <small>
+            Введіть тег
+          </small>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
       <button type="button" (click)="cancelCreateTag()">Відмінити</button>
-      <button *ngIf="!editStatus" type="button" (click)="addTag()">Зберегти</button>
+      <button *ngIf="!editStatus" type="button" (click)="addTag()" [disabled]='form.invalid'>Зберегти</button>
       <button *ngIf="editStatus" type="button" (click)="saveEdit()">Зберегти зміни</button>
     </div>
   </form>

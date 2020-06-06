@@ -55,6 +55,7 @@ export class AdminWeatherComponent implements OnInit {
     this.editStatus = false;
     this.sourceImg = '';
     this.imgLoad = true;
+    this.form.reset();
   }
 
 

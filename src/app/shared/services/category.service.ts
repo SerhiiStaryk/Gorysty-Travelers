@@ -11,7 +11,7 @@ export class CategoryService {
   constructor(private firestore: AngularFirestore) { }
 
   getAllFirebaseCategories() {
-    return this.firestore.collection<ICategory[]>('categories').snapshotChanges().pipe(
+    return this.firestore.collection<ICategory[]>('categories', ref => ref.orderBy('name', 'asc')).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
