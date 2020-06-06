@@ -15,12 +15,22 @@ export class GalleryService {
   ) { }
 
   public getAllFirebasePhoto() {
-    return this.firestore.collection<any>('photos', ref => ref.orderBy('date', 'asc')).snapshotChanges().pipe(
+    return this.firestore.collection<any>('photos', ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
         return { id, ...data };
       })));
+  }
+
+  public getFirebasePhotoByCategory(category: string) {
+    return this.firestore.collection<any>('photos', ref => ref.where('category.name', '==', category)).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
   public addFirebasePhoto(photo: IPhoto): Promise<DocumentReference> {
@@ -37,7 +47,7 @@ export class GalleryService {
 
   public getLimitPhotoFirebade(count: number) {
     return this.firestore.collection<any>('photos', ref => ref.orderBy('date', 'desc')
-                                                             .limit(count)).snapshotChanges().pipe(
+      .limit(count)).snapshotChanges().pipe(
         map(actions => actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;

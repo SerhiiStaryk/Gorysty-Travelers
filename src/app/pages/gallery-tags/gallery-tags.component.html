@@ -1,23 +1,19 @@
 <div class="page-wrapper">
   <div class="explore">
     <form class="search">
-      <input class="searchbox" autocomplete="off" placeholder="пошук за тегом" type="text"
-        id="photo-search" [(ngModel)]="searchText"
-        name="searchText">
+      <input class="searchbox" autocomplete="off" placeholder="пошук за тегом" type="text" id="photo-search"
+        [(ngModel)]="searchText" name="searchText">
     </form>
   </div>
-
-  <div *ngIf="!arrPhoto.length">
-    <h4>Фото скоро прибудуть...</h4>
-  </div>
-  <section class="gallery-photos" *ngIf="arrPhoto.length">
+  <section class="gallery-photos">
     <div class="photo-preview" *ngFor="let photo of arrPhoto | search: searchText; let i=index">
       <div class="img-wrapper">
         <img [src]="photo.source" (click)="open(i)">
       </div>
       <div class="photo-preview-footer">
         <p class="tags">
-          <a [routerLink]="['/gallery-tags/', tag.name]" class="label" *ngFor="let tag of photo?.tags">{{ tag.name }}</a>
+          <a [routerLink]="['/gallery-tags/', tag.name]" class="label"
+            *ngFor="let tag of photo?.tags">{{ tag.name }}</a>
         </p>
         <div class="right-option">
           <a class="download-photo btn-outline" [href]="photo.source" target="_blank">

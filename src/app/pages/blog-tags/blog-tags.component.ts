@@ -51,7 +51,4 @@ export class BlogTagsComponent implements OnInit {
     this.config.currentPage = event;
     window.scrollTo(0, 650);
   }
-
-
-
 }

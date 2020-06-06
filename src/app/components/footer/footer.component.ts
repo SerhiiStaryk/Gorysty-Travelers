@@ -28,15 +28,13 @@ export class FooterComponent implements OnInit {
     this.quoteService.getLimitQuotesFirebade(1).subscribe(
       data => {
         this.arrQuote = data;
-        console.log(this.arrQuote);
       });
   }
 
-  private getOneAdvice(){
+  private getOneAdvice() {
     this.adviceService.getLimitAdvicesFirebade(1).subscribe(
       data => {
         this.arrAdvice = data;
-        console.log(this.arrAdvice);
       });
   }
 

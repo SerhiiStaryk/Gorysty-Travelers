@@ -13,6 +13,7 @@ export class GalleryComponent implements OnInit {
 
   arrPhoto: Array<IPhoto> = [];
   arrTag: Array<ITag[]> = [];
+  searchText: string;
   // tslint:disable-next-line: variable-name
   private _albums = [];
 

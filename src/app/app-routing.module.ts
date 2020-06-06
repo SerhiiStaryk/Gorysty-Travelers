@@ -9,6 +9,7 @@ import { BlogTagsComponent } from './pages/blog-tags/blog-tags.component';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { GalleryCategoryComponent } from './pages/gallery-category/gallery-category.component';
+import { GalleryTagsComponent } from './pages/gallery-tags/gallery-tags.component';
 import { WeatherComponent } from './pages/weather/weather.component';
 import { AboutComponent } from './pages/about/about.component';
 
@@ -26,7 +27,6 @@ import { AdminQuoteComponent } from './admin/admin-quote/admin-quote.component';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 
-
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
@@ -37,7 +37,8 @@ const routes: Routes = [
   { path: 'blog-tags/:tag', component: BlogTagsComponent },
   { path: 'blog-detail/:id', component: BlogDetailComponent },
   { path: 'gallery', component: GalleryComponent },
-  { path: 'gallery-detail/:id', component: GalleryCategoryComponent },
+  { path: 'gallery-category/:category', component: GalleryCategoryComponent },
+  { path: 'gallery-tags/:tag', component: GalleryTagsComponent },
   { path: 'weather', component: WeatherComponent },
   { path: 'about', component: AboutComponent },
   {

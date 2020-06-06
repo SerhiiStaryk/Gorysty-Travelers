@@ -83,6 +83,8 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminWeatherComponent } from './admin/admin-weather/admin-weather.component';
 import { AdminQuoteComponent } from './admin/admin-quote/admin-quote.component';
 import { AdminAdvicesComponent } from './admin/admin-advices/admin-advices.component';
+import { GalleryTagsComponent } from './pages/gallery-tags/gallery-tags.component';
+import { SearchPipe } from './shared/pipes/search.pipe';
 
 registerLocaleData(uaLocale, 'ua');
 
@@ -131,7 +133,9 @@ export const firebaseConfig = {
     SortPipe,
     MenuHoverDirective,
     AdminQuoteComponent,
-    AdminAdvicesComponent
+    AdminAdvicesComponent,
+    GalleryTagsComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
