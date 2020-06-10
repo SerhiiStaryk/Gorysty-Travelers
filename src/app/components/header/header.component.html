@@ -85,13 +85,8 @@
                     </li>
                   </ul>
                 </li>
-                <li class="arrow" (click)=" dropDownMenu()">
+                <li (click)="closeNav()">
                   <a [routerLink]="['/gallery']" routerLinkActive="current-menu-item">Фотогалерея</a>
-                  <ul class="dropdown-hide" [ngClass]="{'dropdown-show': dropMenu}">
-                    <li *ngFor="let category of arrCategories" (click)="closeNav()">
-                      <a [routerLink]="['/gallery-category/'+category.name]">{{ category.name }}</a>
-                    </li>
-                  </ul>
                 </li>
                 <li (click)="closeNav()">
                   <a [routerLink]="['/weather']" routerLinkActive="current-menu-item">Погода</a>
