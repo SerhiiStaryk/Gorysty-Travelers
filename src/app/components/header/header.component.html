@@ -77,8 +77,11 @@
                 <!-- <li (click)="closeNav()">
                   <a [routerLink]="['/routes']" routerLinkActive="current-menu-item">Маршрути</a>
                 </li> -->
-                <li class="arrow" (click)=" dropDownMenu()">
+                <li (click)="closeNav()">
                   <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
+                </li>
+                <li class="arrow" (click)=" dropDownMenu()">
+                  <a>Блог категорії</a>
                   <ul class="dropdown-hide" [ngClass]="{'dropdown-show': dropMenu}">
                     <li *ngFor="let category of arrCategories" (click)="closeNav()">
                       <a [routerLink]="['/blog-category/'+category.name]">{{ category.name }}</a>
