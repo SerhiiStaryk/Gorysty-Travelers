@@ -6,7 +6,7 @@
         <!-- entry-header -->
         <header class="entry-header">
           <div class="cat-links">
-            <a [routerLink]="['/blog-category/'+ post.category.name]">{{ post?.category?.name }}</a>
+            <a [routerLink]="['/blog-category/'+ post?.category.name]">{{ post?.category.name }}</a>
           </div>
           <h1 class="entry-title">{{ post?.title }}</h1>
           <div class="entry-title-posted">
@@ -31,10 +31,10 @@
         <!-- entry-footer -->
         <footer class="entry-footer">
           <div class="post-tags">
-            <a [routerLink]="['/blog-tags/', tag.name]" *ngFor="let tag of post?.tags">{{ tag.name }}</a>
+            <a [routerLink]="['/blog-tags/', tag?.name]" *ngFor="let tag of post?.tags">{{ tag.name }}</a>
           </div>
           <div class="share-box">
-            <app-share-box [postId]='post.id'></app-share-box>
+            <app-share-box [postId]='post?.id'></app-share-box>
           </div>
         </footer>
       </article>
