@@ -1,0 +1,145 @@
+<div class="page-wrapper">
+    <div class="container flex-box">
+      <!-- main part -->
+      <div class="site-main">
+        <article class="post appeared">
+          <!-- entry-header -->
+          <header class="entry-header">
+            <h1 class="entry-title">{{ post?.title }}</h1>
+            <div class="entry-title-posted">
+              <span class="posted-on">
+                <time class="entry-date">{{ post?.date.toDate() | date: 'yyyy-MM-dd'}}</time>
+              </span>
+              <span class="author">{{ post?.author }}</span>
+            </div>
+          </header>
+          <div class="post-thumbnail">
+            <img width="760" height="556" [src]="post?.titleImg" alt="post-image">
+          </div>
+          <!-- entry-content -->
+          <div class="entry-content">
+            <!-- ------------------------------------------------------------------- -->
+            <div class="ql-container ql-snow" style="border-width: 0;">
+              <div class="ql-editor" [innerHTML]="post?.text">
+              </div>
+            </div>
+            <!-- ------------------------------------------------------------------  -->
+          </div>
+          <!-- entry-footer -->
+          <footer class="entry-footer">
+            <div class="post-tags">
+              <a [routerLink]="['/blog-tags/', tag?.name]" *ngFor="let tag of post?.tags">{{ tag.name }}</a>
+            </div>
+            <div class="share-box">
+              <app-share-box [postId]='post?.id'></app-share-box>
+            </div>
+          </footer>
+        </article>
+        <nav class="navigation post-navigation">
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <a [routerLink]="['/advice-detail/', previousIdPost]">
+                <span class="meta-nav">Попередній пост</span>
+                <div class="post-content">
+                  <span class="post-title">
+                    {{ previousNamePost }}
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <a [routerLink]="['/advice-detail/', nextIdPost]">
+                <span class="meta-nav">Наступний пост</span>
+                <div class="post-content">
+                  <span class="post-title">
+                    {{ nextNamePost }}
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </nav>
+        <div class="comments">
+          <h2 class="comments-title">Коментарі</h2>
+          <!-- comments -->
+          <ol class="comment-list">
+            <li class="comment" *ngFor="let comment of arrComments">
+              <article class="comment-body">
+                <footer class="comment-meta">
+                  <div class="comment-user">
+                    <img alt="user-logo" class="avatar" src="../../../assets/image/user.png" height="58" width="58">
+                    <span>{{ comment.userName}}</span>
+                  </div>
+                  <div class="comment-metadata">
+                    <time>
+                      {{ comment.date.toDate() | date:'yyyy-MM-dd' }}
+                    </time>
+                  </div>
+                </footer>
+                <div class="comment-content">
+                  <p>{{ comment.comment}}</p>
+                </div>
+              </article>
+            </li>
+          </ol>
+          <div class="comment-respond">
+            <h2 id="reply-title" class="comment-reply-title">
+              Залишити коментар
+            </h2>
+            <!-- Form comments -->
+            <form class="comment-form" [formGroup]="form" (ngSubmit)=createComment()>
+              <p class="comment-notes">Ваша електронна скринька не буде публікуватись</p>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="input-field form-control"
+                    [ngClass]="{'invalid': form.get('comment').touched && form.get('comment').invalid}">
+                    <textarea placeholder="Ваш відгук *" formControlName="comment"></textarea>
+                    <!-- Validation -->
+                    <div class="validation" *ngIf="form.get('comment').touched && form.get('comment').invalid">
+                      <small>
+                        Напишіть коментар
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6">
+                  <div class="input-field form-control"
+                    [ngClass]="{'invalid': form.get('userName').touched && form.get('userName').invalid}">
+                    <input type="text" placeholder="Ваше  ім'я*" formControlName="userName">
+                    <!-- Validation -->
+                    <div class="validation" *ngIf="form.get('userName').touched && form.get('userName').invalid">
+                      <small>
+                        Напишіть своє ім'я
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                  <div class="input-field form-control"
+                    [ngClass]="{'invalid': form.get('userEmail').touched && form.get('userEmail').invalid}">
+                    <input type="email" placeholder="Email *" formControlName="userEmail">
+                     <!-- Validation -->
+                     <div class="validation" *ngIf="form.get('userEmail').touched && form.get('userEmail').invalid">
+                      <small>
+                        Напишіть свою електронну скриньку
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-control">
+                <button type="submit" class="submit" [disabled]='form.invalid'>Опублікувати коментар</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- sidebar -->
+      <aside id="secondary" class="sidebar widget-area">
+        <app-sidebar></app-sidebar>
+      </aside>
+    </div>
+  </div>
+  

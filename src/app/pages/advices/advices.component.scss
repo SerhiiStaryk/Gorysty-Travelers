@@ -1,0 +1,39 @@
+@import '../../../variables';
+
+.post {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.entry-footer {
+  border-bottom: 3px solid #f4f7f6;
+}
+
+.pagination {
+  margin-top: 50px;
+}
+
+.entry-content {
+  p {
+    height: 160px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 769px) {
+  .row-tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .post {
+      max-width: 100%;
+    }
+  }
+
+  .entry-content {
+    p {
+      height: 80px;
+    }
+  }
+}
+

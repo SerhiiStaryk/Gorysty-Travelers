@@ -30,7 +30,6 @@ import uaLocale from '@angular/common/locales/uk';
 // ngx-light box (https://www.npmjs.com/package/ngx-lightbox)
 import { LightboxModule } from 'ngx-lightbox';
 
-
 // firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -68,7 +67,6 @@ import { SortPipe } from './shared/pipes/sort.pipe';
 // directives
 import { MenuHoverDirective } from './shared/directives/menu-hover.directive';
 
-
 // admin
 import { AdminComponent } from './admin/admin.component';
 import { CreatePostComponent } from './admin/create-post/create-post.component';
@@ -84,6 +82,7 @@ import { AdminAdvicesComponent } from './admin/admin-advices/admin-advices.compo
 import { GalleryTagsComponent } from './pages/gallery-tags/gallery-tags.component';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { AdvicesComponent } from './pages/advices/advices.component';
+import { AdvicesDetailComponent } from './pages/advices-detail/advices-detail.component';
 
 registerLocaleData(uaLocale, 'ua');
 
@@ -133,7 +132,8 @@ export const firebaseConfig = {
     AdminAdvicesComponent,
     GalleryTagsComponent,
     SearchPipe,
-    AdvicesComponent
+    AdvicesComponent,
+    AdvicesDetailComponent
   ],
   imports: [
     BrowserModule,

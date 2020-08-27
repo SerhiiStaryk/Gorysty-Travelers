@@ -3,7 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdviceService } from 'src/app/shared/services/advice.service';
 import { IAdvice } from 'src/app/shared/interfaces/advice.interface';
-import { Advice } from 'src/app/shared/models/advice.module';
+import { Advice } from 'src/app/shared/modules/advice.module';
 import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
