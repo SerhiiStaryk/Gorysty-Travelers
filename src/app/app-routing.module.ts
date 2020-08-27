@@ -5,6 +5,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { BlogCategoryComponent } from './pages/blog-category/blog-category.component';
 import { BlogTagsComponent } from './pages/blog-tags/blog-tags.component';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
+import { AdvicesComponent } from './pages/advices/advices.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { GalleryCategoryComponent } from './pages/gallery-category/gallery-category.component';
 import { GalleryTagsComponent } from './pages/gallery-tags/gallery-tags.component';
@@ -24,6 +25,7 @@ import { AdminAdvicesComponent } from './admin/admin-advices/admin-advices.compo
 import { AdminQuoteComponent } from './admin/admin-quote/admin-quote.component';
 
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AdvicesDetailComponent } from './pages/advices-detail/advices-detail.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -32,6 +34,8 @@ const routes: Routes = [
   { path: 'blog-category/:category', component: BlogCategoryComponent },
   { path: 'blog-tags/:tag', component: BlogTagsComponent },
   { path: 'blog-detail/:id', component: BlogDetailComponent },
+  { path: 'advices', component: AdvicesComponent },
+  { path: 'advice-detail/:id', component: AdvicesDetailComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'gallery-category/:category', component: GalleryCategoryComponent },
   { path: 'gallery-tags/:tag', component: GalleryTagsComponent },
