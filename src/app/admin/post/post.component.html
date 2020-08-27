@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th scope="col" style="width: 3%">#</th>
+      <th scope="col"style="width: 5%">Тип</th>
       <th scope="col">Категорія</th>
       <th scope="col">Зображення</th>
       <th scope="col" (click)="ShowEvent($event)"
@@ -19,6 +20,7 @@
     <tr *ngFor="let post of arrPosts | sort: sortDisabled: sortBy: sortDirection; let i=index"
       [ngClass]="{'publish': post.publish}">
       <th scope="row">{{ i + 1}}</th>
+      <td>{{ post.type }}</td>
       <td>{{ post.category.name }}</td>
       <td><img [src]="post.titleImg" alt="logo-post" width="75px"></td>
       <td>{{ post.title }}</td>

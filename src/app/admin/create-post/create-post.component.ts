@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IPost } from 'src/app/shared/interfaces/post.interface';
-import { Post } from 'src/app/shared/models/post.module';
+import { Post } from 'src/app/shared/modules/post.module';
 import { PostService } from 'src/app/shared/services/post.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { TagsService } from 'src/app/shared/services/tags.service';
-import { Tag } from 'src/app/shared/models/tag.module';
+import { Tag } from 'src/app/shared/modules/tag.module';
 import { ITag } from 'src/app/shared/interfaces/tag.interface';
 import { IComment } from 'src/app/shared/interfaces/comments.interface';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
@@ -23,7 +23,6 @@ export class CreatePostComponent implements OnInit {
 
   form: FormGroup;
   uploadProgress: Observable<number>;
-
   postImage: string;
   imgLoad = true;
   statusPublish = false;
@@ -32,6 +31,7 @@ export class CreatePostComponent implements OnInit {
   arrTags: Array<ITag> = [];
   arrayCategories: Array<ICategory[]> = [];
   arrComments: Array<IComment> = [];
+  postTypes = ['post', 'advice'];
 
   // multiSelect
   dropdownList = [];
@@ -61,7 +61,8 @@ export class CreatePostComponent implements OnInit {
       description: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
       text: new FormControl(null, Validators.required),
       author: new FormControl(null, Validators.required),
-      tags: new FormControl(null)
+      tags: new FormControl(null),
+      type: new FormControl(null)
     });
 
     // multiSelect tags
@@ -86,7 +87,6 @@ export class CreatePostComponent implements OnInit {
   }
 
   // private methods
-
   private getTags() {
     return this.tagsService.getAllFirebaseTags().subscribe((
       data => {
@@ -103,7 +103,6 @@ export class CreatePostComponent implements OnInit {
   }
 
   // public methods
-
   public savePost(): void {
     if (this.form.invalid) {
       return;
@@ -111,6 +110,7 @@ export class CreatePostComponent implements OnInit {
     const date = new Date();
     const newPost: IPost = new Post(
       null,
+      this.form.value.type,
       this.form.value.category,
       this.postImage,
       this.form.value.title,
@@ -123,7 +123,6 @@ export class CreatePostComponent implements OnInit {
       this.statusPublish
     );
     delete newPost.id;
-
     this.postServices.addFirebasePost(newPost)
       .then(() => this.alert.success('збережено у базі'))
       .catch(err => this.alert.warning(err));

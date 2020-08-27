@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { User } from 'src/app/shared/models/user.module';
+import { User } from 'src/app/shared/modules/user.module';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 

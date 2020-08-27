@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IPost } from 'src/app/shared/interfaces/post.interface';
-import { Post } from 'src/app/shared/models/post.module';
+import { Post } from 'src/app/shared/modules/post.module';
 import { PostService } from 'src/app/shared/services/post.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
@@ -10,10 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { TagsService } from 'src/app/shared/services/tags.service';
-import { Tag } from 'src/app/shared/models/tag.module';
+import { Tag } from 'src/app/shared/modules/tag.module';
 import { ITag } from 'src/app/shared/interfaces/tag.interface';
 import { IComment } from 'src/app/shared/interfaces/comments.interface';
-
 
 @Component({
   selector: 'app-edit-post',
@@ -29,8 +28,8 @@ export class EditPostComponent implements OnInit {
   postImage: string;
   editCategory: ICategory;
 
-
   selected: string;
+  selectedByType: string;
 
   imgLoad = false;
   statusPublish = false;
@@ -38,6 +37,7 @@ export class EditPostComponent implements OnInit {
 
   arrTags: Array<ITag> = [];
   arrComments: Array<IComment> = [];
+  postTypes = ['post', 'advice'];
 
   arrayCategories: Array<any>;
   postCategory: ICategory;
@@ -60,6 +60,7 @@ export class EditPostComponent implements OnInit {
     private tagsService: TagsService
   ) { }
 
+
   ngOnInit(): void {
     this.form = new FormGroup({
       selected: new FormControl(null),
@@ -69,6 +70,7 @@ export class EditPostComponent implements OnInit {
       text: new FormControl('', Validators.required),
       author: new FormControl('', Validators.required),
       tags: new FormControl(''),
+      type: new FormControl('')
     });
     this.getCategories();
     this.getPost();
@@ -89,7 +91,7 @@ export class EditPostComponent implements OnInit {
       addNewItemOnFilter: true,
       addNewButtonText: 'Додати',
       noDataLabel: 'Такого тегу не існує',
-     // position: top,
+      // position: top,
       showCheckbox: false,
       labelKey: 'name'
     };
@@ -116,6 +118,7 @@ export class EditPostComponent implements OnInit {
         this.editPost = data.data();
         this.postImage = this.editPost.titleImg;
         this.selected = this.editPost.category.name;
+        this.selectedByType = this.editPost.type;
         this.arrTags = this.editPost.tags;
         this.selectedTags = this.arrTags;
         this.editCategory = this.editPost.category;
@@ -156,6 +159,7 @@ export class EditPostComponent implements OnInit {
     }
     const newPost: IPost = new Post(
       null,
+      this.form.value.type,
       this.editCategory,
       this.postImage,
       this.form.value.title,
@@ -175,6 +179,8 @@ export class EditPostComponent implements OnInit {
       .catch(err => this.alert.danger(err));
     window.scrollTo(0, 0);
   }
+
+
 
   public uploadFile(event: any): void {
     const file = event.target.files[0];
