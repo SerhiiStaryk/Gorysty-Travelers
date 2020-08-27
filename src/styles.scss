@@ -49,16 +49,19 @@ p::selection {
 
 // General classes style
 
+main{
+  margin-top: 88px;
+}
+
 .page-wrapper {
   margin: 0 auto;
-  max-width: 2000px;
+  max-width: 1260px;
   padding: 0 35px
 }
 
 .boxed,
 .container {
-  width: 1360px;
-  max-width: 100%;
+  max-width: 2000px;
   margin: 0 auto;
   padding-left: 0;
   padding-right: 0
