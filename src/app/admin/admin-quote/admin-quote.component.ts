@@ -3,7 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { QuoteService } from 'src/app/shared/services/quote.service';
 import { IQuote } from 'src/app/shared/interfaces/quote.interface';
-import { Quote } from 'src/app/shared/models/quote.module';
+import { Quote } from 'src/app/shared/modules/quote.module';
 import { AlertService } from 'src/app/shared/services/alert.service';
 
 

@@ -8,10 +8,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { ITag } from 'src/app/shared/interfaces/tag.interface';
-import { Tag } from 'src/app/shared/models/tag.module';
+import { Tag } from 'src/app/shared/modules/tag.module';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
-import { Photo } from 'src/app/shared/models/photo.module';
+import { Photo } from 'src/app/shared/modules/photo.module';
 
 @Component({
   selector: 'app-admin-gallery',
@@ -228,7 +228,9 @@ export class AdminGalleryComponent implements OnInit {
           .catch(err => this.alert.danger(err));
         const nameImg = (this.extractNameImg.exec(photo.source)[0]).substr(3).slice(0, -4);
         this.afStorage.storage.ref('images').child(`${nameImg}`).delete();
-      } else { this.alert.warning('Видалити усі фото не можливо...') }
+      } else {
+        this.alert.warning('Видалити усі фото не можливо...');
+      }
     }
   }
 

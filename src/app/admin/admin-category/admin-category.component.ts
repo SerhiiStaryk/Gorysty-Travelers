@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Category } from 'src/app/shared/models/category.module';
+import { Category } from 'src/app/shared/modules/category.module';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 

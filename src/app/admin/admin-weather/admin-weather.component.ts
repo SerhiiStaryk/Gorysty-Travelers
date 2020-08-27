@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ICity } from 'src/app/shared/interfaces/city.interface';
 import { WeatherService } from 'src/app/shared/services/weather.service';
-import { City } from 'src/app/shared/models/city.module';
+import { City } from 'src/app/shared/modules/city.module';
 
 @Component({
   selector: 'app-admin-weather',

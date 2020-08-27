@@ -3,7 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { TagsService } from 'src/app/shared/services/tags.service';
-import { Tag } from 'src/app/shared/models/tag.module';
+import { Tag } from 'src/app/shared/modules/tag.module';
 
 @Component({
   selector: 'app-admin-tags',
@@ -93,7 +93,9 @@ export class AdminTagsComponent implements OnInit {
         this.tagsService.deleteFirebaseTag(tag.id)
           .then(() => this.alert.success('тег змінено'))
           .catch(err => this.alert.danger(err));
-      } else {this.alert.warning('Видалити усі теги не можливо...')}
+      } else {
+        this.alert.warning('Видалити усі теги не можливо...');
+      }
 
     }
   }
