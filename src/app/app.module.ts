@@ -83,7 +83,7 @@ import { AdminQuoteComponent } from './admin/admin-quote/admin-quote.component';
 import { AdminAdvicesComponent } from './admin/admin-advices/admin-advices.component';
 import { GalleryTagsComponent } from './pages/gallery-tags/gallery-tags.component';
 import { SearchPipe } from './shared/pipes/search.pipe';
-import { AdvicesComponent } from './advices/advices.component';
+import { AdvicesComponent } from './pages/advices/advices.component';
 
 registerLocaleData(uaLocale, 'ua');
 
