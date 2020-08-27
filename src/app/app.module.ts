@@ -57,7 +57,6 @@ import { BlogTagsComponent } from './pages/blog-tags/blog-tags.component';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { WeatherComponent } from './pages/weather/weather.component';
 import { AboutComponent } from './pages/about/about.component';
-import { RoutesComponent } from './pages/routes/routes.component';
 
 // widget
 import { LatestPostsComponent } from './widgets/latest-posts/latest-posts.component';
@@ -111,7 +110,6 @@ export const firebaseConfig = {
     WeatherComponent,
     AboutComponent,
     AdminComponent,
-    RoutesComponent,
     BlogDetailComponent,
     SidebarComponent,
     BlogCategoryComponent,
