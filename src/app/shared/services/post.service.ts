@@ -9,11 +9,28 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PostService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   public getAllFirebasePosts() {
     return this.firestore
       .collection<any>('posts', (ref) => ref.orderBy('date', 'desc'))
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
+  }
+
+  public getFirebasePostsByType(type) {
+    return this.firestore
+      .collection<any>('posts', (ref) => ref.orderBy('date', 'desc')
+        .where('publish', '==', true)
+        .where('type', '==', type))
       .snapshotChanges()
       .pipe(
         map((actions) =>
@@ -42,9 +59,8 @@ export class PostService {
 
   public getFirebasePublishPost() {
     return this.firestore
-      .collection<any>('posts', (ref) =>
-        ref.orderBy('date', 'desc').where('publish', '==', true)
-      )
+      .collection<any>('posts', (ref) => ref.orderBy('date', 'desc')
+        .where('publish', '==', true))
       .snapshotChanges()
       .pipe(
         map((actions) =>
@@ -76,6 +92,12 @@ export class PostService {
 
   public getOnePostFirebase(id: string) {
     return this.firestore.collection<any>('posts').doc(id).get();
+  }
+
+  public getOnePostFirebaseByType(id: string, type) {
+    return this.firestore.collection<any>('posts', ref => ref.where('type', '==', type))
+      .doc(id)
+      .get();
   }
 
   public getLimitPostFirebade(count: number) {
