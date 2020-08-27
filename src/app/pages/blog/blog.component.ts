@@ -28,9 +28,10 @@ export class BlogComponent implements OnInit {
   }
 
   private getAllPosts() {
-    return this.postService.getFirebasePublishPost().subscribe(
+    return this.postService.getFirebasePostsByType('post').subscribe(
       data => {
         this.arrPosts = data;
+        console.log(data);
       }
     );
   }

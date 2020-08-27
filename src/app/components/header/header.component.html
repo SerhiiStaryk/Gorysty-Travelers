@@ -20,20 +20,6 @@
           <nav id="main-navigation" class="main-navigation">
             <div class="menu-menu-container">
               <ul>
-                <!-- <li class="menu-item">
-                  <a [routerLink]="['/routes']" routerLinkActive="current-menu-item">Маршрути</a>
-                  <ul class="sub-menu">
-                    <li class="menu-item">
-                      <a>Маршут_1</a>
-                    </li>
-                    <li class="menu-item">
-                      <a>Маршут_2</a>
-                    </li>
-                  </ul>
-                </li> -->
-                <!-- <li class="menu-item">
-                  <a [routerLink]="['/map']" routerLinkActive="current-menu-item">Карта</a>
-                </li> -->
                 <li class="menu-item menu-item-has-children">
                   <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
                   <ul class="sub-menu">
@@ -41,6 +27,9 @@
                       <a [routerLink]="['/blog-category/'+category.name]">{{ category.name }}</a>
                     </li>
                   </ul>
+                </li>
+                <li (click)="closeNav()">
+                  <a [routerLink]="['/advices']" routerLinkActive="current-menu-item">Поради</a>
                 </li>
                 <li class="menu-item menu-item-has-children">
                   <a [routerLink]="['/gallery']" routerLinkActive="current-menu-item">Фотогалерея</a>
@@ -74,9 +63,6 @@
             <div class="overlay" [style.width]="showMobileMenu ? '100%' : '0'">
               <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
               <ul class="overlay-content">
-                <!-- <li (click)="closeNav()">
-                  <a [routerLink]="['/routes']" routerLinkActive="current-menu-item">Маршрути</a>
-                </li> -->
                 <li (click)="closeNav()">
                   <a [routerLink]="['/blog']" routerLinkActive="current-menu-item">Блог</a>
                 </li>
@@ -87,6 +73,9 @@
                       <a [routerLink]="['/blog-category/'+category.name]">{{ category.name }}</a>
                     </li>
                   </ul>
+                </li>
+                <li (click)="closeNav()">
+                  <a [routerLink]="['/advices']" routerLinkActive="current-menu-item">Фотогалерея</a>
                 </li>
                 <li (click)="closeNav()">
                   <a [routerLink]="['/gallery']" routerLinkActive="current-menu-item">Фотогалерея</a>

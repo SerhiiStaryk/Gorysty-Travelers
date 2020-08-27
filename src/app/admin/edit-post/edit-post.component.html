@@ -1,5 +1,17 @@
 <form [formGroup]="form" (ngSubmit)=updatePost()>
+
+  <!-- post type -->
+
+  <div class="form-control">
+    <label for="type">Тип посту</label>
+    <select id="type" class="form-control" formControlName="type" [(ngModel)]="selectedByType" name="selectedByType">
+      <option [ngValue]='null' disabled hidden>Вибрати...</option>
+      <option *ngFor="let type of postTypes" [ngValue]="type">{{ type }}</option>
+    </select>
+  </div>
+
   <!-- post category -->
+
   <div class="form-control">
     <label for="category">Категорія посту</label>
     <select id="category" class="form-control" formControlName="selected" (change)="setCategory(selected)"
@@ -8,11 +20,9 @@
       <option *ngFor="let category of arrayCategories" [ngValue]="category.name">{{ category.name }}</option>
     </select>
   </div>
-  <!-- <pre>
-    {{ form.value | json }}
-  </pre> -->
+
   <!-- Title Image -->
-  <!-- custom-file-input ng-untouched ng-pristine ng-valid -->
+  
   <label>Головне зображення посту:</label>
   <div *ngIf="imgLoad">
     <div class="custom-file form-control"
@@ -28,7 +38,6 @@
         </small>
       </div>
     </div>
-
     <div class="progress form-control">
       <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
         [style.width]="(uploadProgress | async) + '%'" aria-valuemin="0" aria-valuemax="100">
@@ -39,7 +48,6 @@
     <img [src]="postImage" alt="post-logo" class="postImage">
     <i class="icon icon-bin" (click)="removeImg()"></i>
   </div>
-
 
   <!-- Name Title -->
 
