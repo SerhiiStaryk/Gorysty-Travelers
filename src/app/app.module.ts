@@ -48,7 +48,6 @@ import { AlertComponent } from './components/alert/alert.component';
 
 // pages
 import { HomeComponent } from './pages/home/home.component';
-import { MapComponent } from './pages/map/map.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { GalleryCategoryComponent } from './pages/gallery-category/gallery-category.component';
 import { BlogComponent } from './pages/blog/blog.component';
@@ -104,7 +103,6 @@ export const firebaseConfig = {
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    MapComponent,
     GalleryComponent,
     BlogComponent,
     WeatherComponent,

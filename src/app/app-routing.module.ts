@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { MapComponent } from './pages/map/map.component';
-import { RoutesComponent } from './pages/routes/routes.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogCategoryComponent } from './pages/blog-category/blog-category.component';
 import { BlogTagsComponent } from './pages/blog-tags/blog-tags.component';
@@ -30,8 +28,6 @@ import { AuthGuard } from './shared/guards/auth.guard';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: 'map', component: MapComponent },
-  { path: 'routes', component: RoutesComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog-category/:category', component: BlogCategoryComponent },
   { path: 'blog-tags/:tag', component: BlogTagsComponent },
