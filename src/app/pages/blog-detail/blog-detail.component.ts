@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/shared/services/post.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IComment } from 'src/app/shared/interfaces/comments.interface';
-import { Comment } from 'src/app/shared/models/comment.module';
+import { Comment } from 'src/app/shared/modules/comment.module';
 
 @Component({
   selector: 'app-blog-detail',
@@ -40,7 +40,7 @@ export class BlogDetailComponent implements OnInit {
 
   private getOnePost(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.postService.getOnePostFirebase(id).subscribe(
+    this.postService.getOnePostFirebaseByType(id, 'post').subscribe(
       data => {
         this.post = data.data();
         this.postId = this.post.id;
@@ -59,14 +59,14 @@ export class BlogDetailComponent implements OnInit {
 
         if (nextIdx > this.arrIdx.length) {
           this.nextIdPost = this.arrIdx.shift();
-          this.postService.getOnePostFirebase(this.nextIdPost).subscribe(
+          this.postService.getOnePostFirebaseByType(this.nextIdPost, 'post').subscribe(
             a => {
               const post = a.data();
               this.nextNamePost = post.title;
             });
         } else {
           this.nextIdPost = this.arrIdx.splice(nextIdx, 1)[0];
-          this.postService.getOnePostFirebase(this.nextIdPost).subscribe(
+          this.postService.getOnePostFirebaseByType(this.nextIdPost, 'post').subscribe(
             a => {
               const post = a.data();
               this.nextNamePost = post.title;
@@ -75,14 +75,14 @@ export class BlogDetailComponent implements OnInit {
 
         if (previousIdx < 0) {
           this.previousIdPost = this.arrIdx.pop();
-          this.postService.getOnePostFirebase(this.previousIdPost).subscribe(
+          this.postService.getOnePostFirebaseByType(this.previousIdPost, 'post').subscribe(
             a => {
               const post = a.data();
               this.previousNamePost = post.title;
             });
         } else {
           this.previousIdPost = this.arrIdx.splice(previousIdx, 1)[0];
-          this.postService.getOnePostFirebase(this.previousIdPost).subscribe(
+          this.postService.getOnePostFirebaseByType(this.previousIdPost, 'post').subscribe(
             a => {
               const post = a.data();
               this.previousNamePost = post.title;
@@ -98,7 +98,7 @@ export class BlogDetailComponent implements OnInit {
     }
 
     const newComment: IComment = new Comment(
-      `f${(+(new Date())).toString(16)}`,
+      `${(+(new Date())).toString(16)}`,
       this.form.value.userName,
       this.form.value.userEmail,
       new Date(),
