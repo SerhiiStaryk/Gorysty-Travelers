@@ -60,44 +60,44 @@
   }
 }
 
-// @media screen and (max-width: 540px) {
-//   .page-title {
-//     font-size: 27px;
-//   }
-// }
+@media screen and (max-width: 540px) {
+  .page-title {
+    font-size: 27px;
+  }
+}
 
-// @media screen and (max-width: 770px) {
-//   .page-header {
-//     margin-bottom: 0;
-//   }
+@media screen and (max-width: 770px) {
+  .page-header {
+    margin-bottom: 0;
+  }
 
-//   .post {
-//     flex-wrap: wrap;
+  .post {
+    flex-wrap: wrap;
 
-//     .entry-header {
-//       width: 75%;
-//       margin-bottom: 0;
+    .entry-header {
+      width: 75%;
+      margin-bottom: 0;
 
-//       &:before {
-//         top: -26px;
-//         height: 105%;
-//       }
-//     }
+      &:before {
+        top: -26px;
+        height: 105%;
+      }
+    }
 
-//     .entry-title-posted {
-//       max-width: 100px;
-//     }
+    .entry-title-posted {
+      max-width: 100px;
+    }
 
-//     .post-thumbnail {
-//       width: 100%;
-//     }
+    .post-thumbnail {
+      width: 100%;
+    }
 
-//     .post-content {
-//       width: 100%;
+    .post-content {
+      width: 100%;
 
-//       &:nth-child(2n) {
-//         flex-direction: column;
-//       }
-//     }
-//   }
-// }
+      &:nth-child(2n) {
+        flex-direction: column;
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@
 @import 'mixin';
 @import 'fonts';
 @import 'widgets';
+
 @import "~leaflet/dist/leaflet.css";
 @import "~quill/dist/quill.core.css";
 @import "~quill/dist/quill.snow.css";
@@ -48,19 +49,16 @@ p::selection {
 
 // General classes style
 
-main {
-  margin-top: 88px;
-}
-
 .page-wrapper {
   margin: 0 auto;
-  max-width: 1680px;
+  max-width: 2000px;
   padding: 0 35px
 }
 
 .boxed,
 .container {
-  max-width: 1140px;
+  width: 1140px;
+  max-width: 100%;
   margin: 0 auto;
   padding-left: 0;
   padding-right: 0
@@ -93,57 +91,31 @@ button {
   margin-bottom: 20px
 }
 
-// Banner style
-.banner {
-  background-image: url("src/assets/image/banner.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  .banner-container {
-    margin: 0 auto;
-    max-width: 860px;
-    min-height: 518px;
-    margin-bottom: 40px;
-
-    .banner-heading-title {
-      margin: 0;
-      color: #eaeaea;
-      line-height: 518px;
-      font-size: 64px;
-      text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-  }
-}
-
 .page-header {
   position: relative;
   width: 90%;
   margin: 0 auto 40px;
-  margin: 0 auto;
   text-align: center;
 
-  // h1 {
-  //   margin: 65px 0;
-  // }
+  h1 {
+    margin: 65px 0;
+  }
 }
 
 .flex-box {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
-// .sidebar {
-//   width: 270px;
-//   margin-top: 30px;
-// }
+.sidebar {
+  width: 270px;
+  margin-top: 30px;
+}
 
-// .site-main {
-//   width: 100%;
-//   margin-top: 30px;
-// }
+.site-main {
+  width: 67%;
+  margin-top: 30px;
+}
 
 //Validation style & form style
 
@@ -170,6 +142,7 @@ button {
     small {
       color: $invalidColor;
     }
+
   }
 }
 
@@ -192,7 +165,7 @@ button {
 // blog style
 
 .post {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
   .entry-header {
     position: relative;
@@ -203,12 +176,12 @@ button {
     text-align: center;
 
     &:before {
-      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      content: '';
       opacity: .4;
       border: 3px solid $mainBrandColor;
       z-index: 0;
@@ -292,18 +265,16 @@ button {
     position: relative;
     display: block;
     margin: -60px 0 20px;
-    // border: 1px solid #000;
 
     img {
       width: 100%;
-      height: 100%;
     }
   }
 
   .entry-content {
     p {
       color: $mainColor;
-      font-size: $regular-size;
+      font-size: $big-size;
       line-height: 26px;
       margin-bottom: 0px;
       overflow: hidden;
@@ -330,7 +301,6 @@ button {
   .entry-footer {
     overflow: hidden;
     padding: 40px 5px 15px;
-    border-bottom: 3px solid #f4f7f6;
 
     .post-comments {
       font-size: 12px;
@@ -357,7 +327,7 @@ button {
 // Photo galery style
 
 .photo-preview {
-  width: 525px;
+  width: 560px;
   box-sizing: border-box;
   position: relative;
   margin-bottom: 30px;
@@ -566,90 +536,104 @@ form {
   }
 }
 
-// @media screen and (min-width: 770px) and (max-width: 1999px) {
-//   .photo-preview {
-//     width: 49%;
-//   }
-// }
+@media screen and (min-width: 770px) and (max-width: 1999px) {
+  .photo-preview {
+    width: 49%;
+  }
+}
 
-// @media screen and (min-width: 770px) and (max-width: 1024px) {
-//   .page-header {
-//     h1 {
-//       margin: 30px 0;
-//     }
-//   }
-// }
+@media screen and (min-width: 770px) and (max-width: 1024px) {
+  .page-header {
+    h1 {
+      margin: 30px 0;
+    }
+  }
 
-// @media screen and (max-width: 1024px) {
-//   .page-wrapper {
-//     padding: 0 5px;
-//   }
+  .post {
+    .entry-header {
+      .entry-title {
+        font-size: 1rem;
+      }
+    }
 
-//   .site-main {
-//     width: 100%;
-//   }
+    .entry-content {
+      p {
+        font-size: .9rem;
+      }
+    }
+  }
+}
 
-//   .sidebar {
-//     display: none;
-//   }
-// }
+@media screen and (max-width: 1024px) {
+  .page-wrapper {
+    padding: 0 5px;
+  }
 
-// @media screen and (max-width: 875px) {
-//   .post {
-//     .entry-header {
-//       padding: 22px 20px 30px;
+  .site-main {
+    width: 100%;
+  }
 
-//       .cat-links {
-//         a {
-//           font-size: 0.7rem;
-//         }
-//       }
+  .sidebar {
+    display: none;
+  }
+}
 
-//       .entry-title {
-//         font-size: .8rem;
+@media screen and (max-width: 875px) {
+  .post {
+    .entry-header {
+      padding: 22px 20px 30px;
 
-//         h2 {
-//           margin: 0;
-//         }
-//       }
+      .cat-links {
+        a {
+          font-size: 0.7rem;
+        }
+      }
+
+      .entry-title {
+        font-size: .8rem;
+
+        h2 {
+          margin: 0;
+        }
+      }
 
 
-//     }
+    }
 
-//     .entry-content {
-//       p {
-//         font-size: 0.9rem;
-//       }
-//     }
-//   }
-// }
+    .entry-content {
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
 
-// @media screen and (min-width: 320px) and (max-width: 769px) {
-//   .banner {
-//     display: none;
-//   }
+@media screen and (min-width: 320px) and (max-width: 769px) {
+  .banner {
+    display: none;
+  }
 
-//   .photo-preview {
-//     width: 100%;
-//   }
+  .photo-preview {
+    width: 100%;
+  }
 
-//   .page-header {
-//     h1 {
-//       margin: 30px 0;
-//     }
-//   }
+  .page-header {
+    h1 {
+      margin: 30px 0;
+    }
+  }
 
-//   .post {
-//     .entry-header {
-//       .entry-title {
-//         font-size: 1rem;
-//       }
-//     }
+  .post {
+    .entry-header {
+      .entry-title {
+        font-size: 1rem;
+      }
+    }
 
-//     .entry-content {
-//       p {
-//         font-size: 0.9rem;
-//       }
-//     }
-//   }
-// }
+    .entry-content {
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
