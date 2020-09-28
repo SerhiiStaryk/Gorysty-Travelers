@@ -19,21 +19,21 @@
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 769px) {
-  .row-tablet {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+// @media screen and (min-width: 320px) and (max-width: 769px) {
+//   .row-tablet {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
 
-    .post {
-      max-width: 100%;
-    }
-  }
+//     .post {
+//       max-width: 100%;
+//     }
+//   }
 
-  .entry-content {
-    p {
-      height: 80px;
-    }
-  }
-}
+//   .entry-content {
+//     p {
+//       height: 80px;
+//     }
+//   }
+// }
 
